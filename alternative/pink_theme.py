@@ -219,15 +219,42 @@ body {
 /* Cell prompts */
 .prompt {
     min-width: 14ex !important;
+    background-color: transparent !important;
 }
 
 .input_prompt {
     color: var(--pink-violet) !important;
     font-weight: bold !important;
+    background-color: transparent !important;
 }
 
 .output_prompt {
     color: #DB7093 !important;
+    background-color: transparent !important;
+}
+
+/* JupyterLab specific prompt styling */
+.jp-InputPrompt, .jp-OutputPrompt {
+    background-color: transparent !important;
+}
+
+.jp-InputArea-prompt, .jp-OutputArea-prompt {
+    background-color: transparent !important;
+    color: var(--pink-violet) !important;
+}
+
+/* Fix for JupyterLab prompt containers */
+div.jp-Cell-inputWrapper div.jp-InputArea-prompt,
+div.jp-Cell-outputWrapper div.jp-OutputArea-prompt {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Override any dark backgrounds in prompts */
+.jp-InputArea .jp-InputPrompt,
+.jp-OutputArea .jp-OutputPrompt {
+    background: transparent !important;
+    background-color: var(--pink-lighter) !important;
 }
 
 /* Running indicator */
