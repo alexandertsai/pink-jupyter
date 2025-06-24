@@ -41,14 +41,6 @@ plt.style.use('/path/to/pink.mplstyle') # use the absolute path
 
 Once installed, the theme is applied automatically to all Jupyter notebooks. Try the demo notebook <span style="color: #C71585;">`demo.ipynb`</span> to see all the theme features!
 
-### <span style="color: #FF1493;">Alternative Usage</span>
-
-Let's just say for some odd reason you've got shared folders in a large Jupyterlab project and you only want the pink theme in your own folder. In that case, look in the `alternative` folder and copy and paste `pink_theme.py` into the folder you want to use it in. Then, in the first cell, run the following code:
-
-```python
-import pink_theme
-pink_theme.apply()
-```
 
 ## <span style="color: #FF69B4;">Customization</span>
 
