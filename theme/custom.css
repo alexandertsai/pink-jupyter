@@ -173,7 +173,7 @@ body {
 .text_cell_render h6 {
     color: var(--pink-violet) !important;
     font-weight: bold !important;
-    font-family: 'Playfair Display', 'Georgia', 'Times New Roman', serif !important;
+    font-family: 'Inter', 'Dancing Script', 'Playfair Display', serif !important;
     letter-spacing: 0.5px !important;
 }
 
@@ -355,10 +355,26 @@ body {
 
 .dataframe thead {
     background-color: var(--pink-medium) !important;
+    color: var(--burgundy) !important;
+}
+
+.dataframe thead th {
+    background-color: var(--pink-medium) !important;
+    color: var(--burgundy) !important;
+    font-weight: bold !important;
 }
 
 .dataframe tbody tr:nth-child(even) {
-    background-color: var(--pink-light) !important;
+    background-color: #FFF8F8 !important;
+}
+
+.dataframe tbody tr:nth-child(odd) {
+    background-color: white !important;
+}
+
+.dataframe tbody td {
+    color: var(--indigo) !important;
+    padding: 8px !important;
 }
 
 /* Error output */

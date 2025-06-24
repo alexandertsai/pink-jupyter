@@ -15,10 +15,58 @@ Author: Pink Jupyter Theme Project
 License: MIT
 """
 
+def _apply_matplotlib_style():
+    """Apply matplotlib styling to match the pink theme."""
+    import matplotlib.pyplot as plt
+    from cycler import cycler
+    
+    # Set matplotlib parameters to match pink.mplstyle
+    plt.rcParams.update({
+        # Color cycle - these colors will be used automatically for plot lines
+        'axes.prop_cycle': cycler('color', ['#FF69B4', '#C71585', '#FF1493', '#FFB6C1', '#DB7093', '#8B1538', '#FF6347', '#BC8F8F']),
+        
+        # Grid styling to match theme
+        'axes.grid': True,
+        'grid.color': '#FFB6C1',
+        'grid.alpha': 0.3,
+        'grid.linewidth': 0.5,
+        
+        # Background colors
+        'figure.facecolor': 'white',
+        'axes.facecolor': 'white',
+        
+        # Text colors to match theme
+        'text.color': '#4B0082',
+        'axes.labelcolor': '#4B0082',
+        'xtick.color': '#4B0082',
+        'ytick.color': '#4B0082',
+        
+        # Spine (border) colors
+        'axes.edgecolor': '#FFB6C1',
+        'axes.linewidth': 1,
+        
+        # Legend styling
+        'legend.frameon': True,
+        'legend.facecolor': 'white',
+        'legend.edgecolor': '#FFB6C1',
+        'legend.framealpha': 0.8
+    })
+
 def apply():
-    """Apply the pink theme to the current Jupyter notebook."""
+    """Apply the pink theme to the current Jupyter notebook.
+    
+    This function applies both CSS styling for the notebook interface
+    and matplotlib rcParams for consistent plot styling.
+    """
     
     from IPython.display import HTML, display
+    
+    # Apply matplotlib styling first
+    try:
+        _apply_matplotlib_style()
+        matplotlib_applied = True
+    except ImportError:
+        matplotlib_applied = False
     
     # All CSS embedded as a string - identical to theme/custom.css
     PINK_CSS = """
@@ -197,7 +245,7 @@ body {
 .text_cell_render h6 {
     color: var(--pink-violet) !important;
     font-weight: bold !important;
-    font-family: 'Playfair Display', 'Georgia', 'Times New Roman', serif !important;
+    font-family: 'Inter', 'Dancing Script', 'Playfair Display', serif !important;
     letter-spacing: 0.5px !important;
 }
 
@@ -267,8 +315,8 @@ div.jp-Cell-outputWrapper div.jp-OutputArea-prompt {
 .cm-keyword, .jp-CodeMirror .cm-keyword { color: var(--pink-deep) !important; font-weight: bold !important; }
 .cm-def, .jp-CodeMirror .cm-def { color: var(--pink-violet) !important; }
 .cm-variable, .jp-CodeMirror .cm-variable { color: var(--indigo) !important; }
-.cm-variable-2, .jp-CodeMirror .cm-variable-2 { color: #8B008B !important; }
-.cm-variable-3, .jp-CodeMirror .cm-variable-3 { color: #9400D3 !important; }
+.cm-variable-2, .jp-CodeMirror .cm-variable-2 { color: var(--indigo) !important; }
+.cm-variable-3, .jp-CodeMirror .cm-variable-3 { color: var(--burgundy) !important; }
 .cm-string, .jp-CodeMirror .cm-string { color: #DB7093 !important; }
 .cm-operator, .jp-CodeMirror .cm-operator { color: var(--pink-hot) !important; }
 .cm-comment, .jp-CodeMirror .cm-comment { color: var(--pink-hot) !important; font-style: italic !important; font-weight: normal !important; }
@@ -411,10 +459,26 @@ div.jp-Cell-outputWrapper div.jp-OutputArea-prompt {
 
 .dataframe thead {
     background-color: var(--pink-medium) !important;
+    color: var(--burgundy) !important;
+}
+
+.dataframe thead th {
+    background-color: var(--pink-medium) !important;
+    color: var(--burgundy) !important;
+    font-weight: bold !important;
 }
 
 .dataframe tbody tr:nth-child(even) {
-    background-color: var(--pink-light) !important;
+    background-color: #FFF8F8 !important;
+}
+
+.dataframe tbody tr:nth-child(odd) {
+    background-color: white !important;
+}
+
+.dataframe tbody td {
+    color: var(--indigo) !important;
+    padding: 8px !important;
 }
 
 /* Error output */
@@ -514,6 +578,10 @@ div#notebook {
     
     # Show success message
     print("🌸 Pink theme applied successfully! Your notebook is now beautifully pink! 💕")
+    if matplotlib_applied:
+        print("📊 Matplotlib styling also applied - your plots will now match the pink theme!")
+    else:
+        print("⚠️  Matplotlib not available - only CSS theme applied. Install matplotlib for pink plots!")
 
 
 def remove():
