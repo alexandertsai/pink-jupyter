@@ -313,6 +313,7 @@ div.jp-Cell-outputWrapper div.jp-OutputArea-prompt {
 
 /* Syntax highlighting - for both Classic and JupyterLab */
 .cm-keyword, .jp-CodeMirror .cm-keyword { color: var(--pink-deep) !important; font-weight: bold !important; }
+.cm-property, .jp-CodeMirror .cm-keyword { color: var(--pink-hot) !important; font-weight: bold !important; }
 .cm-def, .jp-CodeMirror .cm-def { color: var(--pink-violet) !important; }
 .cm-variable, .jp-CodeMirror .cm-variable { color: var(--indigo) !important; }
 .cm-variable-2, .jp-CodeMirror .cm-variable-2 { color: var(--indigo) !important; }
