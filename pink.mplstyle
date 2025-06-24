@@ -1,0 +1,31 @@
+# Pink Jupyter Theme - Matplotlib Style
+# Matches the pink color palette used in the Jupyter theme
+
+# Color cycle - these colors will be used automatically for plot lines
+axes.prop_cycle : cycler('color', ['FF69B4', 'C71585', 'FF1493', 'FFB6C1', 'DB7093', '8B1538', 'FF6347', 'BC8F8F'])
+
+# Grid styling to match theme
+axes.grid       : True
+grid.color      : FFB6C1
+grid.alpha      : 0.3
+grid.linewidth  : 0.5
+
+# Background colors
+figure.facecolor : white
+axes.facecolor   : white
+
+# Text colors to match theme
+text.color       : 4B0082
+axes.labelcolor  : 4B0082
+xtick.color      : 4B0082
+ytick.color      : 4B0082
+
+# Spine (border) colors
+axes.edgecolor   : FFB6C1
+axes.linewidth   : 1
+
+# Legend styling
+legend.frameon       : True
+legend.facecolor     : white
+legend.edgecolor     : FFB6C1
+legend.framealpha    : 0.8
