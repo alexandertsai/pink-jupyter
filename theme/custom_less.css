@@ -1,75 +1,3 @@
-"""
-🌸 Pink Jupyter Theme - Project-Level Styling 🌸
-
-A beautiful pink color theme for Jupyter Notebook that can be applied to individual notebooks
-without requiring global installation. Perfect for shared projects!
-
-Usage:
-    1. Drop this file into your project folder
-    2. In your notebook, run:
-       import pink_theme
-       pink_theme.apply()
-    3. Enjoy your pink-themed notebook! 💕
-
-Author: Pink Jupyter Theme Project
-License: MIT
-"""
-
-def _apply_matplotlib_style():
-    """Apply matplotlib styling to match the pink theme."""
-    import matplotlib.pyplot as plt
-    from cycler import cycler
-    
-    # Set matplotlib parameters to match pink.mplstyle
-    plt.rcParams.update({
-        # Color cycle - these colors will be used automatically for plot lines
-        'axes.prop_cycle': cycler('color', ['#FF69B4', '#C71585', '#FF1493', '#FFB6C1', '#DB7093', '#8B1538', '#FF6347', '#BC8F8F']),
-        
-        # Grid styling to match theme
-        'axes.grid': True,
-        'grid.color': '#FFB6C1',
-        'grid.alpha': 0.3,
-        'grid.linewidth': 0.5,
-        
-        # Background colors
-        'figure.facecolor': 'white',
-        'axes.facecolor': 'white',
-        
-        # Text colors to match theme
-        'text.color': '#4B0082',
-        'axes.labelcolor': '#4B0082',
-        'xtick.color': '#4B0082',
-        'ytick.color': '#4B0082',
-        
-        # Spine (border) colors
-        'axes.edgecolor': '#FFB6C1',
-        'axes.linewidth': 1,
-        
-        # Legend styling
-        'legend.frameon': True,
-        'legend.facecolor': 'white',
-        'legend.edgecolor': '#FFB6C1',
-        'legend.framealpha': 0.8
-    })
-
-def apply():
-    """Apply the pink theme to the current Jupyter notebook.
-    
-    This function applies both CSS styling for the notebook interface
-    and matplotlib rcParams for consistent plot styling.
-    """
-    
-    from IPython.display import HTML, display
-    
-    # Apply matplotlib styling first
-    try:
-        _apply_matplotlib_style()
-        matplotlib_applied = True
-    except ImportError:
-        matplotlib_applied = False
-    
-    # All CSS embedded as a string - modified to only work with nbclassic
-    PINK_CSS = """
 /* Pink Jupyter Theme - A beautiful pink color scheme for Jupyter Notebooks */
 /* Modified to only work with nbclassic (body.notebook_app) */
 
@@ -312,25 +240,19 @@ body.notebook_app .running .prompt {
     color: white !important;
 }
 
-/* Syntax highlighting - for both Classic and JupyterLab */
-body.notebook_app .cm-keyword, body.notebook_app .jp-CodeMirror .cm-keyword { color: var(--pink-deep) !important; font-weight: bold !important; }
-body.notebook_app .cm-property, body.notebook_app .jp-CodeMirror .cm-keyword { color: var(--pink-hot) !important; font-weight: bold !important; }
-body.notebook_app .cm-def, body.notebook_app .jp-CodeMirror .cm-def { color: var(--pink-violet) !important; }
-body.notebook_app .cm-variable, body.notebook_app .jp-CodeMirror .cm-variable { color: var(--indigo) !important; }
-body.notebook_app .cm-variable-2, body.notebook_app .jp-CodeMirror .cm-variable-2 { color: var(--indigo) !important; }
-body.notebook_app .cm-variable-3, body.notebook_app .jp-CodeMirror .cm-variable-3 { color: var(--burgundy) !important; }
-body.notebook_app .cm-string, body.notebook_app .jp-CodeMirror .cm-string { color: #DB7093 !important; }
-body.notebook_app .cm-operator, body.notebook_app .jp-CodeMirror .cm-operator { color: var(--pink-hot) !important; }
-body.notebook_app .cm-comment, body.notebook_app .jp-CodeMirror .cm-comment { color: var(--pink-hot) !important; font-style: italic !important; font-weight: normal !important; }
-body.notebook_app .cm-number, body.notebook_app .jp-CodeMirror .cm-number { color: #FF6347 !important; }
-body.notebook_app .cm-atom, body.notebook_app .jp-CodeMirror .cm-atom { color: var(--pink-deep) !important; }
-body.notebook_app .cm-builtin, body.notebook_app .jp-CodeMirror .cm-builtin { color: var(--pink-violet) !important; }
-body.notebook_app .cm-bracket, body.notebook_app .jp-CodeMirror .cm-bracket { color: var(--burgundy) !important; }
-
-/* Additional JupyterLab specific syntax highlighting */
-body.notebook_app .jp-CodeMirror .cm-tag { color: var(--pink-deep) !important; }
-body.notebook_app .jp-CodeMirror .cm-attribute { color: var(--pink-violet) !important; }
-body.notebook_app .jp-CodeMirror .cm-property { color: var(--indigo) !important; }
+/* Syntax highlighting */
+body.notebook_app .cm-keyword { color: var(--pink-deep) !important; font-weight: bold !important; }
+body.notebook_app .cm-def { color: var(--pink-violet) !important; }
+body.notebook_app .cm-variable { color: var(--indigo) !important; }
+body.notebook_app .cm-variable-2 { color: var(--indigo) !important; }
+body.notebook_app .cm-variable-3 { color: var(--burgundy) !important; }
+body.notebook_app .cm-string { color: #DB7093 !important; }
+body.notebook_app .cm-operator { color: var(--pink-hot) !important; }
+body.notebook_app .cm-comment { color: #BC8F8F !important; font-style: italic !important; }
+body.notebook_app .cm-number { color: #FF6347 !important; }
+body.notebook_app .cm-atom { color: var(--pink-deep) !important; }
+body.notebook_app .cm-builtin { color: var(--pink-violet) !important; }
+body.notebook_app .cm-bracket { color: var(--burgundy) !important; }
 
 /* Buttons */
 body.notebook_app .btn-default {
@@ -573,49 +495,3 @@ body.notebook_app .input_area > .highlight {
 body.notebook_app .output_area .output_subarea {
     max-width: 100% !important;
 }
-"""
-    
-    # Inject the CSS into the notebook
-    display(HTML(f"<style>{PINK_CSS}</style>"))
-    
-    # Show success message
-    print("🌸 Pink theme applied successfully! Your notebook is now beautifully pink! 💕")
-    if matplotlib_applied:
-        print("📊 Matplotlib styling also applied - your plots will now match the pink theme!")
-    else:
-        print("⚠️  Matplotlib not available - only CSS theme applied. Install matplotlib for pink plots!")
-
-
-def remove():
-    """Remove the pink theme from the current notebook (resets to default)."""
-    from IPython.display import HTML, display
-    
-    # This will remove our custom styles by overriding them with defaults
-    reset_css = """
-    <style>
-    /* Reset to default Jupyter styles */
-    :root {
-        --pink-light: unset;
-        --pink-lighter: unset;
-        --pink-soft: unset;
-        --pink-medium: unset;
-        --pink-hot: unset;
-        --pink-deep: unset;
-        --pink-violet: unset;
-        --burgundy: unset;
-        --indigo: unset;
-    }
-    
-    body { background-color: white !important; }
-    #notebook { background-color: white !important; }
-    #notebook-container { background-color: white !important; width: auto !important; }
-    </style>
-    """
-    
-    display(HTML(reset_css))
-    print("🌸 Pink theme removed. Notebook restored to default styling.")
-
-
-if __name__ == "__main__":
-    # If run as a script, apply the theme automatically
-    apply()

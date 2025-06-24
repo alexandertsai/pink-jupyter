@@ -1,4 +1,5 @@
 /* Pink Jupyter Theme - A beautiful pink color scheme for Jupyter Notebooks */
+/* Universal version - works with all Jupyter interfaces */
 
 /* Root variables for consistency */
 :root {
@@ -111,22 +112,22 @@ body {
 }
 
 /* CodeMirror editor */
-.CodeMirror {
+.CodeMirror, .jp-CodeMirror {
     background-color: var(--pink-lighter) !important;
     color: var(--indigo) !important;
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace !important;
 }
 
-.CodeMirror-gutters {
+.CodeMirror-gutters, .jp-CodeMirror-gutters {
     background-color: var(--pink-soft) !important;
     border-right: 1px solid var(--pink-medium) !important;
 }
 
-.CodeMirror-linenumber {
+.CodeMirror-linenumber, .jp-CodeMirror-linenumber {
     color: #DB7093 !important;
 }
 
-.CodeMirror-cursor {
+.CodeMirror-cursor, .jp-CodeMirror-cursor {
     border-left: 2px solid var(--pink-hot) !important;
 }
 
@@ -195,15 +196,42 @@ body {
 /* Cell prompts */
 .prompt {
     min-width: 14ex !important;
+    background-color: transparent !important;
 }
 
 .input_prompt {
     color: var(--pink-violet) !important;
     font-weight: bold !important;
+    background-color: transparent !important;
 }
 
 .output_prompt {
     color: #DB7093 !important;
+    background-color: transparent !important;
+}
+
+/* JupyterLab specific prompt styling */
+.jp-InputPrompt, .jp-OutputPrompt {
+    background-color: transparent !important;
+}
+
+.jp-InputArea-prompt, .jp-OutputArea-prompt {
+    background-color: transparent !important;
+    color: var(--pink-violet) !important;
+}
+
+/* Fix for JupyterLab prompt containers */
+div.jp-Cell-inputWrapper div.jp-InputArea-prompt,
+div.jp-Cell-outputWrapper div.jp-OutputArea-prompt {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Override any dark backgrounds in prompts */
+.jp-InputArea .jp-InputPrompt,
+.jp-OutputArea .jp-OutputPrompt {
+    background: transparent !important;
+    background-color: var(--pink-lighter) !important;
 }
 
 /* Running indicator */
@@ -212,19 +240,24 @@ body {
     color: white !important;
 }
 
-/* Syntax highlighting */
-.cm-keyword { color: var(--pink-deep) !important; font-weight: bold !important; }
-.cm-def { color: var(--pink-violet) !important; }
-.cm-variable { color: var(--indigo) !important; }
-.cm-variable-2 { color: #8B008B !important; }
-.cm-variable-3 { color: #9400D3 !important; }
-.cm-string { color: #DB7093 !important; }
-.cm-operator { color: var(--pink-hot) !important; }
-.cm-comment { color: #BC8F8F !important; font-style: italic !important; }
-.cm-number { color: #FF6347 !important; }
-.cm-atom { color: var(--pink-deep) !important; }
-.cm-builtin { color: var(--pink-violet) !important; }
-.cm-bracket { color: var(--burgundy) !important; }
+/* Syntax highlighting - for both Classic and JupyterLab */
+.cm-keyword, .jp-CodeMirror .cm-keyword { color: var(--pink-deep) !important; font-weight: bold !important; }
+.cm-def, .jp-CodeMirror .cm-def { color: var(--pink-violet) !important; }
+.cm-variable, .jp-CodeMirror .cm-variable { color: var(--indigo) !important; }
+.cm-variable-2, .jp-CodeMirror .cm-variable-2 { color: var(--indigo) !important; }
+.cm-variable-3, .jp-CodeMirror .cm-variable-3 { color: var(--burgundy) !important; }
+.cm-string, .jp-CodeMirror .cm-string { color: #DB7093 !important; }
+.cm-operator, .jp-CodeMirror .cm-operator { color: var(--pink-hot) !important; }
+.cm-comment, .jp-CodeMirror .cm-comment { color: var(--pink-hot) !important; font-style: italic !important; font-weight: normal !important; }
+.cm-number, .jp-CodeMirror .cm-number { color: #FF6347 !important; }
+.cm-atom, .jp-CodeMirror .cm-atom { color: var(--pink-deep) !important; }
+.cm-builtin, .jp-CodeMirror .cm-builtin { color: var(--pink-violet) !important; }
+.cm-bracket, .jp-CodeMirror .cm-bracket { color: var(--burgundy) !important; }
+
+/* Additional JupyterLab specific syntax highlighting */
+.jp-CodeMirror .cm-tag { color: var(--pink-deep) !important; }
+.jp-CodeMirror .cm-attribute { color: var(--pink-violet) !important; }
+.jp-CodeMirror .cm-property { color: var(--indigo) !important; }
 
 /* Buttons */
 .btn-default {

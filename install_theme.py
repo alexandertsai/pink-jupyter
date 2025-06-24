@@ -27,7 +27,7 @@ def install_theme():
     """Install the pink theme to Jupyter's custom CSS directory."""
     # Get paths
     script_dir = Path(__file__).parent
-    theme_file = script_dir / "theme" / "custom.css"
+    theme_file = script_dir / "theme" / "custom.css"  # change this to custom_less.css if you only want nbclassic support
     
     if not theme_file.exists():
         print(f"Error: Theme file not found at {theme_file}")
