@@ -234,3 +234,6 @@ $RECYCLE.BIN/
 
 # Custom CSS backups
 custom.css.backup
+
+# Jupyter YStore database
+.jupyter_ystore.db
