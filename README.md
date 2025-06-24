@@ -90,5 +90,5 @@ This theme is released under the MIT License. Feel free to use and modify as nee
 ---
 <br>
 <div align="center">
-  <span style="color: #FF69B4; font-size: 18px;">Made with 💕 for the Jupyter community</span>
+  <span style="color: #FF69B4; font-size: 18px;">Made with 💕 for the Jupyter community (and Allison)</span>
 </div>
