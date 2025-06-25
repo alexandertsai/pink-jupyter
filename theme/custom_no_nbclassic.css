@@ -283,9 +283,11 @@ body {
 }
 
 .output_area pre {
-    color: var(--indigo) !important;
-    background-color: white !important;
+    color: var(--pink-deep) !important;
+    background-color: var(--pink-lighter) !important;
     padding: 10px !important;
+    border-left: 3px solid var(--pink-hot) !important;
+    border-radius: 3px !important;
 }
 
 .output_subarea {
@@ -492,6 +494,23 @@ div.jp-Cell-outputWrapper div.jp-OutputArea-prompt {
 
 /* Syntax highlighting - for both Classic and JupyterLab */
 .cm-keyword, .jp-CodeMirror .cm-keyword { color: var(--pink-deep) !important; font-weight: bold !important; }
+/* CodeMirror 6 syntax highlighting - targeting generated classes with ͼ character */
+.ͼs, .jp-CodeMirror .ͼs { color: var(--pink-deep) !important; font-weight: bold !important; }
+/* More comprehensive CodeMirror 6 keyword targeting - using varied pink shades */
+.ͼf, .jp-CodeMirror .ͼf { color: var(--pink-deep) !important; font-weight: bold !important; }
+.ͼa, .jp-CodeMirror .ͼa { color: var(--pink-hot) !important; font-weight: bold !important; }
+.ͼb, .jp-CodeMirror .ͼb { color: var(--pink-violet) !important; font-weight: bold !important; }
+.ͼc, .jp-CodeMirror .ͼc { color: var(--pink-deep) !important; font-weight: bold !important; }
+.ͼd, .jp-CodeMirror .ͼd { color: var(--pink-hot) !important; font-weight: bold !important; }
+.ͼe, .jp-CodeMirror .ͼe { color: var(--pink-violet) !important; font-weight: bold !important; }
+.ͼg, .jp-CodeMirror .ͼg { color: var(--burgundy) !important; font-weight: bold !important; }
+.ͼh, .jp-CodeMirror .ͼh { color: var(--pink-deep) !important; font-weight: bold !important; }
+.ͼi, .jp-CodeMirror .ͼi { color: var(--pink-hot) !important; font-weight: bold !important; }
+.ͼj, .jp-CodeMirror .ͼj { color: var(--pink-violet) !important; font-weight: bold !important; }
+.ͼu, .jp-CodeMirror .ͼu { color: var(--pink-deep) !important; font-weight: bold !important; }
+.ͼz, .jp-CodeMirror .ͼz { color: var(--pink-hot) !important; font-weight: bold !important; }
+.ͼ10, .jp-CodeMirror .ͼ10 { color: var(--pink-violet) !important; font-weight: bold !important; }
+.ͼ12, .jp-CodeMirror .ͼ12 { color: var(--burgundy) !important; }
 .cm-def, .jp-CodeMirror .cm-def { color: var(--pink-hot) !important; }
 .cm-variable, .jp-CodeMirror .cm-variable { color: var(--pink-hot) !important; font-weight: bold !important; }
 .cm-variable-2, .jp-CodeMirror .cm-variable-2 { color: var(--pink-deep) !important; }
@@ -740,7 +759,11 @@ div.output_stderr pre {
 
 /* Make all error text visible */
 .output_area .output_text pre {
-    color: var(--indigo) !important;
+    color: var(--pink-violet) !important;
+    background-color: var(--pink-lighter) !important;
+    border-left: 2px solid var(--pink-medium) !important;
+    padding: 8px !important;
+    border-radius: 3px !important;
 }
 
 .output_area .output_error pre {
