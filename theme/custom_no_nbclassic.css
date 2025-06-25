@@ -140,8 +140,56 @@ body {
     background-color: var(--pink-lighter) !important;
 }
 
+.jp-WindowedPanel-outer {
+    background-color: var(--pink-lighter) !important;
+}
+
 .lm-Widget {
     background-color: var(--pink-lighter) !important;
+}
+
+/* Additional lm-Widget elements for comprehensive coverage */
+.lm-Panel {
+    background-color: var(--pink-lighter) !important;
+}
+
+.lm-SplitPanel-child {
+    background-color: var(--pink-lighter) !important;
+}
+
+.lm-TabPanel {
+    background-color: var(--pink-lighter) !important;
+}
+
+.lm-DockPanel {
+    background-color: var(--pink-lighter) !important;
+}
+
+.lm-BoxPanel {
+    background-color: var(--pink-lighter) !important;
+}
+
+/* Tab bar styling for lm elements */
+.lm-TabBar {
+    background-color: var(--pink-medium) !important;
+    border-bottom: 1px solid var(--pink-hot) !important;
+}
+
+.lm-TabBar-tab {
+    background-color: var(--pink-soft) !important;
+    color: var(--pink-violet) !important;
+    border: 1px solid var(--pink-medium) !important;
+}
+
+.lm-TabBar-tab.lm-mod-current {
+    background-color: var(--pink-hot) !important;
+    color: white !important;
+    border-bottom-color: var(--pink-hot) !important;
+}
+
+.lm-TabBar-tab:hover {
+    background-color: var(--pink-medium) !important;
+    color: var(--burgundy) !important;
 }
 
 /* JupyterLab rendered markdown output */
@@ -257,6 +305,10 @@ body {
 
 .jp-MarkdownCell.jp-mod-selected .jp-Cell-inputWrapper {
     background-color: #FFFAFA !important;
+}
+
+.jp-RenderedText pre {
+    color: var(--pink-hot) !important;
 }
 
 /* === CLASSIC JUPYTER NOTEBOOK COLLAPSIBLE SUPPORT === */
@@ -428,6 +480,20 @@ body {
     font-size: 1.1em !important;
 }
 
+.jp-RenderedHTMLCommon p,
+.jp-RenderedMarkdown p{
+    color: var(--pink-violet) !important;
+    font-family: 'Inter', 'Dancing Script', 'Playfair Display', serif !important;
+    font-size: 16px !important;
+}
+
+.jp-RenderedHTMLCommon code,
+.jp-RenderedMarkdown code{
+    color: var(--pink-violet) !important;
+    font-family: 'Playfair Display' !important;
+    font-size: 16px !important;
+}
+
 .jp-RenderedHTMLCommon,
 .jp-RenderedMarkdown {
     color: var(--pink-violet) !important;
@@ -508,8 +574,10 @@ div.jp-Cell-outputWrapper div.jp-OutputArea-prompt {
 .ͼi, .jp-CodeMirror .ͼi { color: var(--pink-hot) !important; font-weight: bold !important; }
 .ͼj, .jp-CodeMirror .ͼj { color: var(--pink-violet) !important; font-weight: bold !important; }
 .ͼu, .jp-CodeMirror .ͼu { color: var(--pink-deep) !important; font-weight: bold !important; }
+.ͼv, .jp-CodeMirror .ͼv { color: var(--pink-violet) !important; font-weight: bold !important; }
 .ͼz, .jp-CodeMirror .ͼz { color: var(--pink-hot) !important; font-weight: bold !important; }
 .ͼ10, .jp-CodeMirror .ͼ10 { color: var(--pink-violet) !important; font-weight: bold !important; }
+.ͼ11, .jp-CodeMirror .ͼ11 { color: var(--pink-medium) !important; font-weight: bold !important; }
 .ͼ12, .jp-CodeMirror .ͼ12 { color: var(--burgundy) !important; }
 .cm-def, .jp-CodeMirror .cm-def { color: var(--pink-hot) !important; }
 .cm-variable, .jp-CodeMirror .cm-variable { color: var(--pink-hot) !important; font-weight: bold !important; }
@@ -527,27 +595,6 @@ div.jp-Cell-outputWrapper div.jp-OutputArea-prompt {
 .jp-CodeMirror .cm-tag { color: var(--pink-deep) !important; }
 .jp-CodeMirror .cm-attribute { color: var(--pink-violet) !important; }
 .jp-CodeMirror .cm-property { color: var(--pink-hot) !important; }
-
-/* Function names and calls */
-.cm-variable.cm-def, .jp-CodeMirror .cm-variable.cm-def { color: var(--pink-hot) !important; font-weight: bold !important; }
-.cm-def.cm-variable, .jp-CodeMirror .cm-def.cm-variable { color: var(--pink-hot) !important; font-weight: bold !important; }
-.cm-meta, .jp-CodeMirror .cm-meta { color: var(--pink-violet) !important; }
-
-/* Python method calls and attributes */
-.cm-attribute, .jp-CodeMirror .cm-attribute { color: var(--pink-hot) !important; font-weight: bold !important; }
-.cm-property, .jp-CodeMirror .cm-property { color: var(--pink-hot) !important; font-weight: bold !important; }
-
-/* More specific function targeting */
-.cm-variable + .cm-operator + .cm-variable, 
-.jp-CodeMirror .cm-variable + .cm-operator + .cm-variable { color: var(--pink-hot) !important; }
-
-/* Target method names after dots */
-.cm-operator + .cm-variable,
-.jp-CodeMirror .cm-operator + .cm-variable { color: var(--pink-hot) !important; font-weight: bold !important; }
-
-/* All variable-like tokens that could be functions */
-.cm-variable:not(.cm-def), .jp-CodeMirror .cm-variable:not(.cm-def) { color: var(--pink-violet) !important; }
-.cm-variable, .jp-CodeMirror .cm-variable { color: var(--pink-violet) !important; }
 
 /* Buttons */
 .btn-default {
