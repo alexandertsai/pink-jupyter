@@ -7,7 +7,7 @@
 ## <span style="color: #FF69B4;">🎀 Installation 🎀</span>
 
 
-### <span style="color: #FF69B4;">🚀 Quick Install</span>
+### <span style="color: #FF69B4;">Quick Install</span>
 
 1. **Clone this repository:**
 ```bash

@@ -1,6 +1,7 @@
 /* Pink Jupyter Theme - A beautiful pink color scheme for Jupyter Notebooks */
 /* For users without nbclassic - supports JupyterLab and classic Jupyter Notebook */
 /* Uses native collapsible features (no extensions required) */
+/* There's probably A LOT of redundant lines in here but I can't be bothered to figure it out*/
 
 /* Root variables for consistency */
 :root {
