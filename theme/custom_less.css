@@ -1,5 +1,6 @@
 /* Pink Jupyter Theme - A beautiful pink color scheme for Jupyter Notebooks */
 /* Modified to only work with nbclassic (body.notebook_app) */
+/* Enhanced with collapsible headings and code folding support */
 
 /* Root variables for consistency */
 :root {
@@ -121,6 +122,7 @@ body.notebook_app .CodeMirror, body.notebook_app .jp-CodeMirror {
 body.notebook_app .CodeMirror-gutters, body.notebook_app .jp-CodeMirror-gutters {
     background-color: var(--pink-soft) !important;
     border-right: 1px solid var(--pink-medium) !important;
+    z-index: 3 !important;
 }
 
 body.notebook_app .CodeMirror-linenumber, body.notebook_app .jp-CodeMirror-linenumber {
@@ -129,6 +131,130 @@ body.notebook_app .CodeMirror-linenumber, body.notebook_app .jp-CodeMirror-linen
 
 body.notebook_app .CodeMirror-cursor, body.notebook_app .jp-CodeMirror-cursor {
     border-left: 2px solid var(--pink-hot) !important;
+}
+
+/* === COLLAPSIBLE HEADINGS EXTENSION SUPPORT === */
+
+/* Collapsible headings toggle button styling */
+body.notebook_app .collapsible_headings_toggle {
+    color: var(--pink-deep) !important;
+    opacity: 1 !important;
+    z-index: 1000 !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    margin-right: 5px !important;
+    transition: color 0.3s ease !important;
+}
+
+body.notebook_app .collapsible_headings_toggle:hover {
+    color: var(--pink-hot) !important;
+}
+
+/* Style for collapsed heading cells */
+body.notebook_app .collapsible_headings_collapsed {
+    border-left: 4px solid var(--pink-hot) !important;
+    background-color: var(--pink-light) !important;
+    margin-bottom: 10px !important;
+}
+
+body.notebook_app .collapsible_headings_collapsed .text_cell_render {
+    background-color: var(--pink-light) !important;
+    border-left: 3px solid var(--pink-deep) !important;
+    padding-left: 15px !important;
+}
+
+body.notebook_app .collapsible_headings_collapsed:hover {
+    background-color: rgba(255, 105, 180, 0.1) !important;
+    transition: background-color 0.3s ease !important;
+}
+
+/* Disable the spinning animation for toggle icons */
+body.notebook_app .cell .collapsible_headings_toggle .fa {
+    transition: transform 0s !important;
+}
+
+/* Add visual indicator for collapsed sections */
+body.notebook_app .collapsible_headings_collapsed::after {
+    content: " [collapsed]" !important;
+    color: var(--pink-violet) !important;
+    font-style: italic !important;
+    font-size: 0.9em !important;
+    margin-left: 10px !important;
+}
+
+/* === CODE FOLDING EXTENSION SUPPORT === */
+
+/* Code folding gutter styling */
+body.notebook_app .CodeMirror-foldgutter,
+body.notebook_app .CodeMirror-foldgutter-open,
+body.notebook_app .CodeMirror-foldgutter-folded {
+    color: var(--pink-violet) !important;
+    opacity: 1 !important;
+    cursor: pointer !important;
+    background-color: var(--pink-soft) !important;
+    z-index: 1000 !important;
+}
+
+body.notebook_app .CodeMirror-foldgutter-open:after {
+    content: "▼" !important;
+    color: var(--pink-deep) !important;
+}
+
+body.notebook_app .CodeMirror-foldgutter-folded:after {
+    content: "▶" !important;
+    color: var(--pink-hot) !important;
+}
+
+body.notebook_app .CodeMirror-foldgutter:hover {
+    background-color: var(--pink-medium) !important;
+}
+
+/* Folded code marker styling */
+body.notebook_app .CodeMirror-foldmarker {
+    background-color: var(--pink-medium) !important;
+    color: var(--burgundy) !important;
+    border: 1px solid var(--pink-hot) !important;
+    border-radius: 3px !important;
+    padding: 0 3px !important;
+    cursor: pointer !important;
+}
+
+body.notebook_app .CodeMirror-foldmarker:hover {
+    background-color: var(--pink-hot) !important;
+    color: white !important;
+}
+
+/* Cell folding support (for nbextension-cellfolding) */
+body.notebook_app .cell-fold-toggle {
+    color: var(--pink-deep) !important;
+    cursor: pointer !important;
+    font-size: 12px !important;
+    opacity: 0.7 !important;
+    transition: opacity 0.3s ease !important;
+}
+
+body.notebook_app .cell-fold-toggle:hover {
+    opacity: 1 !important;
+    color: var(--pink-hot) !important;
+}
+
+body.notebook_app .cell.folded {
+    background-color: var(--pink-light) !important;
+    border-left: 3px solid var(--pink-hot) !important;
+    min-height: 30px !important;
+}
+
+body.notebook_app .cell.folded .input_area,
+body.notebook_app .cell.folded .output_wrapper {
+    display: none !important;
+}
+
+body.notebook_app .cell.folded::after {
+    content: "📁 Folded cell - click to expand" !important;
+    color: var(--pink-violet) !important;
+    font-style: italic !important;
+    padding: 10px !important;
+    display: block !important;
 }
 
 /* Output area */

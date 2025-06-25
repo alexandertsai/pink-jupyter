@@ -28,7 +28,7 @@ jupyter nbclassic
 
 The <span style="color: #FF1493;">pink</span>  theme will be applied automatically!
 
-### <span style="color: #FF69B4;">Pink Matplotlib Plots (Highly Recommended)</span>
+## <span style="color: #FF69B4;">Pink Matplotlib Plots (Highly Recommended)</span>
 
 To make your matplotlib plots match the pink theme automatically, use the included style file:
 
@@ -37,9 +37,26 @@ import matplotlib.pyplot as plt
 plt.style.use('/path/to/pink.mplstyle') # use the absolute path
 ```
 
+## <span style="color: #FF69B4;">Collapsible Features (Highly Recommended)</span>
+
+Follow these extra steps to enable collapsible functionality with pink-themed controls!
+
+1. **Install collapsible headings extension:**
+```bash
+pip install nbclassic-collapsible-headings
+```
+
+2. **Install cell folding extension:**
+```bash
+pip install nbextension-cellfolding
+```
+
+If it works you'll see super pretty <span style="color: #FF69B4;">pink</span>-themed collapsible controls.
+
 ## <span style="color: #FF69B4;">Usage</span>
 
 Once installed, the theme is applied automatically to all Jupyter notebooks. Try the demo notebook <span style="color: #C71585;">`demo.ipynb`</span> to see all the theme features!
+
 
 
 ## <span style="color: #FF69B4;">Customization</span>
@@ -79,6 +96,8 @@ Please don't! But if you must...
 ```bash
 python install_theme.py uninstall
 ```
+
+
 
 ## <span style="color: #FF69B4;">💞 Contributing 💞</span>
 
