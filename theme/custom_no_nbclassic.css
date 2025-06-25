@@ -1,0 +1,773 @@
+/* Pink Jupyter Theme - A beautiful pink color scheme for Jupyter Notebooks */
+/* For users without nbclassic - supports JupyterLab and classic Jupyter Notebook */
+/* Uses native collapsible features (no extensions required) */
+
+/* Root variables for consistency */
+:root {
+    --pink-light: #FFF0F5;
+    --pink-lighter: #FFF5FB;
+    --pink-soft: #FFE4E1;
+    --pink-medium: #FFB6C1;
+    --pink-hot: #FF69B4;
+    --pink-deep: #FF1493;
+    --pink-violet: #C71585;
+    --burgundy: #8B1538;
+    --indigo: #4B0082;
+}
+
+/* Main body and container backgrounds */
+body {
+    background-color: var(--pink-light) !important;
+}
+
+#notebook {
+    background-color: var(--pink-lighter) !important;
+}
+
+#notebook-container {
+    background-color: var(--pink-lighter) !important;
+    width: 95% !important;
+    margin: auto !important;
+    padding: 2em !important;
+    box-shadow: 0 0 20px rgba(255, 182, 193, 0.3) !important;
+}
+
+/* Header */
+#header {
+    background-color: var(--pink-medium) !important;
+    box-shadow: 0 2px 4px rgba(255, 182, 193, 0.3) !important;
+}
+
+#header-container {
+    background-color: var(--pink-medium) !important;
+}
+
+/* Menu bar */
+#menubar {
+    background-color: var(--pink-medium) !important;
+}
+
+#menubar .navbar-nav > li > a {
+    color: var(--burgundy) !important;
+}
+
+#menubar .navbar-nav > li > a:hover {
+    background-color: var(--pink-hot) !important;
+    color: white !important;
+}
+
+/* Notebook name */
+#notebook_name {
+    color: var(--pink-violet) !important;
+    font-weight: bold !important;
+}
+
+/* Toolbar */
+.toolbar {
+    background-color: var(--pink-soft) !important;
+    border-bottom: 1px solid var(--pink-medium) !important;
+}
+
+#maintoolbar {
+    background-color: var(--pink-soft) !important;
+    border-bottom: 1px solid var(--pink-medium) !important;
+    padding: 5px !important;
+}
+
+/* All cells - general styling */
+.cell {
+    background-color: white !important;
+    border: 1px solid var(--pink-soft) !important;
+    border-radius: 5px !important;
+    margin: 8px 0 !important;
+    padding: 5px !important;
+}
+
+/* Selected cells */
+.cell.selected {
+    border: 2px solid var(--pink-hot) !important;
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.3) !important;
+    background-color: #FFFAFA !important;
+}
+
+.cell.selected:before {
+    background: var(--pink-hot) !important;
+    width: 5px !important;
+}
+
+/* Code cells specific */
+.code_cell {
+    background-color: white !important;
+}
+
+.code_cell .input {
+    background-color: transparent !important;
+}
+
+/* Input area */
+.input_area {
+    background: var(--pink-lighter) !important;
+    border: 1px solid var(--pink-soft) !important;
+    border-radius: 3px !important;
+    padding: 5px !important;
+}
+
+/* CodeMirror editor */
+.CodeMirror, .jp-CodeMirror {
+    background-color: var(--pink-lighter) !important;
+    color: var(--indigo) !important;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace !important;
+}
+
+.CodeMirror-gutters, .jp-CodeMirror-gutters {
+    background-color: var(--pink-soft) !important;
+    border-right: 1px solid var(--pink-medium) !important;
+    z-index: 3 !important;
+}
+
+.CodeMirror-linenumber, .jp-CodeMirror-linenumber {
+    color: #DB7093 !important;
+}
+
+.CodeMirror-cursor, .jp-CodeMirror-cursor {
+    border-left: 2px solid var(--pink-hot) !important;
+}
+
+/* === JUPYTERLAB NATIVE COLLAPSIBLE SUPPORT === */
+
+/* JupyterLab viewport and panel backgrounds */
+.jp-WindowedPanel-viewport {
+    background-color: var(--pink-lighter) !important;
+}
+
+.lm-Widget {
+    background-color: var(--pink-lighter) !important;
+}
+
+/* JupyterLab rendered markdown output */
+.jp-RenderedHTMLCommon {
+    background-color: var(--pink-lighter) !important;
+}
+
+.jp-RenderedMarkdown {
+    background-color: var(--pink-lighter) !important;
+}
+
+.jp-MarkdownOutput {
+    background-color: var(--pink-lighter) !important;
+}
+
+/* JupyterLab cell states */
+.jp-Cell.jp-mod-active {
+    background-color: white !important;
+}
+
+.jp-Cell.jp-mod-rendered {
+    background-color: white !important;
+}
+
+.jp-Notebook-cell.jp-mod-active {
+    background-color: white !important;
+}
+
+/* JupyterLab input/output areas */
+.jp-InputArea {
+    background-color: var(--pink-lighter) !important;
+}
+
+.jp-OutputArea {
+    background-color: white !important;
+}
+
+.jp-OutputArea-output {
+    background-color: white !important;
+}
+
+/* JupyterLab cell headers/footers */
+.jp-CellHeader {
+    background-color: var(--pink-soft) !important;
+}
+
+.jp-CellFooter {
+    background-color: var(--pink-soft) !important;
+}
+
+/* JupyterLab collapsed cells */
+.jp-mod-collapsed {
+    background-color: var(--pink-light) !important;
+    border-left: 4px solid var(--pink-hot) !important;
+    min-height: 30px !important;
+}
+
+.jp-mod-collapsed .jp-Cell-inputWrapper,
+.jp-mod-collapsed .jp-Cell-outputWrapper {
+    background-color: var(--pink-lighter) !important;
+}
+
+/* JupyterLab collapse icon/button */
+.jp-CollapseIcon {
+    color: var(--pink-deep) !important;
+    opacity: 0.7 !important;
+    transition: all 0.3s ease !important;
+}
+
+.jp-CollapseIcon:hover {
+    color: var(--pink-hot) !important;
+    opacity: 1 !important;
+}
+
+/* JupyterLab cell collapser (blue bar on left) */
+.jp-Cell-inputCollapser,
+.jp-Cell-outputCollapser {
+    background-color: var(--pink-medium) !important;
+    transition: background-color 0.3s ease !important;
+}
+
+.jp-Cell-inputCollapser:hover,
+.jp-Cell-outputCollapser:hover {
+    background-color: var(--pink-hot) !important;
+}
+
+/* JupyterLab notebook cells general styling */
+.jp-Notebook-cell {
+    background-color: white !important;
+    border: 1px solid var(--pink-soft) !important;
+    border-radius: 5px !important;
+    margin: 8px 0 !important;
+}
+
+.jp-Notebook-cell.jp-mod-selected {
+    border: 2px solid var(--pink-hot) !important;
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.3) !important;
+}
+
+/* JupyterLab code cells */
+.jp-CodeCell {
+    background-color: white !important;
+}
+
+.jp-CodeCell.jp-mod-selected .jp-Cell-inputWrapper {
+    background-color: #FFFAFA !important;
+}
+
+/* JupyterLab markdown cells */
+.jp-MarkdownCell {
+    background-color: white !important;
+}
+
+.jp-MarkdownCell.jp-mod-selected .jp-Cell-inputWrapper {
+    background-color: #FFFAFA !important;
+}
+
+/* === CLASSIC JUPYTER NOTEBOOK COLLAPSIBLE SUPPORT === */
+
+/* Classic notebook cell collapsing (if available) */
+.cell.collapsed {
+    background-color: var(--pink-light) !important;
+    border-left: 4px solid var(--pink-hot) !important;
+    min-height: 30px !important;
+}
+
+.cell.collapsed .input_area,
+.cell.collapsed .output_wrapper {
+    background-color: var(--pink-lighter) !important;
+}
+
+/* Output area */
+.output_wrapper {
+    background: white !important;
+}
+
+.output_area {
+    background: white !important;
+}
+
+.output_area pre {
+    color: var(--indigo) !important;
+    background-color: white !important;
+    padding: 10px !important;
+}
+
+.output_subarea {
+    background: white !important;
+    padding: 5px !important;
+}
+
+/* Markdown cells */
+.text_cell {
+    background-color: white !important;
+}
+
+.text_cell_render {
+    color: var(--pink-violet) !important;
+    background-color: var(--pink-lighter) !important;
+    padding: 15px !important;
+    border-radius: 5px !important;
+    font-family: 'Inter', 'Dancing Script', 'Playfair Display', serif !important;
+    line-height: 1.6 !important;
+    font-size: 16px !important;
+}
+
+.text_cell_render h1 {
+    color: var(--pink-hot) !important;
+    font-weight: bold !important;
+    font-family: 'Playfair Display', serif !important;
+    letter-spacing: 0.5px !important;
+    font-size: 2.2em !important;
+    border-bottom: 2px solid var(--pink-medium) !important;
+    padding-bottom: 10px !important;
+}
+
+.text_cell_render h2 {
+    color: var(--pink-deep) !important;
+    font-weight: bold !important;
+    font-family: 'Playfair Display', serif !important;
+    letter-spacing: 0.5px !important;
+    font-size: 1.8em !important;
+}
+
+.text_cell_render h3 {
+    color: var(--pink-violet) !important;
+    font-weight: bold !important;
+    font-family: 'Inter', sans-serif !important;
+    letter-spacing: 0.5px !important;
+    font-size: 1.5em !important;
+}
+
+.text_cell_render h4 {
+    color: var(--pink-hot) !important;
+    font-weight: bold !important;
+    font-family: 'Inter', sans-serif !important;
+    letter-spacing: 0.5px !important;
+    font-size: 1.3em !important;
+}
+
+.text_cell_render h5 {
+    color: var(--pink-deep) !important;
+    font-weight: bold !important;
+    font-family: 'Dancing Script', cursive !important;
+    letter-spacing: 0.5px !important;
+    font-size: 1.2em !important;
+}
+
+.text_cell_render h6 {
+    color: var(--pink-violet) !important;
+    font-weight: bold !important;
+    font-family: 'Dancing Script', cursive !important;
+    letter-spacing: 0.5px !important;
+    font-size: 1.1em !important;
+}
+
+/* JupyterLab rendered HTML headings */
+.jp-RenderedHTMLCommon h1:first-child,
+.jp-RenderedHTMLCommon h2:first-child,
+.jp-RenderedHTMLCommon h3:first-child,
+.jp-RenderedHTMLCommon h4:first-child,
+.jp-RenderedHTMLCommon h5:first-child,
+.jp-RenderedHTMLCommon h6:first-child {
+    color: var(--pink-hot) !important;
+    font-family: 'Playfair Display', serif !important;
+    font-weight: bold !important;
+}
+
+.jp-RenderedHTMLCommon h1,
+.jp-RenderedMarkdown h1 {
+    color: var(--pink-hot) !important;
+    font-weight: bold !important;
+    font-family: 'Playfair Display', serif !important;
+    letter-spacing: 0.5px !important;
+    font-size: 2.2em !important;
+    border-bottom: 2px solid var(--pink-medium) !important;
+    padding-bottom: 10px !important;
+}
+
+.jp-RenderedHTMLCommon h2,
+.jp-RenderedMarkdown h2 {
+    color: var(--pink-deep) !important;
+    font-weight: bold !important;
+    font-family: 'Playfair Display', serif !important;
+    letter-spacing: 0.5px !important;
+    font-size: 1.8em !important;
+}
+
+.jp-RenderedHTMLCommon h3,
+.jp-RenderedMarkdown h3 {
+    color: var(--pink-violet) !important;
+    font-weight: bold !important;
+    font-family: 'Inter', sans-serif !important;
+    letter-spacing: 0.5px !important;
+    font-size: 1.5em !important;
+}
+
+.jp-RenderedHTMLCommon h4,
+.jp-RenderedMarkdown h4 {
+    color: var(--pink-hot) !important;
+    font-weight: bold !important;
+    font-family: 'Inter', sans-serif !important;
+    letter-spacing: 0.5px !important;
+    font-size: 1.3em !important;
+}
+
+.jp-RenderedHTMLCommon h5,
+.jp-RenderedMarkdown h5 {
+    color: var(--pink-deep) !important;
+    font-weight: bold !important;
+    font-family: 'Dancing Script', cursive !important;
+    letter-spacing: 0.5px !important;
+    font-size: 1.2em !important;
+}
+
+.jp-RenderedHTMLCommon h6,
+.jp-RenderedMarkdown h6 {
+    color: var(--pink-violet) !important;
+    font-weight: bold !important;
+    font-family: 'Dancing Script', cursive !important;
+    letter-spacing: 0.5px !important;
+    font-size: 1.1em !important;
+}
+
+.jp-RenderedHTMLCommon,
+.jp-RenderedMarkdown {
+    color: var(--pink-violet) !important;
+    font-family: 'Inter', 'Dancing Script', 'Playfair Display', serif !important;
+}
+
+
+/* Links in markdown */
+.text_cell_render a {
+    color: var(--pink-deep) !important;
+}
+
+.text_cell_render a:hover {
+    color: var(--pink-hot) !important;
+    text-decoration: underline !important;
+}
+
+/* Cell prompts */
+.prompt {
+    min-width: 14ex !important;
+    background-color: transparent !important;
+}
+
+.input_prompt {
+    color: var(--pink-violet) !important;
+    font-weight: bold !important;
+    background-color: transparent !important;
+}
+
+.output_prompt {
+    color: #DB7093 !important;
+    background-color: transparent !important;
+}
+
+/* JupyterLab specific prompt styling */
+.jp-InputPrompt, .jp-OutputPrompt {
+    background-color: transparent !important;
+}
+
+.jp-InputArea-prompt, .jp-OutputArea-prompt {
+    background-color: transparent !important;
+    color: var(--pink-violet) !important;
+}
+
+/* Fix for JupyterLab prompt containers */
+div.jp-Cell-inputWrapper div.jp-InputArea-prompt,
+div.jp-Cell-outputWrapper div.jp-OutputArea-prompt {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Override any dark backgrounds in prompts */
+.jp-InputArea .jp-InputPrompt,
+.jp-OutputArea .jp-OutputPrompt {
+    background: transparent !important;
+    background-color: var(--pink-lighter) !important;
+}
+
+/* Running indicator */
+.running .prompt {
+    background-color: var(--pink-hot) !important;
+    color: white !important;
+}
+
+/* Syntax highlighting - for both Classic and JupyterLab */
+.cm-keyword, .jp-CodeMirror .cm-keyword { color: var(--pink-deep) !important; font-weight: bold !important; }
+.cm-def, .jp-CodeMirror .cm-def { color: var(--pink-hot) !important; }
+.cm-variable, .jp-CodeMirror .cm-variable { color: var(--pink-hot) !important; font-weight: bold !important; }
+.cm-variable-2, .jp-CodeMirror .cm-variable-2 { color: var(--pink-deep) !important; }
+.cm-variable-3, .jp-CodeMirror .cm-variable-3 { color: var(--pink-hot) !important; }
+.cm-string, .jp-CodeMirror .cm-string { color: #DB7093 !important; }
+.cm-operator, .jp-CodeMirror .cm-operator { color: var(--pink-hot) !important; }
+.cm-comment, .jp-CodeMirror .cm-comment { color: var(--pink-hot) !important; font-style: italic !important; font-weight: normal !important; }
+.cm-number, .jp-CodeMirror .cm-number { color: #FF6347 !important; }
+.cm-atom, .jp-CodeMirror .cm-atom { color: var(--pink-deep) !important; }
+.cm-builtin, .jp-CodeMirror .cm-builtin { color: var(--pink-violet) !important; }
+.cm-bracket, .jp-CodeMirror .cm-bracket { color: var(--pink-hot) !important; }
+
+/* Additional JupyterLab specific syntax highlighting */
+.jp-CodeMirror .cm-tag { color: var(--pink-deep) !important; }
+.jp-CodeMirror .cm-attribute { color: var(--pink-violet) !important; }
+.jp-CodeMirror .cm-property { color: var(--pink-hot) !important; }
+
+/* Function names and calls */
+.cm-variable.cm-def, .jp-CodeMirror .cm-variable.cm-def { color: var(--pink-hot) !important; font-weight: bold !important; }
+.cm-def.cm-variable, .jp-CodeMirror .cm-def.cm-variable { color: var(--pink-hot) !important; font-weight: bold !important; }
+.cm-meta, .jp-CodeMirror .cm-meta { color: var(--pink-violet) !important; }
+
+/* Python method calls and attributes */
+.cm-attribute, .jp-CodeMirror .cm-attribute { color: var(--pink-hot) !important; font-weight: bold !important; }
+.cm-property, .jp-CodeMirror .cm-property { color: var(--pink-hot) !important; font-weight: bold !important; }
+
+/* More specific function targeting */
+.cm-variable + .cm-operator + .cm-variable, 
+.jp-CodeMirror .cm-variable + .cm-operator + .cm-variable { color: var(--pink-hot) !important; }
+
+/* Target method names after dots */
+.cm-operator + .cm-variable,
+.jp-CodeMirror .cm-operator + .cm-variable { color: var(--pink-hot) !important; font-weight: bold !important; }
+
+/* All variable-like tokens that could be functions */
+.cm-variable:not(.cm-def), .jp-CodeMirror .cm-variable:not(.cm-def) { color: var(--pink-violet) !important; }
+.cm-variable, .jp-CodeMirror .cm-variable { color: var(--pink-violet) !important; }
+
+/* Buttons */
+.btn-default {
+    background-color: var(--pink-medium) !important;
+    border-color: var(--pink-hot) !important;
+    color: var(--burgundy) !important;
+}
+
+.btn-default:hover {
+    background-color: var(--pink-hot) !important;
+    border-color: var(--pink-deep) !important;
+    color: white !important;
+}
+
+/* Modal dialogs */
+.modal-content {
+    background-color: var(--pink-lighter) !important;
+    border: 1px solid var(--pink-medium) !important;
+}
+
+.modal-header {
+    background-color: var(--pink-medium) !important;
+    color: var(--burgundy) !important;
+    border-bottom: 1px solid var(--pink-hot) !important;
+}
+
+/* File browser */
+#tab_content {
+    background-color: var(--pink-lighter) !important;
+}
+
+.list_container {
+    background-color: white !important;
+}
+
+.list_item:hover {
+    background-color: var(--pink-soft) !important;
+}
+
+.list_item.selected {
+    background-color: var(--pink-medium) !important;
+}
+
+/* Tables in output */
+.rendered_html table {
+    border: 1px solid var(--pink-medium) !important;
+}
+
+.rendered_html th {
+    background-color: var(--pink-medium) !important;
+    color: var(--burgundy) !important;
+    padding: 8px !important;
+}
+
+.rendered_html tr:nth-child(even) {
+    background-color: var(--pink-light) !important;
+}
+
+.rendered_html td {
+    padding: 8px !important;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+    width: 12px !important;
+    height: 12px !important;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--pink-soft) !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--pink-medium) !important;
+    border-radius: 6px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--pink-hot) !important;
+}
+
+/* Status bar / notification area */
+#notification_area {
+    background-color: transparent !important;
+}
+
+.notification_widget {
+    color: var(--pink-violet) !important;
+}
+
+/* Command mode indicator */
+.command_mode_icon:before {
+    color: var(--pink-hot) !important;
+}
+
+.edit_mode_icon:before {
+    color: var(--pink-violet) !important;
+}
+
+/* Kernel indicator */
+#kernel_indicator {
+    color: var(--pink-violet) !important;
+}
+
+/* Tooltips */
+.tooltip-inner {
+    background-color: var(--pink-hot) !important;
+    color: white !important;
+}
+
+.tooltip.top .tooltip-arrow {
+    border-top-color: var(--pink-hot) !important;
+}
+
+/* Make sure images and plots have proper background */
+.output_png,
+.output_jpeg {
+    background-color: white !important;
+    padding: 10px !important;
+    border-radius: 3px !important;
+    display: inline-block !important;
+}
+
+/* DataFrame styling */
+.dataframe {
+    border: 1px solid var(--pink-medium) !important;
+}
+
+.dataframe thead {
+    background-color: var(--pink-medium) !important;
+    color: var(--burgundy) !important;
+}
+
+.dataframe thead th {
+    background-color: var(--pink-medium) !important;
+    color: var(--burgundy) !important;
+    font-weight: bold !important;
+}
+
+.dataframe tbody tr:nth-child(even) {
+    background-color: #FFF8F8 !important;
+}
+
+.dataframe tbody tr:nth-child(odd) {
+    background-color: white !important;
+}
+
+.dataframe tbody td {
+    color: var(--indigo) !important;
+    padding: 8px !important;
+}
+
+/* Error output */
+.output_stderr {
+    background-color: #FFE4E1 !important;
+    color: #8B0000 !important;
+}
+
+.output_stderr pre {
+    background-color: #FFE4E1 !important;
+    color: #8B0000 !important;
+    border-left: 3px solid var(--pink-hot) !important;
+    padding: 10px !important;
+}
+
+/* Error traceback */
+.output_subarea.output_error {
+    background-color: #FFE4E1 !important;
+}
+
+.output_subarea.output_error pre {
+    background-color: #FFE4E1 !important;
+    color: #8B0000 !important;
+}
+
+div.output_area div.output_subarea.output_stderr {
+    background-color: #FFE4E1 !important;
+}
+
+/* ANSI color codes in error output */
+.ansi-red-fg { color: var(--pink-hot) !important; }
+.ansi-red-intense-fg { color: var(--pink-deep) !important; font-weight: bold !important; }
+.ansi-cyan-fg { color: var(--pink-violet) !important; }
+.ansi-cyan-intense-fg { color: var(--burgundy) !important; }
+.ansi-green-fg { color: var(--pink-medium) !important; }
+.ansi-green-intense-fg { color: #DB7093 !important; }
+
+/* Python traceback styling */
+.output_area .output_subarea.output_text.output_error {
+    background-color: #FFE4E1 !important;
+    padding: 10px !important;
+    border-radius: 3px !important;
+}
+
+.output_text.output_error pre {
+    background-color: transparent !important;
+    color: #8B0000 !important;
+}
+
+/* Jupyter error messages */
+div.output_stderr {
+    background-color: #FFE4E1 !important;
+}
+
+div.output_stderr pre {
+    color: #8B0000 !important;
+    background-color: transparent !important;
+}
+
+/* Make all error text visible */
+.output_area .output_text pre {
+    color: var(--indigo) !important;
+}
+
+.output_area .output_error pre {
+    color: #8B0000 !important;
+    background-color: #FFE4E1 !important;
+    border-radius: 3px !important;
+    padding: 10px !important;
+}
+
+/* Additional nbclassic specific fixes */
+div#notebook {
+    border-top: none !important;
+}
+
+.container {
+    width: 98% !important;
+}
+
+/* Ensure cell content is visible */
+.inner_cell {
+    background-color: transparent !important;
+}
+
+.input_area > .highlight {
+    background-color: transparent !important;
+}
+
+.output_area .output_subarea {
+    max-width: 100% !important;
+}

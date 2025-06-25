@@ -22,8 +22,27 @@ def install_theme():
     """Install the pink theme to Jupyter's custom CSS directory."""
     # Get paths
     script_dir = Path(__file__).parent
-    # change custom.css to custom_less.css if you only want pink themes for nbclassic and want to keep lab and notebook normal
-    theme_file = script_dir / "theme" / "custom.css" 
+    
+    # Present theme options to user
+    print("🌸 Pink Jupyter Theme Installation 🌸")
+    print("\nChoose your theme version:")
+    print("1. Universal - Works with all Jupyter interfaces + extensions (Recommended)")
+    print("2. nbclassic only - If you want only nbclassic to be pink")
+    print("3. No nbclassic - If you have trouble with installing nbclassic")
+    
+    while True:
+        choice = input("\nEnter your choice (1-3): ").strip()
+        if choice == "1":
+            theme_file = script_dir / "theme" / "custom.css"
+            break
+        elif choice == "2":
+            theme_file = script_dir / "theme" / "custom_less.css"
+            break
+        elif choice == "3":
+            theme_file = script_dir / "theme" / "custom_no_nbclassic.css"
+            break
+        else:
+            print("Invalid choice. Please enter 1, 2, or 3.")
     
     if not theme_file.exists():
         print(f"Error: Theme file not found at {theme_file}")

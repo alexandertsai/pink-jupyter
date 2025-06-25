@@ -6,27 +6,39 @@
 
 ## <span style="color: #FF69B4;">🎀 Installation 🎀</span>
 
-1. Open your terminal and clone this repository or download the files from Github:
+
+### <span style="color: #FF69B4;">🚀 Quick Install</span>
+
+1. **Clone this repository:**
 ```bash
 git clone https://github.com/alexandertsai/pink-jupyter-theme.git
 cd pink-jupyter
 ```
-2. Install nbclassic (`pip3` for mac)
+
+2. **Choose your setup:**
+
+#### <span style="color: #FF69B4;">Option A: Universal (Recommended)</span>
 ```bash
 pip install nbclassic
-```
+# Input 1 or 2
 
-3. Run the installer (`python3` for mac):
-```bash
 python install_theme.py
-```
 
-4. Open Jupyter notebook using nbclassic:
-```bash
 jupyter nbclassic
 ```
 
-The <span style="color: #FF1493;">pink</span>  theme will be applied automatically!
+#### <span style="color: #FF69B4;">Option B: Can't Install nbclassic</span>
+```bash
+
+python install_theme.py
+# Input 3
+
+jupyter lab
+# OR
+jupyter notebook
+```
+
+The <span style="color: #FF1493;">pink</span> theme will be applied automatically!
 
 ## <span style="color: #FF69B4;">Pink Matplotlib Plots (Highly Recommended)</span>
 
@@ -37,21 +49,29 @@ import matplotlib.pyplot as plt
 plt.style.use('/path/to/pink.mplstyle') # use the absolute path
 ```
 
-## <span style="color: #FF69B4;">Collapsible Features (Highly Recommended)</span>
+## <span style="color: #FF69B4;">Collapsible Features</span>
 
-Follow these extra steps to enable collapsible functionality with pink-themed controls!
+### <span style="color: #FF69B4;">For `custom.css` and `custom_less.css` users:</span>
 
-1. **Install collapsible headings extension:**
+Install these extensions for enhanced collapsible functionality:
+
 ```bash
+# For collapsible headings
 pip install nbclassic-collapsible-headings
-```
 
-2. **Install cell folding extension:**
-```bash
+# For code folding within cells  
 pip install nbextension-cellfolding
 ```
 
-If it works you'll see super pretty <span style="color: #FF69B4;">pink</span>-themed collapsible controls.
+### <span style="color: #FF69B4;">For `custom_no_nbclassic.css` users:</span>
+
+**No extensions needed!** This version uses native collapsible features:
+
+- **JupyterLab**: Click the blue bar to the left of cells to collapse them
+- **Classic Notebook**: Built-in collapsible features (if available)
+- **All interfaces**: Beautiful pink-themed collapse indicators
+
+All versions include beautiful <span style="color: #FF69B4;">pink</span>-themed collapsible controls! ✨
 
 ## <span style="color: #FF69B4;">Usage</span>
 
