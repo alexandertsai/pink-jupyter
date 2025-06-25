@@ -49,11 +49,9 @@ import matplotlib.pyplot as plt
 plt.style.use('/path/to/pink.mplstyle') # use the absolute path
 ```
 
-## <span style="color: #FF69B4;">Collapsible Features</span>
+## <span style="color: #FF69B4;">Collapsible Features (Recommend)</span>
 
-### <span style="color: #FF69B4;">For `custom.css` and `custom_less.css` users:</span>
-
-Install these extensions for enhanced collapsible functionality:
+If you selected installation option 1 or 2, install these extensions for enhanced collapsible functionality:
 
 ```bash
 # For collapsible headings
@@ -62,16 +60,6 @@ pip install nbclassic-collapsible-headings
 # For code folding within cells  
 pip install nbextension-cellfolding
 ```
-
-### <span style="color: #FF69B4;">For `custom_no_nbclassic.css` users:</span>
-
-**No extensions needed!** This version uses native collapsible features:
-
-- **JupyterLab**: Click the blue bar to the left of cells to collapse them
-- **Classic Notebook**: Built-in collapsible features (if available)
-- **All interfaces**: Beautiful pink-themed collapse indicators
-
-All versions include beautiful <span style="color: #FF69B4;">pink</span>-themed collapsible controls! ✨
 
 ## <span style="color: #FF69B4;">Usage</span>
 
