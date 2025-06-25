@@ -4,7 +4,6 @@ Pink Jupyter Theme Installer
 Installs the pink theme for Jupyter Notebook
 """
 
-import os
 import shutil
 import sys
 from pathlib import Path
@@ -16,18 +15,15 @@ def get_jupyter_config_dir():
         from jupyter_core.paths import jupyter_config_dir
         return Path(jupyter_config_dir())
     except ImportError:
-        # Fallback to default locations
-        if sys.platform == "win32":
-            return Path.home() / ".jupyter"
-        else:
-            return Path.home() / ".jupyter"
+        return Path.home() / ".jupyter"
 
 
 def install_theme():
     """Install the pink theme to Jupyter's custom CSS directory."""
     # Get paths
     script_dir = Path(__file__).parent
-    theme_file = script_dir / "theme" / "custom.css"  # change this to custom_less.css if you only want nbclassic support (both versions include collapsible functionality)
+    # change custom.css to custom_less.css if you only want pink themes for nbclassic and want to keep lab and notebook normal
+    theme_file = script_dir / "theme" / "custom.css" 
     
     if not theme_file.exists():
         print(f"Error: Theme file not found at {theme_file}")
