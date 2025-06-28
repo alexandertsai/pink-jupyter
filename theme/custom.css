@@ -283,7 +283,7 @@ body {
 }
 
 .text_cell_render {
-    color: var(--pink-deep) !important;
+    color: var(--indigo) !important;
     background-color: var(--pink-lighter) !important;
     padding: 15px !important;
     border-radius: 5px !important;

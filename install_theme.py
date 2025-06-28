@@ -30,7 +30,7 @@ def install_theme():
     print("2. No nbclassic - works with jupyter notebook")
     
     while True:
-        choice = input("\nEnter your choice (1-3): ").strip()
+        choice = input("\nEnter your choice (1-2): ").strip()
         if choice == "1":
             theme_file = script_dir / "theme" / "custom.css"
             break
