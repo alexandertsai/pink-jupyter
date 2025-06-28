@@ -7,7 +7,7 @@
 :root {
     --pink-light: #FFF0F5;
     --pink-lighter: #FFF5FB;
-    --pink-soft: #FFE4E1;
+    --pink-soft: #dabdba;
     --pink-medium: #FFB6C1;
     --pink-hot: #FF69B4;
     --pink-deep: #FF1493;
@@ -84,6 +84,10 @@ body {
     padding: 5px !important;
 }
 
+/* Some LM widget nonsense */
+.lm-Widget {
+    background-color: var(--pink-lighter) !important;
+}
 /* Selected cells */
 .cell.selected {
     border: 2px solid var(--pink-hot) !important;
@@ -137,7 +141,7 @@ body {
 /* === JUPYTERLAB NATIVE COLLAPSIBLE SUPPORT === */
 
 /* JupyterLab viewport and panel backgrounds */
-.jp-WindowedPanel-viewport {
+.jp-WindowedPanel-viewport, .jp-WindowedPanel-inner {
     background-color: var(--pink-lighter) !important;
 }
 
@@ -145,14 +149,8 @@ body {
     background-color: var(--pink-lighter) !important;
 }
 
-.lm-Widget {
-    background-color: var(--pink-lighter) !important;
-}
-
 /* Additional lm-Widget elements for comprehensive coverage */
-.lm-Panel {
-    background-color: var(--pink-lighter) !important;
-}
+
 
 .lm-SplitPanel-child {
     background-color: var(--pink-lighter) !important;
@@ -168,6 +166,12 @@ body {
 
 .lm-BoxPanel {
     background-color: var(--pink-lighter) !important;
+}
+
+/* For navigating between the files */
+
+.jp-DirListing-content{
+    background-color: var(--pink-light) !important;
 }
 
 /* Tab bar styling for lm elements */
@@ -194,21 +198,14 @@ body {
 }
 
 /* JupyterLab rendered markdown output */
-.jp-RenderedHTMLCommon {
+.jp-RenderedHTMLCommon, .jp-RenderedMarkdown, .jp-MarkdownOutput {
     background-color: var(--pink-lighter) !important;
-}
-
-.jp-RenderedMarkdown {
-    background-color: var(--pink-lighter) !important;
-}
-
-.jp-MarkdownOutput {
-    background-color: var(--pink-lighter) !important;
+    padding-left: 10px !important;
 }
 
 /* JupyterLab cell states */
 .jp-Cell.jp-mod-active {
-    background-color: white !important;
+    background-color: var(--pink-lighter) !important;
 }
 
 .jp-Cell.jp-mod-rendered {
@@ -216,12 +213,12 @@ body {
 }
 
 .jp-Notebook-cell.jp-mod-active {
-    background-color: white !important;
+    background-color: var(--pink-lighter) !important;
 }
 
 /* JupyterLab input/output areas */
 .jp-InputArea {
-    background-color: var(--pink-lighter) !important;
+    background-color: white !important;
 }
 
 .jp-OutputArea {
@@ -256,7 +253,7 @@ body {
 /* JupyterLab collapse icon/button */
 .jp-CollapseIcon {
     color: var(--pink-deep) !important;
-    opacity: 0.7 !important;
+    opacity: 1 !important;
     transition: all 0.3s ease !important;
 }
 
@@ -279,7 +276,7 @@ body {
 
 /* JupyterLab notebook cells general styling */
 .jp-Notebook-cell {
-    background-color: white !important;
+    background-color: var(--pink-soft) !important;
     border: 1px solid var(--pink-soft) !important;
     border-radius: 5px !important;
     margin: 8px 0 !important;
@@ -336,11 +333,9 @@ body {
 }
 
 .output_area pre {
-    color: var(--pink-deep) !important;
-    background-color: var(--pink-lighter) !important;
+    color: var(--indigo) !important;
+    background-color: white !important;
     padding: 10px !important;
-    border-left: 3px solid var(--pink-hot) !important;
-    border-radius: 3px !important;
 }
 
 .output_subarea {
@@ -354,7 +349,7 @@ body {
 }
 
 .text_cell_render {
-    color: var(--pink-violet) !important;
+    color: var(--indigo) !important;
     background-color: var(--pink-lighter) !important;
     padding: 15px !important;
     border-radius: 5px !important;
@@ -363,54 +358,28 @@ body {
     font-size: 16px !important;
 }
 
-.text_cell_render h1 {
-    color: var(--pink-hot) !important;
+.text_cell_render h1,
+.text_cell_render h2,
+.text_cell_render h3,
+.text_cell_render h4,
+.text_cell_render h5,
+.text_cell_render h6 {
+    color: var(--pink-violet) !important;
     font-weight: bold !important;
-    font-family: 'Playfair Display', serif !important;
+    font-family: 'Inter', 'Dancing Script', 'Playfair Display', serif !important;
     letter-spacing: 0.5px !important;
-    font-size: 2.2em !important;
+}
+
+.text_cell_render h1 {
     border-bottom: 2px solid var(--pink-medium) !important;
     padding-bottom: 10px !important;
 }
 
-.text_cell_render h2 {
-    color: var(--pink-deep) !important;
-    font-weight: bold !important;
-    font-family: 'Playfair Display', serif !important;
-    letter-spacing: 0.5px !important;
-    font-size: 1.8em !important;
-}
-
-.text_cell_render h3 {
-    color: var(--pink-violet) !important;
-    font-weight: bold !important;
-    font-family: 'Inter', sans-serif !important;
-    letter-spacing: 0.5px !important;
-    font-size: 1.5em !important;
-}
-
-.text_cell_render h4 {
+.text_cell_render code {
     color: var(--pink-hot) !important;
-    font-weight: bold !important;
-    font-family: 'Inter', sans-serif !important;
-    letter-spacing: 0.5px !important;
-    font-size: 1.3em !important;
-}
-
-.text_cell_render h5 {
-    color: var(--pink-deep) !important;
-    font-weight: bold !important;
-    font-family: 'Dancing Script', cursive !important;
-    letter-spacing: 0.5px !important;
-    font-size: 1.2em !important;
-}
-
-.text_cell_render h6 {
-    color: var(--pink-violet) !important;
-    font-weight: bold !important;
-    font-family: 'Dancing Script', cursive !important;
-    letter-spacing: 0.5px !important;
-    font-size: 1.1em !important;
+    background-color: transparent !important;
+    font-family: 'Inter' !important;
+    font-size: 14px !important;
 }
 
 /* JupyterLab rendered HTML headings */
@@ -490,16 +459,13 @@ body {
 
 .jp-RenderedHTMLCommon code,
 .jp-RenderedMarkdown code{
-    color: var(--pink-violet) !important;
+    color: var(--pink-hot) !important;
     font-family: 'Playfair Display' !important;
-    font-size: 16px !important;
+    font-size: 14px !important;
+    background-color: transparent !important;
 }
 
-.jp-RenderedHTMLCommon,
-.jp-RenderedMarkdown {
-    color: var(--pink-violet) !important;
-    font-family: 'Inter', 'Dancing Script', 'Playfair Display', serif !important;
-}
+
 
 
 /* Links in markdown */
@@ -538,11 +504,13 @@ body {
     background-color: transparent !important;
     color: var(--pink-violet) !important;
 }
-
+.jp-OutputArea-promptOverlay{
+    background-color: white !important;
+    color: white !important;
+}
 /* Fix for JupyterLab prompt containers */
 div.jp-Cell-inputWrapper div.jp-InputArea-prompt,
-div.jp-Cell-outputWrapper div.jp-OutputArea-prompt {
-    background: transparent !important;
+div.jp-Cell-outputWrapper div.jp-OutputArea-prompt div.jp-OutputArea-promptOverlay {
     background-color: transparent !important;
 }
 
@@ -575,27 +543,27 @@ div.jp-Cell-outputWrapper div.jp-OutputArea-prompt {
 .ͼi, .jp-CodeMirror .ͼi { color: var(--pink-hot) !important; font-weight: bold !important; }
 .ͼj, .jp-CodeMirror .ͼj { color: var(--pink-violet) !important; font-weight: bold !important; }
 .ͼu, .jp-CodeMirror .ͼu { color: var(--pink-deep) !important; font-weight: bold !important; }
-.ͼv, .jp-CodeMirror .ͼv { color: var(--pink-violet) !important; font-weight: bold !important; }
-.ͼz, .jp-CodeMirror .ͼz { color: var(--pink-hot) !important; font-weight: bold !important; }
+.ͼv, .jp-CodeMirror .ͼv { color: var(--pink-violet) !important;}
+.ͼz, .jp-CodeMirror .ͼz { color: var(--pink-hot) !important; }
 .ͼ10, .jp-CodeMirror .ͼ10 { color: var(--pink-violet) !important; font-weight: bold !important; }
-.ͼ11, .jp-CodeMirror .ͼ11 { color: var(--pink-medium) !important; font-weight: bold !important; }
+.ͼ11, .jp-CodeMirror .ͼ11 { color: var(--pink-medium) !important; }
 .ͼ12, .jp-CodeMirror .ͼ12 { color: var(--burgundy) !important; }
-.cm-def, .jp-CodeMirror .cm-def { color: var(--pink-hot) !important; }
-.cm-variable, .jp-CodeMirror .cm-variable { color: var(--pink-hot) !important; font-weight: bold !important; }
-.cm-variable-2, .jp-CodeMirror .cm-variable-2 { color: var(--pink-deep) !important; }
-.cm-variable-3, .jp-CodeMirror .cm-variable-3 { color: var(--pink-hot) !important; }
+.cm-def, .jp-CodeMirror .cm-def { color: var(--pink-violet) !important; }
+.cm-variable, .jp-CodeMirror .cm-variable { color: var(--indigo) !important; }
+.cm-variable-2, .jp-CodeMirror .cm-variable-2 { color: var(--indigo) !important; }
+.cm-variable-3, .jp-CodeMirror .cm-variable-3 { color: var(--burgundy) !important; }
 .cm-string, .jp-CodeMirror .cm-string { color: #DB7093 !important; }
 .cm-operator, .jp-CodeMirror .cm-operator { color: var(--pink-hot) !important; }
-.cm-comment, .jp-CodeMirror .cm-comment { color: var(--pink-hot) !important; font-style: italic !important; font-weight: normal !important; }
+.cm-comment, .jp-CodeMirror .cm-comment { color: var(--pink-soft) !important; font-style: italic !important; font-weight: normal !important; }
 .cm-number, .jp-CodeMirror .cm-number { color: #FF6347 !important; }
 .cm-atom, .jp-CodeMirror .cm-atom { color: var(--pink-deep) !important; }
 .cm-builtin, .jp-CodeMirror .cm-builtin { color: var(--pink-violet) !important; }
-.cm-bracket, .jp-CodeMirror .cm-bracket { color: var(--pink-hot) !important; }
+.cm-bracket, .jp-CodeMirror .cm-bracket { color: var(--burgundy) !important; }
 
 /* Additional JupyterLab specific syntax highlighting */
 .jp-CodeMirror .cm-tag { color: var(--pink-deep) !important; }
 .jp-CodeMirror .cm-attribute { color: var(--pink-violet) !important; }
-.jp-CodeMirror .cm-property { color: var(--pink-hot) !important; }
+.jp-CodeMirror .cm-property { color: var(--indigo) !important; }
 
 /* Buttons */
 .btn-default {
@@ -755,7 +723,7 @@ div.jp-Cell-outputWrapper div.jp-OutputArea-prompt {
 }
 
 .output_stderr pre {
-    background-color: #FFE4E1 !important;
+    background-color: white !important;
     color: #8B0000 !important;
     border-left: 3px solid var(--pink-hot) !important;
     padding: 10px !important;
@@ -807,11 +775,7 @@ div.output_stderr pre {
 
 /* Make all error text visible */
 .output_area .output_text pre {
-    color: var(--pink-violet) !important;
-    background-color: var(--pink-lighter) !important;
-    border-left: 2px solid var(--pink-medium) !important;
-    padding: 8px !important;
-    border-radius: 3px !important;
+    color: var(--indigo) !important;
 }
 
 .output_area .output_error pre {

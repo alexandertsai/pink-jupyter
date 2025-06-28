@@ -11,16 +11,16 @@
 
 1. **Clone this repository:**
 ```bash
-git clone https://github.com/alexandertsai/pink-jupyter-theme.git
+git clone https://github.com/alexandertsai/pink-jupyter.git
 cd pink-jupyter
 ```
 
 2. **Choose your setup:**
 
-#### <span style="color: #FF69B4;">Option A: Universal (Recommended)</span>
+#### <span style="color: #FF69B4;">Option A: Nbclassic (Recommended)</span>
 ```bash
 pip install nbclassic
-# Input 1 or 2
+# Input 1
 
 python install_theme.py
 
@@ -31,7 +31,7 @@ jupyter nbclassic
 ```bash
 
 python install_theme.py
-# Input 3
+# Input 2
 
 jupyter lab
 # OR

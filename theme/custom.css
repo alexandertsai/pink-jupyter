@@ -283,7 +283,7 @@ body {
 }
 
 .text_cell_render {
-    color: var(--indigo) !important;
+    color: var(--pink-deep) !important;
     background-color: var(--pink-lighter) !important;
     padding: 15px !important;
     border-radius: 5px !important;
@@ -298,7 +298,7 @@ body {
 .text_cell_render h4,
 .text_cell_render h5,
 .text_cell_render h6 {
-    color: var(--pink-violet) !important;
+    color: var(--pink-hot) !important;
     font-weight: bold !important;
     font-family: 'Inter', 'Dancing Script', 'Playfair Display', serif !important;
     letter-spacing: 0.5px !important;
@@ -317,6 +317,13 @@ body {
 .text_cell_render a:hover {
     color: var(--pink-hot) !important;
     text-decoration: underline !important;
+}
+
+.text_cell_render code {
+    color: var(--pink-hot) !important;
+    background-color: transparent !important;
+    font-family: 'Inter' !important;
+    font-size: 14px !important;
 }
 
 /* Cell prompts */
@@ -366,24 +373,23 @@ div.jp-Cell-outputWrapper div.jp-OutputArea-prompt {
     color: white !important;
 }
 
-/* Syntax highlighting - for both Classic and JupyterLab */
-.cm-keyword, .jp-CodeMirror .cm-keyword { color: var(--pink-deep) !important; font-weight: bold !important; }
-.cm-def, .jp-CodeMirror .cm-def { color: var(--pink-violet) !important; }
-.cm-variable, .jp-CodeMirror .cm-variable { color: var(--indigo) !important; }
-.cm-variable-2, .jp-CodeMirror .cm-variable-2 { color: var(--indigo) !important; }
-.cm-variable-3, .jp-CodeMirror .cm-variable-3 { color: var(--burgundy) !important; }
-.cm-string, .jp-CodeMirror .cm-string { color: #DB7093 !important; }
-.cm-operator, .jp-CodeMirror .cm-operator { color: var(--pink-hot) !important; }
-.cm-comment, .jp-CodeMirror .cm-comment { color: var(--pink-hot) !important; font-style: italic !important; font-weight: normal !important; }
-.cm-number, .jp-CodeMirror .cm-number { color: #FF6347 !important; }
-.cm-atom, .jp-CodeMirror .cm-atom { color: var(--pink-deep) !important; }
-.cm-builtin, .jp-CodeMirror .cm-builtin { color: var(--pink-violet) !important; }
-.cm-bracket, .jp-CodeMirror .cm-bracket { color: var(--burgundy) !important; }
+/* Syntax Highlighting */
 
-/* Additional JupyterLab specific syntax highlighting */
-.jp-CodeMirror .cm-tag { color: var(--pink-deep) !important; }
-.jp-CodeMirror .cm-attribute { color: var(--pink-violet) !important; }
-.jp-CodeMirror .cm-property { color: var(--indigo) !important; }
+.cm-def { color: var(--pink-violet) !important; font-weight: bold !important;}
+.cm-property { color: var(--pink-hot) !important; font-weight: bold !important; }
+.cm-attribute { color: var(--pink-violet) !important; font-weight: bold !important;}
+.cm-tag { color: var(--pink-deep) !important; }
+.cm-bracket { color: var(--burgundy) !important; }
+.cm-builtin { color: var(--pink-violet) !important; }
+.cm-keyword { color: var(--pink-deep) !important; font-weight: bold !important; }
+.cm-variable { color: black !important; }
+.cm-variable-2 { color: var(--indigo) !important; }
+.cm-variable-3 { color: var(--indigo) !important; }
+.cm-string { color: #DB7093 !important; }
+.cm-operator { color: var(--pink-hot) !important; }
+.cm-comment { color: var(--pink-medium) !important; font-style: italic !important; font-weight: normal !important; }
+.cm-number { color: var(--pink-deep) !important; }
+.cm-atom { color: var(--pink-deep) !important; }
 
 /* Buttons */
 .btn-default {
@@ -595,7 +601,7 @@ div.output_stderr pre {
 
 /* Make all error text visible */
 .output_area .output_text pre {
-    color: var(--indigo) !important;
+    color: var(--pink-deep) !important;
 }
 
 .output_area .output_error pre {
