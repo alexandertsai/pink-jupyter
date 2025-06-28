@@ -20,9 +20,9 @@ cd pink-jupyter
 #### <span style="color: #FF69B4;">Option A: Nbclassic (Recommended)</span>
 ```bash
 pip install nbclassic
-# Input 1
 
 python install_theme.py
+# Input 1
 
 jupyter nbclassic
 ```
@@ -51,7 +51,7 @@ plt.style.use('/path/to/pink.mplstyle') # use the absolute path
 
 ## <span style="color: #FF69B4;">Collapsible Features (Recommend)</span>
 
-If you selected installation option 1 or 2, install these extensions for enhanced collapsible functionality:
+If you selected installation option 1, install these extensions for enhanced collapsible functionality:
 
 ```bash
 # For collapsible headings
@@ -79,7 +79,7 @@ You can customize the theme by editing the <span style="color: #C71585;">`custom
 
 The <span style="color: #FF1493;">pink</span>  theme uses these slay colors:
 
-- <span style="color:#FFF0F5; background-color:#333;">**Background**: Lavender Blush (#FFF0F5)</span>
+- <span style="color:#FFF0F5;">**Background**: Lavender Blush (#FFF0F5)</span>
 - <span style="color:#FFB6C1">**Light Pink**: #FFB6C1</span>
 - <span style="color:#FF69B4">**Hot Pink**: #FF69B4</span>
 - <span style="color:#FF1493">**Deep Pink**: #FF1493</span>
