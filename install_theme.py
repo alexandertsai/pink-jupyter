@@ -26,8 +26,8 @@ def install_theme():
     # Present theme options to user
     print("🌸 Pink Jupyter Theme Installation 🌸")
     print("\nChoose your theme version:")
-    print("1. Nbclassic - works with jupyter nbclassic")
-    print("2. No nbclassic - works with jupyter notebook")
+    print("1. Jupyter nbclassic")
+    print("2. Jupyter Notebook")
     
     while True:
         choice = input("\nEnter your choice (1 or 2): ").strip()

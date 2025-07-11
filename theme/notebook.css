@@ -1,10 +1,6 @@
-/* Pink Jupyter Theme - A beautiful pink color scheme for Jupyter Notebooks */
-/* For users without nbclassic - supports JupyterLab and classic Jupyter Notebook */
-/* Uses native collapsible features (no extensions required) */
-/* There's probably A LOT of redundant lines in here but I can't be bothered to figure it out*/
-
 /* Root variables for consistency */
 :root {
+    --pink-lesslight: #ffe7ef;
     --pink-light: #FFF0F5;
     --pink-lighter: #FFF5FB;
     --pink-soft: #f89f9f4f;
@@ -137,11 +133,17 @@
 
 /* Dataframes */
 .dataframe{
-    background: var(--pink-mid) !important;
+    background: var(--pink-lesslight) !important;
 }
 .jp-RenderedHTMLCommon tbody tr:nth-child(odd){
     background: var(--pink-light) !important;
 }
 .jp-RenderedHTMLCommon tbody tr:nth-child(even){
-    background: var(--pink-medium) !important;
+    background: var(--pink-lighter) !important;
+}
+.jp-RenderedHTMLCommon th{
+    color: var(--burgundy) !important;
+}
+.jp-RenderedHTMLCommon td{
+    color: var(--pink-deep) !important;
 }
