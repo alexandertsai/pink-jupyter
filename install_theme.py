@@ -26,16 +26,16 @@ def install_theme():
     # Present theme options to user
     print("🌸 Pink Jupyter Theme Installation 🌸")
     print("\nChoose your theme version:")
-    print("1. Jupyter nbclassic")
-    print("2. Jupyter Notebook")
+    print("1. Jupyter Notebook (more minimal)")
+    print("2. Jupyter Nbclassic (more pink)")
     
     while True:
         choice = input("\nEnter your choice (1 or 2): ").strip()
         if choice == "1":
-            theme_file = script_dir / "theme" / "nbclassic.css"
+            theme_file = script_dir / "theme" / "notebook.css"
             break
         elif choice == "2":
-            theme_file = script_dir / "theme" / "notebook.css"
+            theme_file = script_dir / "theme" / "nbclassic.css"
             break
         else:
             print("Invalid choice. Please enter 1 or 2.")

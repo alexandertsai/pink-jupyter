@@ -17,23 +17,22 @@ cd pink-jupyter
 
 2. **Choose your setup:**
 
-#### <span style="color: #FF69B4;">Option A: Nbclassic (More pink)</span>
+#### <span style="color: #FF69B4;">Option A: Notebook (More minimal) </span>
 ```bash
-pip install nbclassic
 
 python install_theme.py
 # Input 1
 
-jupyter nbclassic
+jupyter notebook
 ```
-
-#### <span style="color: #FF69B4;">Option B: Notebook (More minimal) </span>
+#### <span style="color: #FF69B4;">Option B: Nbclassic (More pink)</span>
 ```bash
+pip install nbclassic
 
 python install_theme.py
 # Input 2
 
-jupyter notebook
+jupyter nbclassic
 ```
 
 The <span style="color: #FF1493;">pink</span> theme will be applied automatically!
