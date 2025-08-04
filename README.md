@@ -1,13 +1,13 @@
-# 🌸 Pink Jupyter Theme 🌸
+### 🌸 Pink Jupyter Theme 🌸
 
 <div>
   Data science just became <span style="color: #FF69B4;"> ✨ pink ✨</span>. I promise you won't regret installing this!
 </div>
 
+![preview image](https://github.com/alexandertsai/pink-jupyter/preview_images/preview1.png)
+![preview image](https://github.com/alexandertsai/pink-jupyter/preview_images/preview1.png)
 ## <span style="color: #FF69B4;">🎀 Installation 🎀</span>
 
-
-### <span style="color: #FF69B4;">Quick Install</span>
 
 1. **Clone this repository:**
 ```bash
@@ -15,51 +15,21 @@ git clone https://github.com/alexandertsai/pink-jupyter.git
 cd pink-jupyter
 ```
 
-2. **Choose your setup:**
+2. **Install the theme:**
 
-#### <span style="color: #FF69B4;">Option A: Notebook (More minimal - I recommend this!) </span>
 ```bash
-
 python install_theme.py
-# Input 1
-
 jupyter notebook
-```
-#### <span style="color: #FF69B4;">Option B: Nbclassic (More pink)</span>
-```bash
-pip install nbclassic
-
-python install_theme.py
-# Input 2
-
-jupyter nbclassic
 ```
 
 The <span style="color: #FF1493;">pink</span> theme will be applied automatically!
 
-## <span style="color: #FF69B4;">Pink Matplotlib Plots (Automatic!)</span>
 
-The installation script automatically configures matplotlib to use pink colors by default! No additional setup required - your plots will automatically match the theme colors.
+Once installed, the following is configured:
 
-## <span style="color: #FF69B4;">Collapsible Features (Recommend)</span>
-
-If you selected installation option 2, install these extensions for enhanced collapsible functionality:
-
-```bash
-# For collapsible headings
-pip install nbclassic-collapsible-headings
-
-# For code folding within cells  
-pip install nbextension-cellfolding
-```
-
-## <span style="color: #FF69B4;">Usage</span>
-
-Once installed, the theme is applied automatically to all Jupyter notebooks. The installation also configures:
-
-- 🎨 **Pink matplotlib plots** - Automatic pink color palette for all plots
-- ✨ **SVG figure format** - Crisp, high-quality plot rendering
-- 🌸 **Pink notebook interface** - Beautiful pink styling throughout
+- **Pink notebook interface** - Beautiful pink styling throughout
+- **Pink matplotlib plots** - Automatic pink color palette for all plots
+- **SVG figure format** - Makes plot crystal clear
 
 Try the demo notebook <span style="color: #C71585;">`demo.ipynb`</span> to see all the theme features!
 
@@ -72,30 +42,6 @@ You can customize the theme by editing the <span style="color: #C71585;">`css`</
 - <span style="color: #FF1493;">Change pink shades</span> by updating the color hex codes
 - <span style="color: #FF1493;">Adjust font sizes</span> in the `.CodeMirror` class  
 - <span style="color: #FF1493;">Modify cell padding</span> in the `div.cell` class
-
-## <span style="color: #FF69B4;">Theme Colors</span>
-
-The <span style="color: #FF1493;">pink</span>  theme uses these slay colors:
-
-- <span style="color:#FFF0F5;">**Background**: Lavender Blush (#FFF0F5)</span>
-- <span style="color:#FFB6C1">**Light Pink**: #FFB6C1</span>
-- <span style="color:#FF69B4">**Hot Pink**: #FF69B4</span>
-- <span style="color:#FF1493">**Deep Pink**: #FF1493</span>
-- <span style="color:#C71585">**Medium Violet Red**: #C71585</span>
-- <span style="color:#4B0082">**Text**: Indigo (#4B0082)</span>
-
-The included <span style="color: #C71585;">pink.mplstyle</span> uses these colors for plots:</span>
-
-1. <span style="color:#FF69B4">**Hot Pink**: #FF69B4</span> (primary plot color)
-2. <span style="color:#C71585">**Medium Violet Red**: #C71585</span> (secondary plot color)
-3. <span style="color:#FF1493">**Deep Pink**: #FF1493</span>
-4. <span style="color:#FFB6C1">**Light Pink**: #FFB6C1</span>
-5. <span style="color:#DB7093">**Pale Violet Red**: #DB7093</span>
-6. <span style="color:#8B1538">**Burgundy**: #8B1538</span>
-7. <span style="color:#FF6347">**Tomato**: #FF6347</span>
-8. <span style="color:#BC8F8F">**Rosy Brown**: #BC8F8F</span>
-
-## <span style="color: #FF69B4;">Uninstallation</span>
 
 Please don't! But if you must...
 

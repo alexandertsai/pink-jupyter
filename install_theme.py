@@ -7,7 +7,6 @@ Installs the pink theme for Jupyter Notebook
 import shutil
 import sys
 from pathlib import Path
-import os
 
 
 def get_jupyter_config_dir():
@@ -106,22 +105,10 @@ def install_theme():
     # Get paths
     script_dir = Path(__file__).parent
     
-    # Present theme options to user
     print("🌸 Pink Jupyter Theme Installation 🌸")
-    print("\nChoose your theme version:")
-    print("1. Jupyter Notebook (more minimal)")
-    print("2. Jupyter Nbclassic (super pink)")
     
-    while True:
-        choice = input("\nEnter your choice (1 or 2): ").strip()
-        if choice == "1":
-            theme_file = script_dir / "theme" / "notebook.css"
-            break
-        elif choice == "2":
-            theme_file = script_dir / "theme" / "nbclassic.css"
-            break
-        else:
-            print("Invalid choice. Please enter 1 or 2.")
+    # Use notebook.css as the default theme
+    theme_file = script_dir / "theme" / "notebook.css"
     
     if not theme_file.exists():
         print(f"Error: Theme file not found at {theme_file}")
