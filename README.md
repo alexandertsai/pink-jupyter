@@ -17,7 +17,7 @@ cd pink-jupyter
 
 2. **Choose your setup:**
 
-#### <span style="color: #FF69B4;">Option A: Notebook (More minimal) </span>
+#### <span style="color: #FF69B4;">Option A: Notebook (More minimal - I recommend this!) </span>
 ```bash
 
 python install_theme.py
@@ -37,18 +37,13 @@ jupyter nbclassic
 
 The <span style="color: #FF1493;">pink</span> theme will be applied automatically!
 
-## <span style="color: #FF69B4;">Pink Matplotlib Plots (Highly Recommended)</span>
+## <span style="color: #FF69B4;">Pink Matplotlib Plots (Automatic!)</span>
 
-To make your matplotlib plots match the pink theme automatically, use the included style file:
-
-```python
-import matplotlib.pyplot as plt
-plt.style.use('/path/to/pink.mplstyle') # use the absolute path
-```
+The installation script automatically configures matplotlib to use pink colors by default! No additional setup required - your plots will automatically match the theme colors.
 
 ## <span style="color: #FF69B4;">Collapsible Features (Recommend)</span>
 
-If you selected installation option 1, install these extensions for enhanced collapsible functionality:
+If you selected installation option 2, install these extensions for enhanced collapsible functionality:
 
 ```bash
 # For collapsible headings
@@ -60,7 +55,13 @@ pip install nbextension-cellfolding
 
 ## <span style="color: #FF69B4;">Usage</span>
 
-Once installed, the theme is applied automatically to all Jupyter notebooks. Try the demo notebook <span style="color: #C71585;">`demo.ipynb`</span> to see all the theme features!
+Once installed, the theme is applied automatically to all Jupyter notebooks. The installation also configures:
+
+- 🎨 **Pink matplotlib plots** - Automatic pink color palette for all plots
+- ✨ **SVG figure format** - Crisp, high-quality plot rendering
+- 🌸 **Pink notebook interface** - Beautiful pink styling throughout
+
+Try the demo notebook <span style="color: #C71585;">`demo.ipynb`</span> to see all the theme features!
 
 
 
