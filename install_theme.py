@@ -21,24 +21,16 @@ def get_jupyter_config_dir():
 
 def setup_matplotlib_config(script_dir):
     """Setup matplotlib to use pink theme by default."""
-    # Determine the correct matplotlib config path based on OS
-    if platform.system().lower() == 'linux':
-        try:
-            import matplotlib
-            # On Linux, use matplotlib's data directory
-            matplotlib_data_path = Path(matplotlib.get_data_path())
-            matplotlibrc_file = matplotlib_data_path / "matplotlibrc"
-            matplotlib_dir = matplotlib_data_path
-        except ImportError:
-            # Fallback to user directory if matplotlib not available
-            matplotlib_dir = Path.home() / ".matplotlib"
-            matplotlib_dir.mkdir(exist_ok=True)
-            matplotlibrc_file = matplotlib_dir / "matplotlibrc"
+    # Follow matplotlib's recommended user config locations
+    if platform.system().lower() in ['linux', 'freebsd']:
+        # Unix/Linux: ~/.config/matplotlib/matplotlibrc
+        config_dir = Path.home() / ".config" / "matplotlib"
     else:
-        # For macOS, Windows, and other systems, use user directory
-        matplotlib_dir = Path.home() / ".matplotlib"
-        matplotlib_dir.mkdir(exist_ok=True)
-        matplotlibrc_file = matplotlib_dir / "matplotlibrc"
+        # Other platforms: ~/.matplotlib/matplotlibrc  
+        config_dir = Path.home() / ".matplotlib"
+    
+    config_dir.mkdir(parents=True, exist_ok=True)
+    matplotlibrc_file = config_dir / "matplotlibrc"
     
     # Read pink.mplstyle contents
     pink_style_file = script_dir / "pink.mplstyle"
@@ -62,7 +54,7 @@ def setup_matplotlib_config(script_dir):
             return True
         
         # Backup existing matplotlibrc
-        backup_file = matplotlib_dir / "matplotlibrc.backup"
+        backup_file = config_dir / "matplotlibrc.backup"
         print(f"Backing up existing matplotlibrc to {backup_file}")
         shutil.copy2(matplotlibrc_file, backup_file)
         
@@ -197,31 +189,25 @@ def uninstall_theme():
     else:
         print("No Jupyter custom theme found to uninstall")
     
-    # Uninstall matplotlib configuration - check both possible locations
-    matplotlib_locations = []
+    # Uninstall matplotlib configuration from user config directories
+    config_locations = []
     
-    # Add user directory location
-    user_matplotlib_dir = Path.home() / ".matplotlib"
-    matplotlib_locations.append((user_matplotlib_dir, user_matplotlib_dir / "matplotlibrc"))
-    
-    # Add Linux system location if applicable
-    if platform.system().lower() == 'linux':
-        try:
-            import matplotlib
-            matplotlib_data_path = Path(matplotlib.get_data_path())
-            matplotlib_locations.append((matplotlib_data_path, matplotlib_data_path / "matplotlibrc"))
-        except ImportError:
-            pass
+    # Add platform-specific user config locations
+    if platform.system().lower() in ['linux', 'freebsd']:
+        config_locations.append(Path.home() / ".config" / "matplotlib")
+    else:
+        config_locations.append(Path.home() / ".matplotlib")
     
     matplotlib_uninstalled = False
-    for matplotlib_dir, matplotlibrc_file in matplotlib_locations:
+    for config_dir in config_locations:
+        matplotlibrc_file = config_dir / "matplotlibrc"
         if matplotlibrc_file.exists():
             # Check if it contains pink theme content
             with open(matplotlibrc_file, 'r') as f:
                 content = f.read()
             
             if "# Pink Jupyter Theme - Matplotlib Style" in content:
-                matplotlib_backup = matplotlib_dir / "matplotlibrc.backup"
+                matplotlib_backup = config_dir / "matplotlibrc.backup"
                 if matplotlib_backup.exists():
                     print(f"Restoring original matplotlib config from {matplotlib_backup}")
                     shutil.copy2(matplotlib_backup, matplotlibrc_file)
