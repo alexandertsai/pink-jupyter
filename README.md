@@ -1,11 +1,14 @@
-### 🌸 Pink Jupyter Theme 🌸
-
-<div>
-  Data science just became <span style="color: #FF69B4;"> ✨ pink ✨</span>. I promise you won't regret installing this!
+<div align="center">
+<span style="color: #FF69B4; font-size: 32px;">🌸 Pink Jupyter Theme 🌸</span> 
+<br>
+<br>
+<p>  Data science just became <span style="color: #FF69B4;"> ✨ pink ✨</span>. I promise you won't regret installing this!<p>
 </div>
 
-![preview image](https://github.com/alexandertsai/pink-jupyter/preview_images/preview1.png)
-![preview image](https://github.com/alexandertsai/pink-jupyter/preview_images/preview1.png)
+### <span style="color: #FF69B4;">Preview</span>
+![preview image](/preview_images/preview1.png)
+
+![preview image](/preview_images/preview2.png)
 ## <span style="color: #FF69B4;">🎀 Installation 🎀</span>
 
 
@@ -35,13 +38,15 @@ Try the demo notebook <span style="color: #C71585;">`demo.ipynb`</span> to see a
 
 
 
-## <span style="color: #FF69B4;">Customization</span>
+### <span style="color: #FF69B4;">Customization</span>
 
 You can customize the theme by editing the <span style="color: #C71585;">`css`</span> files. Some easy modifications:
 
 - <span style="color: #FF1493;">Change pink shades</span> by updating the color hex codes
 - <span style="color: #FF1493;">Adjust font sizes</span> in the `.CodeMirror` class  
 - <span style="color: #FF1493;">Modify cell padding</span> in the `div.cell` class
+
+### <span style="color: #FF69B4;">Uninstallation</span>
 
 Please don't! But if you must...
 
@@ -51,11 +56,11 @@ python install_theme.py uninstall
 
 
 
-## <span style="color: #FF69B4;">💞 Contributing 💞</span>
+### <span style="color: #FF69B4;">💞 Contributing 💞</span>
 
 Feel free to submit issues or pull requests if you have suggestions for improvements!
 
-## <span style="color: #FF69B4;">License</span>
+### <span style="color: #FF69B4;">License</span>
 
 This theme is released under the MIT License. Feel free to use and modify as needed.
 
