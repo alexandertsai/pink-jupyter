@@ -23,8 +23,13 @@ def setup_matplotlib_config(script_dir):
     """Setup matplotlib to use pink theme by default."""
     # Follow matplotlib's recommended user config locations
     if platform.system().lower() in ['linux', 'freebsd']:
-        # Unix/Linux: ~/.config/matplotlib/matplotlibrc
-        config_dir = Path.home() / ".config" / "matplotlib"
+        # Unix/Linux: Check XDG_CONFIG_HOME first, then default to ~/.config
+        import os
+        xdg_config = os.environ.get('XDG_CONFIG_HOME')
+        if xdg_config:
+            config_dir = Path(xdg_config) / "matplotlib"
+        else:
+            config_dir = Path.home() / ".config" / "matplotlib"
     else:
         # Other platforms: ~/.matplotlib/matplotlibrc  
         config_dir = Path.home() / ".matplotlib"
@@ -38,33 +43,26 @@ def setup_matplotlib_config(script_dir):
         print(f"Warning: pink.mplstyle not found at {pink_style_file}")
         return False
     
+    # Check if matplotlibrc already exists
+    if matplotlibrc_file.exists():
+        print(f"Matplotlib config already exists at {matplotlibrc_file}")
+        response = input("Do you want to overwrite it with the pink theme? (y/N): ").strip().lower()
+        if response not in ['y', 'yes']:
+            print("Skipping matplotlib configuration")
+            return True
+        
+        # Backup existing config
+        backup_file = config_dir / "matplotlibrc.backup"
+        print(f"Backing up existing config to {backup_file}")
+        shutil.copy2(matplotlibrc_file, backup_file)
+    
     # Read the pink style content
     with open(pink_style_file, 'r') as f:
         pink_content = f.read()
     
-    # Check if matplotlibrc already exists
-    if matplotlibrc_file.exists():
-        # Read existing content
-        with open(matplotlibrc_file, 'r') as f:
-            existing_content = f.read()
-        
-        # Check if pink theme settings are already present
-        if "# Pink Jupyter Theme - Matplotlib Style" in existing_content:
-            print("Pink matplotlib configuration already present")
-            return True
-        
-        # Backup existing matplotlibrc
-        backup_file = config_dir / "matplotlibrc.backup"
-        print(f"Backing up existing matplotlibrc to {backup_file}")
-        shutil.copy2(matplotlibrc_file, backup_file)
-        
-        # Append pink configuration
-        with open(matplotlibrc_file, 'a') as f:
-            f.write("\n\n" + pink_content)
-    else:
-        # Create new matplotlibrc with pink configuration
-        with open(matplotlibrc_file, 'w') as f:
-            f.write(pink_content)
+    # Create new matplotlibrc with pink configuration
+    with open(matplotlibrc_file, 'w') as f:
+        f.write(pink_content)
     
     print(f"Pink matplotlib configuration installed to {matplotlibrc_file}")
     return True
@@ -194,7 +192,13 @@ def uninstall_theme():
     
     # Add platform-specific user config locations
     if platform.system().lower() in ['linux', 'freebsd']:
-        config_locations.append(Path.home() / ".config" / "matplotlib")
+        import os
+        # Check XDG_CONFIG_HOME first, then default location
+        xdg_config = os.environ.get('XDG_CONFIG_HOME')
+        if xdg_config:
+            config_locations.append(Path(xdg_config) / "matplotlib")
+        else:
+            config_locations.append(Path.home() / ".config" / "matplotlib")
     else:
         config_locations.append(Path.home() / ".matplotlib")
     
@@ -207,13 +211,14 @@ def uninstall_theme():
                 content = f.read()
             
             if "# Pink Jupyter Theme - Matplotlib Style" in content:
-                matplotlib_backup = config_dir / "matplotlibrc.backup"
-                if matplotlib_backup.exists():
-                    print(f"Restoring original matplotlib config from {matplotlib_backup}")
-                    shutil.copy2(matplotlib_backup, matplotlibrc_file)
-                    matplotlib_backup.unlink()
+                # Check if backup exists
+                backup_file = config_dir / "matplotlibrc.backup"
+                if backup_file.exists():
+                    print(f"Restoring original matplotlib config from {backup_file}")
+                    shutil.copy2(backup_file, matplotlibrc_file)
+                    backup_file.unlink()
                 else:
-                    print(f"Removing matplotlib config {matplotlibrc_file}")
+                    print(f"Removing pink matplotlib config {matplotlibrc_file}")
                     matplotlibrc_file.unlink()
                 print("✓ Matplotlib configuration uninstalled")
                 matplotlib_uninstalled = True
