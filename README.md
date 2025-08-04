@@ -1,11 +1,8 @@
-<div align="center">
-<span style="color: #FF69B4; font-size: 32px;">🌸 Pink Jupyter Theme 🌸</span> 
-<br>
-<br>
-<p>  Data science just became <span style="color: #FF69B4;"> ✨ pink ✨</span>. I promise you won't regret installing this!<p>
-</div>
+## <span style="color: #FF69B4;">🌸 Pink Jupyter Theme 🌸</span>
 
-### <span style="color: #FF69B4;">Preview</span>
+Data science just became <span style="color: #FF69B4;"> ✨ pink ✨</span>. I promise you won't regret installing this!
+
+### <span style="color: #FF69B4;">Preview!</span>
 ![preview image](/preview_images/preview1.png)
 
 ![preview image](/preview_images/preview2.png)
