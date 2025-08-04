@@ -33,8 +33,9 @@ Once installed, the following is configured:
 
 Try the demo notebook <span style="color: #C71585;">`demo.ipynb`</span> to see all the theme features!
 
+### <span style="color: #FF69B4;">Troubleshooting</span>
 
-
+**WINDOWS USERS!!** there is a high chance this theme may not display properly for you. I advise running Jupyter from WSL instead (I'm sorry...)
 ### <span style="color: #FF69B4;">Customization</span>
 
 You can customize the theme by editing the <span style="color: #C71585;">`css`</span> files. Some easy modifications:
@@ -50,7 +51,6 @@ Please don't! But if you must...
 ```bash
 python install_theme.py uninstall
 ```
-
 
 
 ### <span style="color: #FF69B4;">💞 Contributing 💞</span>
