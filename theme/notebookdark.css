@@ -15,48 +15,20 @@
     --dark-mauve: #3a2239;
 }
 /* Main Menu */
-#main {
-    background-color: var(--pink-soft) !important;
-}
-#filebrowser{
-    background-color: var(--pink-light) !important;
-}
-.jp-FileBrowser-toolbar.jp-Toolbar{
-    background-color: var(--pink-light) !important;
-}
-.lm-TabBar-tab.lm-mod-current{
-    background-color: var(--pink-light) !important;
-}
-.lm-TabBar-tab{
-    background-color: var(--pink-lighter) !important;
-}
 .jp-BreadCrumbs-item{
     color: var(--pink-hot) !important;
 }
-.jp-DirListing-item,.jp-DirListing-content{
-    background-color: var(--pink-soft) !important;
-}
+
 .jp-icon3{
     fill: var(--pink-hot) !important;
 }
 
-/* Top menu */
-#top-panel-wrapper,#jp-top-bar{
-    background-color: var(--pink-mid) !important;
-    border-bottom: black !important;
+.jp-notebook-icon-color[fill]{
+    fill: var(--pink-hot,var(--pink-deep)) !important;
 }
-#menu-panel-wrapper,#menu-panel,#jp-MainMenu{
-    background-color: var(--pink-medium) !important;
-    border-bottom: black !important;
+.jp-DirListing-item.jp-mod-selected{
+    background:var(--pink-medium) !important;
 }
-.lm-MenuBar-item.lm-mod-active{
-    color: var(--pink-hot) !important;
-}
-.lm-Widget.jp-Toolbar.jp-NotebookPanel-toolbar{
-    background-color: var(--pink-medium) !important;
-    border-bottom: black !important;
-}
-
 
 /* Code syntax */
 .ͼz { color: var(--pink-hot) !important; }
@@ -123,7 +95,6 @@
 .jp-collapseHeadingButton{
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' viewBox='0 0 18 18'%3e %3cpath fill='%23ff69b4' d='M5.2 7.5 9 11.2l3.8-3.8H5.2z' class='jp-icon3' shape-rendering='geometricPrecision'/%3e %3c/svg%3e") !important;
 }
-
 
 /* Dataframes */
 .dataframe{

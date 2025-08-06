@@ -37,6 +37,9 @@
 .jp-icon3{
     fill: var(--pink-hot) !important;
 }
+.jp-notebook-icon-color[fill]{
+    fill: var(--pink-hot,var(--pink-deep)) !important;
+}
 
 /* Top menu */
 #top-panel-wrapper,#jp-top-bar{
