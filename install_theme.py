@@ -19,7 +19,7 @@ def get_jupyter_config_dir():
         return Path.home() / ".jupyter"
 
 
-def setup_matplotlib_config(script_dir):
+def setup_matplotlib_config(script_dir, theme_mode):
     """Setup matplotlib to use pink theme by default."""
     # Follow matplotlib's recommended user config locations
     if platform.system().lower() in ['linux', 'freebsd']:
@@ -37,10 +37,10 @@ def setup_matplotlib_config(script_dir):
     config_dir.mkdir(parents=True, exist_ok=True)
     matplotlibrc_file = config_dir / "matplotlibrc"
     
-    # Read pink.mplstyle contents
-    pink_style_file = script_dir / "pink.mplstyle"
+    # Read pink.mplstyle contents based on theme mode
+    pink_style_file = script_dir / f"pink{theme_mode}.mplstyle"
     if not pink_style_file.exists():
-        print(f"Warning: pink.mplstyle not found at {pink_style_file}")
+        print(f"Warning: pink{theme_mode}.mplstyle not found at {pink_style_file}")
         return False
     
     # Check if matplotlibrc already exists
@@ -110,8 +110,24 @@ def install_theme():
     
     print("🌸 Pink Jupyter Theme Installation 🌸")
     
-    # Use notebook.css as the default theme
-    theme_file = script_dir / "theme" / "notebook.css"
+    # Ask user for theme mode preference
+    print("\nChoose theme mode:")
+    print("1. Light mode (default)")
+    print("2. Dark mode")
+    
+    while True:
+        choice = input("\nEnter your choice (1 or 2): ").strip()
+        if choice in ['1', '']:
+            theme_mode = 'light'
+            break
+        elif choice == '2':
+            theme_mode = 'dark'
+            break
+        else:
+            print("Invalid choice. Please enter 1 or 2.")
+    
+    # Use the selected theme file
+    theme_file = script_dir / "theme" / f"notebook{theme_mode}.css"
     
     if not theme_file.exists():
         print(f"Error: Theme file not found at {theme_file}")
@@ -139,17 +155,17 @@ def install_theme():
     
     # Setup matplotlib configuration
     print("\nSetting up matplotlib configuration...")
-    matplotlib_success = setup_matplotlib_config(script_dir)
+    matplotlib_success = setup_matplotlib_config(script_dir, theme_mode)
     
     # Setup IPython configuration
     print("\nSetting up IPython configuration...")
     ipython_success = setup_ipython_config()
     
-    print("\n🌸 Complete Pink theme installation finished!")
+    print(f"\n🌸 Complete Pink theme installation finished! ({theme_mode} mode)")
     print("\nFeatures installed:")
-    print("✓ Pink Jupyter notebook theme")
+    print(f"✓ Pink Jupyter notebook theme ({theme_mode} mode)")
     if matplotlib_success:
-        print("✓ Pink matplotlib plots by default")
+        print(f"✓ Pink matplotlib plots by default ({theme_mode} mode)")
     if ipython_success:
         print("✓ SVG figure format for crisp plots")
     

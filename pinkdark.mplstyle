@@ -1,0 +1,31 @@
+# Pink Jupyter Theme - Matplotlib Style (Dark)
+# Dark theme version with dark backgrounds
+
+# Color cycle - these colors will be used automatically for plot lines
+axes.prop_cycle : cycler('color', ['FF69B4', 'C71585', 'FF1493', 'FFB6C1', 'DB7093', '8B1538', 'FF6347', 'BC8F8F'])
+
+# Grid styling to match dark theme
+axes.grid       : True
+grid.color      : FFB6C1
+grid.alpha      : 0.2
+grid.linewidth  : 0.5
+
+# Dark background colors
+figure.facecolor : 1a1a1a
+axes.facecolor   : 2d2d2d
+
+# Text colors for dark theme
+text.color       : FFB6C1
+axes.labelcolor  : FFB6C1
+xtick.color      : FFB6C1
+ytick.color      : FFB6C1
+
+# Spine (border) colors
+axes.edgecolor   : FF69B4
+axes.linewidth   : 1
+
+# Legend styling for dark theme
+legend.frameon       : True
+legend.facecolor     : 2d2d2d
+legend.edgecolor     : FF69B4
+legend.framealpha    : 0.8
