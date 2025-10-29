@@ -44,7 +44,7 @@ I have also recently added support for Jupyter Lab (only pink dark theme). To ad
 ```python
 theme_file = script_dir / "theme" / f"notebook{theme_mode}.css" # change "notebook" to lab".
 ```
-When running jupyter lab, specify use `jupyter lab --custom-css`.
+When running jupyter lab, specify `jupyter lab --custom-css`. The version I run this on is 4.4.4.
 ### <span style="color: #FF69B4;">Customization</span>
 
 You can customize the theme by editing the <span style="color: #C71585;">`css`</span> files. Some easy modifications:
