@@ -1,0 +1,729 @@
+/* ============================================
+   JupyterLab Pink Theme - Custom CSS
+   Place this in: ~/.jupyter/custom/custom.css
+   Launch with: jupyter lab --custom-css
+   ============================================ */
+
+/* Root variables for consistency */
+:root {
+    --pink-lesslight: #ffe7ef;
+    --pink-light: #FFF0F5;
+    --pink-lighter: #FFF5FB;
+    --pink-soft: #f89f9f4f;
+    --pink-medium: #FFB6C1;
+    --pink-mid: #fca1af;
+    --pink-hot: #FF69B4;
+    --pink-deep: #FF1493;
+    --pink-violet: #C71585;
+    --burgundy: #8B1538;
+    --indigo: #4B0082;
+    --dark-plum: #2d1b2e;
+    --dark-mauve: #3a2239;
+}
+
+/* ============================================
+   FILE BROWSER & NAVIGATION
+   ============================================ */
+
+/* Breadcrumbs in file browser */
+.jp-BreadCrumbs-item {
+    color: var(--pink-hot) !important;
+}
+
+/* Icons throughout the interface */
+.jp-icon3[fill] {
+    fill: var(--pink-hot) !important;
+}
+
+/* Notebook icon colour */
+.jp-icon-selectable[fill] {
+    fill: var(--pink-hot) !important;
+}
+
+/* Selected items in directory listing */
+.jp-DirListing-item.jp-mod-selected {
+    background: var(--pink-medium) !important;
+}
+
+/* ============================================
+   CODE EDITOR - CodeMirror 6 Syntax Highlighting
+   JupyterLab 4 uses "cmt-" prefixed classes
+   ============================================ */
+
+/* Keywords (def, class, if, for, etc) */
+.cmt-keyword {
+    color: var(--pink-hot) !important;
+    font-weight: bold !important;
+}
+
+/* Variable names */
+.cmt-variableName {
+    color: var(--pink-hot) !important;
+}
+
+/* Function/method names */
+.cmt-name {
+    color: var(--pink-hot) !important;
+}
+
+/* Strings */
+.cmt-string {
+    color: var(--pink-medium) !important;
+}
+
+/* Numbers */
+.cmt-number {
+    color: var(--pink-violet) !important;
+}
+
+/* Operators (+, -, *, etc) */
+.cmt-operator {
+    color: var(--pink-hot) !important;
+}
+
+/* Built-in functions and types */
+.cmt-standard {
+    color: var(--pink-violet) !important;
+}
+
+/* Comments */
+.cmt-comment {
+    color: var(--indigo) !important;
+}
+
+/* Definitions (function/class definitions) */
+.cmt-definition {
+    color: var(--pink-deep) !important;
+}
+
+/* Properties and attributes */
+.cmt-propertyName {
+    color: var(--pink-hot) !important;
+}
+
+/* Type names */
+.cmt-typeName {
+    color: var(--pink-violet) !important;
+}
+
+/* Special names */
+.cmt-special {
+    color: var(--burgundy) !important;
+}
+
+/* ============================================
+   CELL OUTPUT STYLING
+   ============================================ */
+
+/* Output text (general) */
+.jp-OutputArea-output {
+    color: var(--pink-hot) !important;
+}
+
+.jp-RenderedText pre {
+    color: var(--pink-hot) !important;
+}
+
+/* ANSI colour overrides for terminal output */
+.ansi-red-fg {
+    color: rgb(253, 0, 88) !important;
+}
+
+.ansi-green-fg {
+    color: var(--pink-hot) !important;
+}
+
+/* ============================================
+   MARKDOWN RENDERING
+   ============================================ */
+
+/* Markdown headers */
+.jp-RenderedMarkdown h1,
+.jp-RenderedMarkdown h2,
+.jp-RenderedMarkdown h3,
+.jp-RenderedMarkdown h4,
+.jp-RenderedMarkdown h5,
+.jp-RenderedMarkdown h6 {
+    color: var(--pink-hot) !important;
+    font-weight: bold !important;
+    font-family: 'Inter', 'Dancing Script', 'Playfair Display', serif !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* Markdown links */
+.jp-RenderedMarkdown a {
+    color: var(--pink-deep) !important;
+}
+
+/* Markdown code blocks */
+.jp-RenderedMarkdown code {
+    color: var(--pink-hot) !important;
+}
+
+/* ============================================
+   CELL BORDERS & FOCUS
+   ============================================ */
+
+/* Active cell in edit mode */
+.jp-Notebook.jp-mod-editMode .jp-Cell.jp-mod-active .jp-InputArea-editor {
+    border: 2px solid var(--pink-hot) !important;
+    box-shadow: inset 0 0 4px var(--pink-medium) !important;
+}
+
+/* Active cell in command mode */
+.jp-Notebook.jp-mod-commandMode .jp-Cell.jp-mod-active {
+    border-left: 5px solid var(--pink-hot) !important;
+}
+
+/* Cell when focused */
+.jp-Notebook.jp-mod-commandMode .jp-Cell.jp-mod-active:focus-visible {
+    box-shadow: 0 0 0 2px var(--pink-medium) !important;
+}
+
+/* ============================================
+   CELL COLLAPSERS & PROMPTS
+   ============================================ */
+
+/* Input collapser button */
+.jp-Collapser {
+    background: var(--pink-hot) !important;
+}
+
+/* Input prompt (In [x]:) */
+.jp-InputPrompt {
+    color: var(--pink-deep) !important;
+}
+
+/* Output prompt (Out[x]:) */
+.jp-OutputPrompt {
+    color: var(--pink-deep) !important;
+}
+
+/* Collapsed heading button */
+.jp-collapseHeadingButton {
+    color: var(--pink-hot) !important;
+}
+
+/* Override collapse icons with pink versions */
+.jp-collapseHeadingButton.jp-mod-collapsed {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' viewBox='0 0 18 18'%3e %3cpath fill='%23ff69b4' d='M7.5 5.2 11.2 9l-3.8 3.8V5.2z' class='jp-icon3' shape-rendering='geometricPrecision'/%3e %3c/svg%3e") !important;
+}
+
+.jp-collapseHeadingButton:not(.jp-mod-collapsed) {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' viewBox='0 0 18 18'%3e %3cpath fill='%23ff69b4' d='M5.2 7.5 9 11.2l3.8-3.8H5.2z' class='jp-icon3' shape-rendering='geometricPrecision'/%3e %3c/svg%3e") !important;
+}
+
+/* ============================================
+   DATAFRAMES & TABLES
+   ============================================ */
+
+/* DataFrame container */
+.jp-RenderedHTMLCommon table.dataframe {
+    background: var(--dark-plum) !important;
+}
+
+/* Odd rows */
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd) {
+    background: var(--dark-plum) !important;
+}
+
+/* Even rows */
+.jp-RenderedHTMLCommon tbody tr:nth-child(even) {
+    background: var(--dark-mauve) !important;
+}
+
+/* Table headers */
+.jp-RenderedHTMLCommon thead th {
+    color: var(--pink-hot) !important;
+    background: var(--dark-plum) !important;
+}
+
+/* Table cells */
+.jp-RenderedHTMLCommon td {
+    color: var(--pink-medium) !important;
+}
+
+/* DataFrame index column */
+.jp-RenderedHTMLCommon tbody th {
+    color: var(--pink-hot) !important;
+}
+
+/* ============================================
+   SCROLLBARS (Optional)
+   ============================================ */
+
+/* Customize scrollbars to match theme */
+.jp-OutputArea-output::-webkit-scrollbar,
+.jp-Cell-inputArea::-webkit-scrollbar {
+    width: 10px;
+}
+
+.jp-OutputArea-output::-webkit-scrollbar-track,
+.jp-Cell-inputArea::-webkit-scrollbar-track {
+    background: var(--dark-plum);
+}
+
+.jp-OutputArea-output::-webkit-scrollbar-thumb,
+.jp-Cell-inputArea::-webkit-scrollbar-thumb {
+    background: var(--pink-medium);
+    border-radius: 5px;
+}
+
+.jp-OutputArea-output::-webkit-scrollbar-thumb:hover,
+.jp-Cell-inputArea::-webkit-scrollbar-thumb:hover {
+    background: var(--pink-hot);
+}
+
+/* ============================================
+   BUTTONS & UI ELEMENTS
+   ============================================ */
+
+/* General buttons */
+.jp-Button {
+    color: var(--pink-hot) !important;
+}
+
+/* Toolbar buttons when active */
+.jp-Toolbar-item.jp-mod-active {
+    background: var(--pink-soft) !important;
+}
+
+/* ============================================
+   CURSOR & SELECTION - CodeMirror 6
+   ============================================ */
+
+/* Editor cursor - CodeMirror 6 draws cursor as border */
+.cm-editor .cm-cursor,
+.cm-editor.cm-focused .cm-cursor {
+    border-left-color: var(--pink-hot) !important;
+    border-left-width: 2px !important;
+}
+
+/* Alternative: thicker cursor for better visibility */
+.cm-editor .cm-cursor-primary {
+    border-left-color: var(--pink-hot) !important;
+    border-left-width: 2px !important;
+}
+
+/* VIM MODE CURSOR - Fat cursor in normal mode */
+.cm-fat-cursor .cm-cursor,
+.cm-fat-cursor .CodeMirror-cursor {
+    width: auto !important;
+    border: 0 !important;
+    background: var(--pink-hot) !important;
+}
+
+/* Vim mode - animated fat cursor */
+.cm-animate-fat-cursor {
+    width: auto !important;
+    border: 0 !important;
+    background-color: var(--pink-hot) !important;
+}
+
+/* Vim mode - cursor mark when selecting */
+.cm-fat-cursor-mark {
+    background-color: var(--pink-soft) !important;
+}
+
+/* Selection background - proper selector for CodeMirror 6 */
+.cm-editor.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground {
+    background: var(--pink-soft) !important;
+}
+
+.cm-selectionBackground {
+    background: var(--pink-soft) !important;
+}
+
+/* Active line background - subtle pink tint */
+.cm-activeLine {
+    background: rgba(255, 182, 193, 0.1) !important;
+}
+
+/* Line numbers */
+.cm-lineNumbers {
+    color: var(--pink-medium) !important;
+}
+
+/* Active line number - highlighted */
+.cm-activeLineGutter {
+    background: rgba(255, 182, 193, 0.15) !important;
+    color: var(--pink-hot) !important;
+    font-weight: bold !important;
+}
+
+/* ============================================
+   MENU BAR & TOP PANEL
+   ============================================ */
+
+/* Menu bar items */
+.jp-MenuBar-item {
+    color: var(--pink-hot) !important;
+}
+
+/* Menu bar item when hovered */
+.jp-MenuBar-item:hover {
+    background: var(--pink-soft) !important;
+}
+
+/* ============================================
+   STATUS BAR
+   ============================================ */
+
+/* Status bar at bottom */
+.jp-StatusBar-item {
+    color: var(--pink-hot) !important;
+}
+   JupyterLab Pink Theme - Custom CSS
+   Place this in: ~/.jupyter/custom/custom.css
+   Launch with: jupyter lab --custom-css
+   ============================================ */
+
+/* Root variables for consistency */
+:root {
+    --pink-lesslight: #ffe7ef;
+    --pink-light: #FFF0F5;
+    --pink-lighter: #FFF5FB;
+    --pink-soft: #f89f9f4f;
+    --pink-medium: #FFB6C1;
+    --pink-mid: #fca1af;
+    --pink-hot: #FF69B4;
+    --pink-deep: #FF1493;
+    --pink-violet: #C71585;
+    --burgundy: #8B1538;
+    --indigo: #4B0082;
+    --dark-plum: #2d1b2e;
+    --dark-mauve: #3a2239;
+}
+
+/* ============================================
+   FILE BROWSER & NAVIGATION
+   ============================================ */
+
+/* Breadcrumbs in file browser */
+.jp-BreadCrumbs-item {
+    color: var(--pink-hot) !important;
+}
+
+/* Icons throughout the interface */
+.jp-icon3[fill] {
+    fill: var(--pink-hot) !important;
+}
+
+/* Notebook icon colour */
+.jp-icon-selectable[fill] {
+    fill: var(--pink-hot) !important;
+}
+
+/* Selected items in directory listing */
+.jp-DirListing-item.jp-mod-selected {
+    background: var(--pink-medium) !important;
+}
+
+/* ============================================
+   CODE EDITOR - CodeMirror 6 Syntax Highlighting
+   JupyterLab 4 uses "cmt-" prefixed classes
+   ============================================ */
+
+/* Keywords (def, class, if, for, etc) */
+.cmt-keyword {
+    color: var(--pink-hot) !important;
+    font-weight: bold !important;
+}
+
+/* Variable names */
+.cmt-variableName {
+    color: var(--pink-hot) !important;
+}
+
+/* Function/method names */
+.cmt-name {
+    color: var(--pink-hot) !important;
+}
+
+/* Strings */
+.cmt-string {
+    color: var(--pink-medium) !important;
+}
+
+/* Numbers */
+.cmt-number {
+    color: var(--pink-violet) !important;
+}
+
+/* Operators (+, -, *, etc) */
+.cmt-operator {
+    color: var(--pink-hot) !important;
+}
+
+/* Built-in functions and types */
+.cmt-standard {
+    color: var(--pink-violet) !important;
+}
+
+/* Comments */
+.cmt-comment {
+    color: var(--indigo) !important;
+}
+
+/* Definitions (function/class definitions) */
+.cmt-definition {
+    color: var(--pink-deep) !important;
+}
+
+/* Properties and attributes */
+.cmt-propertyName {
+    color: var(--pink-hot) !important;
+}
+
+/* Type names */
+.cmt-typeName {
+    color: var(--pink-violet) !important;
+}
+
+/* Special names */
+.cmt-special {
+    color: var(--burgundy) !important;
+}
+
+/* ============================================
+   CELL OUTPUT STYLING
+   ============================================ */
+
+/* Output text (general) */
+.jp-OutputArea-output {
+    color: var(--pink-hot) !important;
+}
+
+.jp-RenderedText pre {
+    color: var(--pink-hot) !important;
+}
+
+/* ANSI colour overrides for terminal output */
+.ansi-red-fg {
+    color: rgb(253, 0, 88) !important;
+}
+
+.ansi-green-fg {
+    color: var(--pink-hot) !important;
+}
+
+/* ============================================
+   MARKDOWN RENDERING
+   ============================================ */
+
+/* Markdown headers */
+.jp-RenderedMarkdown h1,
+.jp-RenderedMarkdown h2,
+.jp-RenderedMarkdown h3,
+.jp-RenderedMarkdown h4,
+.jp-RenderedMarkdown h5,
+.jp-RenderedMarkdown h6 {
+    color: var(--pink-hot) !important;
+    font-weight: bold !important;
+    font-family: 'Inter', 'Dancing Script', 'Playfair Display', serif !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* Markdown links */
+.jp-RenderedMarkdown a {
+    color: var(--pink-deep) !important;
+}
+
+/* Markdown code blocks */
+.jp-RenderedMarkdown code {
+    color: var(--pink-hot) !important;
+}
+
+/* ============================================
+   CELL BORDERS & FOCUS
+   ============================================ */
+
+/* Active cell in edit mode */
+.jp-Notebook.jp-mod-editMode .jp-Cell.jp-mod-active .jp-InputArea-editor {
+    border: 2px solid var(--pink-hot) !important;
+    box-shadow: inset 0 0 4px var(--pink-medium) !important;
+}
+
+/* Active cell in command mode */
+.jp-Notebook.jp-mod-commandMode .jp-Cell.jp-mod-active {
+    border-left: 5px solid var(--pink-hot) !important;
+}
+
+/* Cell when focused */
+.jp-Notebook.jp-mod-commandMode .jp-Cell.jp-mod-active:focus-visible {
+    box-shadow: 0 0 0 2px var(--pink-medium) !important;
+}
+
+/* ============================================
+   CELL COLLAPSERS & PROMPTS
+   ============================================ */
+
+/* Input collapser button */
+.jp-Collapser {
+    background: var(--pink-hot) !important;
+}
+
+/* Input prompt (In [x]:) */
+.jp-InputPrompt {
+    color: var(--pink-deep) !important;
+}
+
+/* Output prompt (Out[x]:) */
+.jp-OutputPrompt {
+    color: var(--pink-deep) !important;
+}
+
+/* Collapsed heading button */
+.jp-collapseHeadingButton {
+    color: var(--pink-hot) !important;
+}
+
+/* Override collapse icons with pink versions */
+.jp-collapseHeadingButton.jp-mod-collapsed {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' viewBox='0 0 18 18'%3e %3cpath fill='%23ff69b4' d='M7.5 5.2 11.2 9l-3.8 3.8V5.2z' class='jp-icon3' shape-rendering='geometricPrecision'/%3e %3c/svg%3e") !important;
+}
+
+.jp-collapseHeadingButton:not(.jp-mod-collapsed) {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' viewBox='0 0 18 18'%3e %3cpath fill='%23ff69b4' d='M5.2 7.5 9 11.2l3.8-3.8H5.2z' class='jp-icon3' shape-rendering='geometricPrecision'/%3e %3c/svg%3e") !important;
+}
+
+/* ============================================
+   DATAFRAMES & TABLES
+   ============================================ */
+
+/* DataFrame container */
+.jp-RenderedHTMLCommon table.dataframe {
+    background: var(--dark-plum) !important;
+}
+
+/* Odd rows */
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd) {
+    background: var(--dark-plum) !important;
+}
+
+/* Even rows */
+.jp-RenderedHTMLCommon tbody tr:nth-child(even) {
+    background: var(--dark-mauve) !important;
+}
+
+/* Table headers */
+.jp-RenderedHTMLCommon thead th {
+    color: var(--pink-hot) !important;
+    background: var(--dark-plum) !important;
+}
+
+/* Table cells */
+.jp-RenderedHTMLCommon td {
+    color: var(--pink-medium) !important;
+}
+
+/* DataFrame index column */
+.jp-RenderedHTMLCommon tbody th {
+    color: var(--pink-hot) !important;
+}
+
+/* ============================================
+   SCROLLBARS (Optional)
+   ============================================ */
+
+/* Customize scrollbars to match theme */
+.jp-OutputArea-output::-webkit-scrollbar,
+.jp-Cell-inputArea::-webkit-scrollbar {
+    width: 10px;
+}
+
+.jp-OutputArea-output::-webkit-scrollbar-track,
+.jp-Cell-inputArea::-webkit-scrollbar-track {
+    background: var(--dark-plum);
+}
+
+.jp-OutputArea-output::-webkit-scrollbar-thumb,
+.jp-Cell-inputArea::-webkit-scrollbar-thumb {
+    background: var(--pink-medium);
+    border-radius: 5px;
+}
+
+.jp-OutputArea-output::-webkit-scrollbar-thumb:hover,
+.jp-Cell-inputArea::-webkit-scrollbar-thumb:hover {
+    background: var(--pink-hot);
+}
+
+/* ============================================
+   BUTTONS & UI ELEMENTS
+   ============================================ */
+
+/* General buttons */
+.jp-Button {
+    color: var(--pink-hot) !important;
+}
+
+/* Toolbar buttons when active */
+.jp-Toolbar-item.jp-mod-active {
+    background: var(--pink-soft) !important;
+}
+
+/* ============================================
+   CURSOR & SELECTION - CodeMirror 6
+   ============================================ */
+
+/* Editor cursor - CodeMirror 6 draws cursor as border */
+.cm-editor .cm-cursor,
+.cm-editor.cm-focused .cm-cursor {
+    border-left-color: var(--pink-hot) !important;
+    border-left-width: 2px !important;
+}
+
+/* Alternative: thicker cursor for better visibility */
+.cm-editor .cm-cursor-primary {
+    border-left-color: var(--pink-hot) !important;
+    border-left-width: 2px !important;
+}
+
+/* Selection background - proper selector for CodeMirror 6 */
+.cm-editor.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground {
+    background: var(--pink-soft) !important;
+}
+
+.cm-selectionBackground {
+    background: var(--pink-soft) !important;
+}
+
+/* Active line background - subtle pink tint */
+.cm-activeLine {
+    background: rgba(255, 182, 193, 0.1) !important;
+}
+
+/* Line numbers */
+.cm-lineNumbers {
+    color: var(--pink-medium) !important;
+}
+
+/* Active line number - highlighted */
+.cm-activeLineGutter {
+    background: rgba(255, 182, 193, 0.15) !important;
+    color: var(--pink-hot) !important;
+    font-weight: bold !important;
+}
+
+/* ============================================
+   MENU BAR & TOP PANEL
+   ============================================ */
+
+/* Menu bar items */
+.jp-MenuBar-item {
+    color: var(--pink-hot) !important;
+}
+
+/* Menu bar item when hovered */
+.jp-MenuBar-item:hover {
+    background: var(--pink-soft) !important;
+}
+
+/* ============================================
+   STATUS BAR
+   ============================================ */
+
+/* Status bar at bottom */
+.jp-StatusBar-item {
+    color: var(--pink-hot) !important;
+}

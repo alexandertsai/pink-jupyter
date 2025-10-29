@@ -127,7 +127,7 @@ def install_theme():
             print("Invalid choice. Please enter 1 or 2.")
     
     # Use the selected theme file
-    theme_file = script_dir / "theme" / f"notebook{theme_mode}.css"
+    theme_file = script_dir / "theme" / f"notebook{theme_mode}.css" # CHANGE THIS LINE TO LAB
     
     if not theme_file.exists():
         print(f"Error: Theme file not found at {theme_file}")

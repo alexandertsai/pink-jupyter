@@ -36,9 +36,15 @@ Once installed, the following is configured:
 
 Try the demo notebook <span style="color: #C71585;">`demo.ipynb`</span> to see all the theme features!
 
-### <span style="color: #FF69B4;">Troubleshooting</span>
+### <span style="color: #FF69B4;">Troubleshooting and Notes</span>
 
 **WINDOWS USERS!!** there is a chance this theme may not display properly for you. If so, I advise running Jupyter from WSL instead (I'm sorry...)
+
+I have also recently added support for Jupyter Lab (only pink dark theme). To adjust this, go under `install_theme.py` and adjust this line:
+```python
+theme_file = script_dir / "theme" / f"notebook{theme_mode}.css" # change "notebook" to lab".
+```
+When running jupyter lab, specify use `jupyter lab --custom-css`.
 ### <span style="color: #FF69B4;">Customization</span>
 
 You can customize the theme by editing the <span style="color: #C71585;">`css`</span> files. Some easy modifications:
