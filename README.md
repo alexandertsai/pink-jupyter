@@ -1,76 +1,149 @@
-## <span style="color: #FF69B4;">🌸 Pink Jupyter Theme 🌸</span>
+# 🌸 Pink Jupyter
 
-Data science just became <span style="color: #FF69B4;"> ✨ pink ✨</span>. I promise you won't regret installing this!
+> Data science, but pink. A cohesive light-pink theme for **JupyterLab** — card-style cells, polished `polars` & `pandas` tables, a matching `matplotlib` palette, and a dark-plum status bar with monospace text.
 
-### <span style="color: #FF69B4;">Preview!</span>
-![preview image](/preview_images/preview1.png)
+![overview](preview_images/01-overview.png)
 
-![preview image](/preview_images/preview2.png)
+---
 
-![preview image](/preview_images/preview3.png)
-## <span style="color: #FF69B4;">🎀 Installation 🎀</span>
+## What you get
 
+- **Card-style cells** with a pink gradient header (play-dot + cell label + run-timer pill).
+- **Markdown cards** with deep-plum headings and pink-pill inline code.
+- **Polars & pandas tables** styled the same way: burgundy column header, italic dtype row, subtle column/row separators, alternating row tint.
+- **Matplotlib palette** that blends with the cell output card (no white rectangle around your plots) — and a pink → burgundy → plum color cycle.
+- **Sidebar** redesigned around a `WORKSPACE` label, pink-pill selected file, and pink folder/notebook icons.
+- **Status bar** in dark plum with hot-pink monospace text and `·` separators between items.
+- **Cell-execute-time** label hoisted into the cell header as a pink pill (works with the [`jupyterlab-execute-time`](https://github.com/deshaw/jupyterlab-execute-time) extension).
 
-1. **Clone this repository:**
+| Polars table | Cohort plot | Regression |
+|---|---|---|
+| ![polars](preview_images/02-polars-table.png) | ![cohort](preview_images/03-cohort-plot.png) | ![regression](preview_images/04-regression-plot.png) |
+
+---
+
+## Install
+
 ```bash
 git clone https://github.com/alexandertsai/pink-jupyter.git
 cd pink-jupyter
+python install_theme.py            # interactive — pick a theme
 ```
 
-2. **Install the theme:**
+Or non-interactively:
 
 ```bash
-python install_theme.py
-# input 1 or 2 depending on if your Jupyter is light or dark theme
-jupyter notebook
+python install_theme.py --theme lab-light --yes
 ```
 
-The <span style="color: #FF1493;">pink</span> theme will be applied automatically!
+Then start JupyterLab with custom CSS enabled:
 
-
-Once installed, the following is configured:
-
-- **Pink notebook interface** - Beautiful pink styling throughout
-- **Pink matplotlib plots** - Automatic pink color palette for all plots
-- **SVG figure format** - Makes plot crystal clear
-
-Try the demo notebook <span style="color: #C71585;">`demo.ipynb`</span> to see all the theme features!
-
-### <span style="color: #FF69B4;">Troubleshooting and Notes</span>
-
-**WINDOWS USERS!!** there is a chance this theme may not display properly for you. If so, I advise running Jupyter from WSL instead (I'm sorry...)
-
-I have also recently added support for Jupyter Lab (only pink dark theme). To adjust this, go under `install_theme.py` and adjust this line:
-```python
-theme_file = script_dir / "theme" / f"notebook{theme_mode}.css" # change "notebook" to lab".
+```bash
+jupyter lab --custom-css
 ```
-When running jupyter lab, specify `jupyter lab --custom-css`. The version I run this on is 4.4.4.
-### <span style="color: #FF69B4;">Customization</span>
 
-You can customize the theme by editing the <span style="color: #C71585;">`css`</span> files. Some easy modifications:
+> Tip: alias it. Add `alias jupyter='jupyter lab --custom-css'` to your shell rc.
 
-- <span style="color: #FF1493;">Change pink shades</span> by updating the color hex codes
-- <span style="color: #FF1493;">Adjust font sizes</span> in the `.CodeMirror` class  
-- <span style="color: #FF1493;">Modify cell padding</span> in the `div.cell` class
+The installer drops three files (and backs up anything it overwrites):
 
-### <span style="color: #FF69B4;">Uninstallation</span>
+| File | Purpose |
+|---|---|
+| `~/.jupyter/custom/custom.css`   | The Jupyter theme |
+| `~/.matplotlib/matplotlibrc`     | Matplotlib defaults that match the theme |
+| `~/.ipython/profile_default/startup/00-inline-svg.py` | SVG inline backend so plots are crisp |
 
-Please don't! But if you must...
+### Available themes
+
+```bash
+$ python install_theme.py list
+
+  1. Pink Light · Jupyter Lab           (recommended)
+  2. Pink Dark  · Jupyter Lab
+  3. Sage Blue Dark · Jupyter Lab
+  4. Pink Light · Classic Notebook
+  5. Pink Dark  · Classic Notebook
+```
+
+CLI flags:
+
+```
+--theme {lab-light,lab-dark,lab-sage,nb-light,nb-dark}   pick non-interactively
+--yes / -y                                                overwrite without asking
+--no-mpl                                                  skip matplotlibrc
+--no-svg                                                  skip IPython SVG backend
+```
+
+---
+
+## Demo
+
+Open [`demo.ipynb`](demo.ipynb) and run all cells. You'll see:
+
+1. A markdown card with inline-code pills.
+2. A `polars` DataFrame with the column header, dtype row, and pink alternating rows.
+3. Two matplotlib plots (cohort retention & a regression scatter) using the pink palette.
+
+---
+
+## Customize
+
+The CSS is built around a single block of design tokens at the top of `theme/lablight.css`:
+
+```css
+:root {
+  --pp-cream:        #fff5fa;   /* page bg */
+  --pp-card:         #fef1f6;   /* cell card bg */
+  --pp-pill:         #f9d4e3;   /* inline-code, pill chips */
+  --pp-pink:         #d63384;   /* primary pink */
+  --pp-pink-deep:    #b32568;   /* keywords, strings, numbers */
+  --pp-pink-hot:     #e84298;   /* status-bar text */
+  --pp-burgundy:     #7a1f4a;   /* operators, fit lines */
+  --pp-plum-mid:     #5e1a3e;   /* H1 / titles */
+  --pp-plum:         #3d0f2a;   /* status-bar bg */
+  --pp-text:         #4a1735;
+  --pp-text-mute:    #8a4365;
+  --pp-text-faint:   #c08aa3;
+}
+```
+
+Change the hex codes once and the whole theme — page, cards, syntax highlighting, sidebar, status bar — re-tints together. The matplotlib `pinklight.mplstyle` mirrors the same palette, so updating both keeps plots in sync.
+
+The font stack is `Inter` (sans) + `JetBrains Mono` (code). Override `--pp-sans` / `--pp-mono` if you have a different preference.
+
+---
+
+## Tested with
+
+| | Version |
+|---|---|
+| JupyterLab        | 4.4 |
+| polars            | 1.40 |
+| pandas            | 2.x |
+| matplotlib        | 3.x |
+| Browser           | Chrome, Safari (CSS uses `:has()` — Chrome 105+/Safari 15.4+) |
+
+---
+
+## Uninstall
 
 ```bash
 python install_theme.py uninstall
 ```
 
-### <span style="color: #FF69B4;">💞 Contributing 💞</span>
-
-Feel free to submit issues or pull requests if you have suggestions for improvements!
-
-### <span style="color: #FF69B4;">License</span>
-
-This theme is released under the MIT License. Feel free to use and modify as needed.
+This restores any `*.backup` files the installer made; if there were no backups, it just removes the files it added.
 
 ---
-<br>
-<div align="center">
-  <span style="color: #FF69B4; font-size: 18px;">Made with 💕 for the Jupyter community (and Allison)</span>
-</div>
+
+## Notes
+
+- **Windows**: native paths work, but if you hit rendering glitches, run JupyterLab from WSL.
+- **Classic Notebook**: the `nb-light` / `nb-dark` themes are kept for `nbclassic` / older Jupyter Notebook installs. New designs target JupyterLab.
+- **Cell run-timer**: the timer pill expects the [`jupyterlab-execute-time`](https://github.com/deshaw/jupyterlab-execute-time) extension. Without it the static `⇧ ⏎ to run` hint shows instead.
+
+---
+
+## License
+
+MIT. Use it, fork it, paint your own data science pink.
+
+<sub>Made with 💕 for the Jupyter community (and Allison).</sub>

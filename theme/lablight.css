@@ -1,0 +1,665 @@
+/* ── Pink prototype theme for JupyterLab ──────────────────────────────────
+   Matches the "Q2 Customer Cohort Analysis" mockup: cream-pink page,
+   card-style cells with header bar (play dot + cell label + status),
+   inline-code pill badges, and a plum/pink DataFrame.
+*/
+
+:root {
+  --pp-cream:        #fff5fa;
+  --pp-cream-deep:   #fbe8f0;
+  --pp-card:         #fef1f6;
+  --pp-card-border:  rgba(157, 38, 91, 0.14);
+  --pp-card-shadow:  rgba(157, 38, 91, 0.06);
+  --pp-pill:         #f9d4e3;
+  --pp-pill-strong:  #f1aac8;
+  --pp-text:         #4a1735;
+  --pp-text-mute:    #8a4365;
+  --pp-text-faint:   #c08aa3;
+  --pp-pink:         #d63384;
+  --pp-pink-deep:    #b32568;
+  --pp-pink-hot:     #e84298;
+  --pp-plum:         #3d0f2a;
+  --pp-plum-mid:     #5e1a3e;
+  --pp-burgundy:     #7a1f4a;
+  --pp-mono: 'JetBrains Mono', 'SF Mono', ui-monospace, Menlo, monospace;
+  --pp-sans: 'Inter', -apple-system, system-ui, 'Helvetica Neue', sans-serif;
+}
+
+/* ── Page chrome ─────────────────────────────────────────────────────── */
+
+.jp-LabShell,
+#main-panel,
+.jp-NotebookPanel,
+.jp-Notebook,
+.jp-WindowedPanel,
+.jp-WindowedPanel-outer,
+.jp-WindowedPanel-inner {
+  background: var(--pp-cream) !important;
+}
+
+.jp-Notebook { padding-top: 12px; }
+
+.jp-NotebookPanel-toolbar,
+.jp-NotebookPanel-toolbar.jp-Toolbar,
+.jp-Toolbar {
+  background: var(--pp-cream) !important;
+  border-bottom: 1px solid var(--pp-card-border) !important;
+}
+
+/* File browser */
+.jp-DirListing-item.jp-mod-selected {
+  background: var(--pp-pill) !important;
+  color: var(--pp-text) !important;
+}
+.jp-BreadCrumbs-item { color: var(--pp-pink-deep) !important; }
+.jp-icon3 { fill: var(--pp-pink-deep) !important; }
+.jp-notebook-icon-color[fill] { fill: var(--pp-pink-deep) !important; }
+
+/* ── Cell shells ─────────────────────────────────────────────────────── */
+
+.jp-Cell {
+  background: transparent !important;
+  padding: 8px 14px !important;
+}
+
+.jp-Cell-inputWrapper,
+.jp-Cell-outputWrapper {
+  background: transparent !important;
+}
+
+/* Hide the colored side-stripe collapsers */
+.jp-Collapser {
+  background: transparent !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  flex: 0 0 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.jp-Collapser-child { display: none !important; }
+
+/* Prompts on the left ("[1]:") — sit OUTSIDE the card */
+.jp-InputArea-prompt,
+.jp-OutputArea-prompt {
+  color: var(--pp-text-faint) !important;
+  font-family: var(--pp-mono) !important;
+  font-size: 11.5px !important;
+  font-weight: 400 !important;
+  padding-top: 18px !important;
+  min-width: 56px !important;
+  width: 56px !important;
+  flex: 0 0 56px !important;
+  text-align: right !important;
+  padding-right: 14px !important;
+  background: transparent !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* InputArea is the flex row holding [prompt | editor] */
+.jp-CodeCell .jp-InputArea {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+/* Editor itself = the card */
+.jp-CodeCell .jp-InputArea-editor {
+  background: var(--pp-card) !important;
+  border: 1px solid var(--pp-card-border) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 3px var(--pp-card-shadow) !important;
+  position: relative !important;
+  padding: 0 !important;
+}
+
+/* Reserve space for the faux header bar */
+.jp-CodeCell .jp-InputArea-editor .cm-editor {
+  padding: 12px 14px 14px !important;
+  margin-top: 44px !important;
+}
+
+/* Faux header bar: gradient + dot + label */
+.jp-CodeCell .jp-InputArea-editor::before {
+  content: 'python';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px 0 46px;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'><circle cx='10' cy='10' r='9' fill='%23d63384'/><path d='M8.2 6.4 L13.6 10 L8.2 13.6 Z' fill='white'/></svg>") no-repeat 16px 50% / 20px 20px,
+    linear-gradient(180deg, rgba(247, 199, 220, 0.55), rgba(247, 199, 220, 0.18));
+  border-bottom: 1px solid var(--pp-card-border);
+  font-family: var(--pp-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--pp-text);
+  letter-spacing: 0.01em;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Right-aligned static hint (shown when there's no real run-timer yet) */
+.jp-CodeCell .jp-InputArea-editor::after {
+  content: '⇧ ⏎ to run';
+  position: absolute;
+  top: 0;
+  right: 16px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  font-family: var(--pp-mono);
+  font-size: 12px;
+  color: var(--pp-text-faint);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Cell-execute-time extension's "Last executed at … in 174ms" label.
+   Pull it out of the editor body and into the header bar (top right),
+   styled as a small pink pill. */
+.jp-CodeCell .jp-InputArea-editor .execute-time {
+  position: absolute !important;
+  top: 0;
+  right: 14px;
+  height: 44px;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--pp-mono) !important;
+  font-size: 11.5px !important;
+  color: var(--pp-pink-deep) !important;
+  background: transparent !important;
+  border: 0 !important;
+  z-index: 3;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.jp-CodeCell .jp-InputArea-editor .execute-time > span {
+  display: inline-flex;
+  align-items: center;
+  background: var(--pp-pill);
+  color: var(--pp-plum-mid);
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+.jp-CodeCell .jp-InputArea-editor .execute-time > span:empty { display: none; }
+.jp-CodeCell .jp-InputArea-editor .execute-time + * { display: none; }
+/* Hide the static "to run" placeholder once a real run-timer is present */
+.jp-CodeCell .jp-InputArea-editor:has(.execute-time:not(:empty))::after {
+  display: none;
+}
+
+/* ── Markdown cells ──────────────────────────────────────────────────── */
+
+.jp-MarkdownCell .jp-InputArea {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.jp-MarkdownCell .jp-InputArea-prompt { display: none !important; }
+
+.jp-MarkdownCell .jp-RenderedMarkdown {
+  padding: 22px 28px !important;
+  background: var(--pp-card) !important;
+  border: 1px solid var(--pp-card-border) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 1px 3px var(--pp-card-shadow) !important;
+  color: var(--pp-text) !important;
+  font-family: var(--pp-sans) !important;
+  font-size: 15.5px !important;
+  line-height: 1.55 !important;
+  margin-left: 56px !important;
+}
+
+/* Markdown typography */
+.jp-RenderedMarkdown h1,
+.jp-RenderedMarkdown h2,
+.jp-RenderedMarkdown h3,
+.jp-RenderedMarkdown h4,
+.jp-RenderedMarkdown h5,
+.jp-RenderedMarkdown h6 {
+  color: var(--pp-plum-mid) !important;
+  font-family: var(--pp-sans) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  margin-top: 0 !important;
+}
+.jp-RenderedMarkdown h1 { font-size: 30px !important; line-height: 1.2 !important; margin-bottom: 14px !important; }
+.jp-RenderedMarkdown h2 { font-size: 22px !important; }
+.jp-RenderedMarkdown h3 { font-size: 18px !important; }
+
+.jp-RenderedMarkdown p,
+.jp-RenderedMarkdown li {
+  color: var(--pp-text) !important;
+  font-family: var(--pp-sans) !important;
+}
+.jp-RenderedMarkdown a { color: var(--pp-pink-deep) !important; }
+.jp-RenderedMarkdown .jp-InternalAnchorLink { display: none !important; }
+
+/* Inline code = pink pill */
+.jp-RenderedMarkdown code,
+.jp-RenderedMarkdown :not(pre) > code {
+  background: var(--pp-pill) !important;
+  color: var(--pp-plum-mid) !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  padding: 2px 8px !important;
+  font-family: var(--pp-mono) !important;
+  font-size: 0.86em !important;
+  font-weight: 500 !important;
+}
+
+/* ── CodeMirror ──────────────────────────────────────────────────────── */
+
+.cm-editor,
+.cm-content,
+.cm-scroller {
+  background: transparent !important;
+  font-family: var(--pp-mono) !important;
+  font-size: 13.5px !important;
+  line-height: 1.65 !important;
+  color: var(--pp-text) !important;
+}
+.cm-content { padding: 0 !important; }
+.cm-line { padding: 0 4px !important; }
+
+.cm-gutters {
+  background: transparent !important;
+  border: 0 !important;
+  color: var(--pp-text-faint) !important;
+}
+.cm-lineNumbers .cm-gutterElement {
+  color: var(--pp-text-faint) !important;
+  font-family: var(--pp-mono) !important;
+  padding: 0 12px 0 4px !important;
+  min-width: 22px;
+}
+.cm-activeLineGutter,
+.cm-activeLine { background: transparent !important; }
+
+/* Syntax */
+.ͼs   { color: var(--pp-pink-deep) !important; font-weight: 600 !important; }
+.ͼz   { color: var(--pp-text) !important; }
+.ͼ11  { color: var(--pp-text-faint) !important; font-style: italic !important; }
+.ͼ12  { color: var(--pp-pink-deep) !important; }
+.cm-builtin,
+.ͼ10  { color: var(--pp-burgundy) !important; }
+.ͼ14  { color: var(--pp-pink-deep) !important; }
+.ͼ19  { color: var(--pp-text-mute) !important; }
+.ͼ1d  { color: var(--pp-pink-deep) !important; font-weight: 600 !important; }
+.ͼu   { color: var(--pp-pink-deep) !important; }
+.ͼv   { color: var(--pp-pink-deep) !important; }
+.ͼr   { color: var(--pp-pink-deep) !important; }
+
+.cm-cursor { border-left-color: var(--pp-pink-deep) !important; }
+.cm-selectionBackground,
+::selection { background: var(--pp-pill) !important; }
+
+/* Active cell ring */
+.jp-Notebook.jp-mod-editMode .jp-Cell.jp-mod-active .jp-InputArea-editor {
+  border-color: var(--pp-pink) !important;
+  box-shadow: 0 0 0 3px rgba(214, 51, 132, 0.12), 0 1px 3px var(--pp-card-shadow) !important;
+}
+.jp-Notebook.jp-mod-commandMode .jp-Cell.jp-mod-active .jp-InputArea-editor {
+  border-color: var(--pp-pink) !important;
+  box-shadow: 0 0 0 2px rgba(214, 51, 132, 0.08), 0 1px 3px var(--pp-card-shadow) !important;
+}
+.jp-Notebook.jp-mod-commandMode .jp-Cell.jp-mod-active.jp-MarkdownCell .jp-RenderedMarkdown {
+  border-color: var(--pp-pink) !important;
+  box-shadow: 0 0 0 2px rgba(214, 51, 132, 0.08), 0 1px 3px var(--pp-card-shadow) !important;
+}
+
+/* ── Output area ─────────────────────────────────────────────────────── */
+
+.jp-Cell-outputWrapper { margin-top: -1px !important; }
+
+.jp-OutputArea-child { background: transparent !important; }
+
+.jp-OutputArea-output {
+  background: transparent !important;
+  color: var(--pp-text) !important;
+  padding: 0 !important;
+}
+
+.jp-OutputArea-executeResult .jp-OutputArea-prompt { display: none !important; }
+
+/* Glue input editor + output into one card */
+.jp-CodeCell:not(.jp-mod-noOutputs) .jp-InputArea-editor {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom: 0 !important;
+}
+.jp-CodeCell:not(.jp-mod-noOutputs) .jp-OutputArea-executeResult {
+  background: var(--pp-card) !important;
+  border-left: 1px solid var(--pp-card-border) !important;
+  border-right: 1px solid var(--pp-card-border) !important;
+  border-bottom: 1px solid var(--pp-card-border) !important;
+  border-top: 1px solid var(--pp-card-border) !important;
+  border-bottom-left-radius: 14px !important;
+  border-bottom-right-radius: 14px !important;
+  padding: 16px 18px 18px !important;
+  margin-left: 56px !important;
+  box-shadow: 0 1px 3px var(--pp-card-shadow) !important;
+}
+
+/* Plain text */
+.jp-RenderedText pre {
+  color: var(--pp-text) !important;
+  font-family: var(--pp-mono) !important;
+  background: transparent !important;
+}
+.ansi-red-fg   { color: #c5275a !important; }
+.ansi-green-fg { color: var(--pp-pink-deep) !important; }
+
+/* ── DataFrame (works for pandas + polars) ───────────────────────────── */
+
+/* Polars renders a "shape: (rows, cols)" small tag right above the table */
+.jp-RenderedHTMLCommon small {
+  display: inline-block;
+  font-family: var(--pp-mono) !important;
+  font-size: 11.5px !important;
+  color: var(--pp-text-mute) !important;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.jp-RenderedHTMLCommon table.dataframe {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border: 1px solid var(--pp-card-border) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  font-family: var(--pp-mono) !important;
+  font-size: 13px !important;
+  margin: 4px 0 !important;
+  background: #fff !important;
+  width: auto !important;
+  max-width: 100% !important;
+}
+
+/* Column-name row (thead > tr > th) — burgundy gradient header */
+.jp-RenderedHTMLCommon table.dataframe thead tr:first-child th {
+  background: linear-gradient(180deg, #c84088, #a52866) !important;
+  color: #fff !important;
+  font-family: var(--pp-mono) !important;
+  font-weight: 700 !important;
+  text-align: left !important;
+  padding: 12px 18px !important;
+  border: 0 !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+  font-size: 13px !important;
+  letter-spacing: 0.01em !important;
+  vertical-align: middle !important;
+  white-space: pre-wrap !important;
+}
+.jp-RenderedHTMLCommon table.dataframe thead tr:first-child th:last-child {
+  border-right: 0 !important;
+}
+
+/* Pandas: an empty <th></th> at the start of thead is the index-col header.
+   Make it the dark-plum "#" cell. (Polars has no such cell, so it's a no-op.) */
+.jp-RenderedHTMLCommon table.dataframe thead tr:first-child th:first-child:empty {
+  background: linear-gradient(180deg, #4a0f2e, #2d0820) !important;
+  color: var(--pp-pink-hot) !important;
+  text-align: center !important;
+  min-width: 56px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+}
+.jp-RenderedHTMLCommon table.dataframe thead tr:first-child th:first-child:empty::after {
+  content: '#';
+}
+
+/* Polars dtype row (thead > second tr with <td>str</td><td>i64</td>…) */
+.jp-RenderedHTMLCommon table.dataframe thead tr + tr td {
+  background: #fbe7f0 !important;
+  color: var(--pp-pink-deep) !important;
+  font-family: var(--pp-mono) !important;
+  font-style: italic !important;
+  font-size: 11.5px !important;
+  font-weight: 500 !important;
+  text-align: left !important;
+  padding: 6px 18px !important;
+  border: 0 !important;
+  border-right: 1px dashed rgba(199, 21, 133, 0.18) !important;
+  border-bottom: 1px solid rgba(199, 21, 133, 0.12) !important;
+}
+.jp-RenderedHTMLCommon table.dataframe thead tr + tr td:last-child {
+  border-right: 0 !important;
+}
+
+/* Body rows */
+.jp-RenderedHTMLCommon table.dataframe tbody tr { background: #fff !important; }
+.jp-RenderedHTMLCommon table.dataframe tbody tr:nth-child(even) { background: #fdf3f8 !important; }
+.jp-RenderedHTMLCommon table.dataframe tbody tr:hover { background: var(--pp-pill) !important; }
+
+.jp-RenderedHTMLCommon table.dataframe tbody td,
+.jp-RenderedHTMLCommon table.dataframe tbody th {
+  color: var(--pp-text) !important;
+  border: 0 !important;
+  border-right: 1px solid rgba(199, 21, 133, 0.08) !important;
+  border-bottom: 1px solid rgba(199, 21, 133, 0.07) !important;
+  padding: 10px 18px !important;
+  font-family: var(--pp-mono) !important;
+  font-size: 13px !important;
+  vertical-align: middle !important;
+  text-align: left !important;
+}
+.jp-RenderedHTMLCommon table.dataframe tbody td:last-child,
+.jp-RenderedHTMLCommon table.dataframe tbody th:last-child {
+  border-right: 0 !important;
+}
+.jp-RenderedHTMLCommon table.dataframe tbody tr:last-child td,
+.jp-RenderedHTMLCommon table.dataframe tbody tr:last-child th {
+  border-bottom: 0 !important;
+}
+
+/* Pandas index column (tbody > th) — dark-plum-tinted "#" column */
+.jp-RenderedHTMLCommon table.dataframe tbody th {
+  background: var(--pp-card) !important;
+  color: var(--pp-text-mute) !important;
+  font-weight: 500 !important;
+  text-align: center !important;
+  border-right: 1px solid var(--pp-card-border) !important;
+}
+
+/* ── Cell toolbars (hide) ────────────────────────────────────────────── */
+
+.jp-cell-toolbar { display: none !important; }
+.jp-CellHeader { min-height: 0 !important; }
+
+.jp-Toolbar-item button,
+.jp-ToolbarButtonComponent { color: var(--pp-text-mute) !important; }
+.jp-Toolbar-item button:hover { background: var(--pp-pill) !important; }
+
+/* Recolor any remaining default-grey JupyterLab icons in left/right rails */
+.jp-SideBar .jp-icon3,
+.jp-SideBar .jp-icon2,
+#jp-left-stack .jp-icon3,
+#jp-left-stack .jp-icon2,
+.jp-FileBrowser .jp-icon3,
+.jp-FileBrowser .jp-icon2 {
+  fill: var(--pp-pink-deep) !important;
+}
+
+/* ── Sidebar (file browser) ──────────────────────────────────────────── */
+
+.jp-SideBar,
+#jp-left-stack,
+#jp-right-stack,
+.jp-FileBrowser,
+.jp-SidePanel {
+  background: var(--pp-cream) !important;
+  color: var(--pp-text) !important;
+  border-right: 1px solid var(--pp-card-border) !important;
+}
+
+/* Sidebar rail tabs (the icons on the very left edge) */
+.jp-SideBar.jp-mod-left {
+  background: var(--pp-cream-deep) !important;
+  border-right: 1px solid var(--pp-card-border) !important;
+}
+.jp-SideBar .lm-TabBar-tab {
+  background: transparent !important;
+  border: 0 !important;
+}
+.jp-SideBar .lm-TabBar-tab.lm-mod-current {
+  background: var(--pp-pill) !important;
+  border-radius: 6px !important;
+  margin: 2px 4px !important;
+}
+
+/* File-browser toolbar (top of left panel) */
+.jp-FileBrowser-toolbar.jp-Toolbar,
+.jp-SidePanel-toolbar {
+  background: var(--pp-cream) !important;
+  border-bottom: 1px solid var(--pp-card-border) !important;
+  min-height: 28px !important;
+}
+
+/* Breadcrumbs */
+.jp-FileBrowser .jp-BreadCrumbs {
+  padding: 8px 14px !important;
+  background: transparent !important;
+  border-bottom: 1px solid var(--pp-card-border) !important;
+}
+.jp-BreadCrumbs-item,
+.jp-BreadCrumbs-home {
+  color: var(--pp-pink-deep) !important;
+}
+.jp-BreadCrumbs-item:hover { color: var(--pp-pink) !important; }
+
+/* "WORKSPACE" header label — added via ::before on the file listing */
+.jp-FileBrowser .jp-DirListing::before {
+  content: 'WORKSPACE';
+  display: block;
+  padding: 14px 14px 8px;
+  font-family: var(--pp-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--pp-pink-deep);
+  text-transform: uppercase;
+}
+
+/* Hide the "Name / Modified" header row — we want a clean tree look */
+.jp-DirListing-header { display: none !important; }
+
+.jp-DirListing,
+.jp-DirListing-content {
+  background: transparent !important;
+  font-family: var(--pp-sans) !important;
+}
+
+.jp-DirListing-item {
+  padding: 6px 14px !important;
+  margin: 1px 8px !important;
+  border-radius: 8px !important;
+  color: var(--pp-text) !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  border-left: 3px solid transparent !important;
+}
+.jp-DirListing-item:hover {
+  background: rgba(214, 51, 132, 0.06) !important;
+}
+.jp-DirListing-item.jp-mod-selected {
+  background: var(--pp-pill) !important;
+  color: var(--pp-pink-deep) !important;
+  font-weight: 600 !important;
+  border-left: 3px solid var(--pp-pink) !important;
+  border-radius: 0 8px 8px 0 !important;
+  margin-left: 0 !important;
+  padding-left: 11px !important;
+}
+.jp-DirListing-item.jp-mod-selected .jp-DirListing-itemText { color: var(--pp-pink-deep) !important; }
+.jp-DirListing-item.jp-mod-selected .jp-DirListing-itemModified { color: var(--pp-pink) !important; }
+
+.jp-DirListing-itemText { color: var(--pp-text) !important; }
+
+/* Hide the modified column for a cleaner tree look */
+.jp-DirListing-itemModified { display: none !important; }
+.jp-DirListing-item .jp-DirListing-itemName {
+  width: auto !important;
+  flex: 1 1 auto !important;
+}
+
+/* File icons all become pink */
+.jp-DirListing-itemIcon svg path,
+.jp-DirListing-itemIcon svg g {
+  fill: var(--pp-pink-deep) !important;
+}
+
+/* Folder caret arrows */
+.jp-DirListing-folderIcon { color: var(--pp-pink) !important; }
+
+/* Side dock tab bar */
+.lm-DockPanel-tabBar .lm-TabBar-tab {
+  background: var(--pp-cream-deep) !important;
+  border-color: var(--pp-card-border) !important;
+  color: var(--pp-text-mute) !important;
+}
+.lm-DockPanel-tabBar .lm-TabBar-tab.lm-mod-current {
+  background: var(--pp-cream) !important;
+  color: var(--pp-text) !important;
+  border-bottom-color: var(--pp-cream) !important;
+}
+
+/* ── Status bar (the dark plum strip at the bottom) ─────────────────── */
+
+#jp-main-statusbar {
+  background: var(--pp-plum) !important;
+  color: var(--pp-pink-hot) !important;
+  border-top: 0 !important;
+  height: 26px !important;
+  font-family: var(--pp-mono) !important;
+  font-size: 11.5px !important;
+  letter-spacing: 0.01em !important;
+  padding: 0 14px !important;
+}
+#jp-main-statusbar * {
+  background: transparent !important;
+  color: var(--pp-pink-hot) !important;
+  font-family: var(--pp-mono) !important;
+  font-size: 11.5px !important;
+}
+#jp-main-statusbar .jp-StatusBar-Item {
+  border: 0 !important;
+  padding: 0 10px !important;
+  position: relative;
+}
+/* Bullet separator between status bar items */
+#jp-main-statusbar .jp-StatusBar-Item + .jp-StatusBar-Item::before {
+  content: '·';
+  position: absolute;
+  left: -2px;
+  color: rgba(232, 66, 152, 0.4);
+}
+#jp-main-statusbar svg path { fill: var(--pp-pink-hot) !important; }
+
+/* The "Simple" toggle on the left of the status bar */
+#jp-main-statusbar .jp-switch,
+#jp-main-statusbar .jp-switch-label {
+  color: var(--pp-pink-hot) !important;
+}
+#jp-main-statusbar .jp-switch-track {
+  background: rgba(232, 66, 152, 0.25) !important;
+  border-color: var(--pp-pink-hot) !important;
+}
+#jp-main-statusbar .jp-switch[aria-checked="true"] .jp-switch-track {
+  background: var(--pp-pink-hot) !important;
+}
+
+/* Heading collapse caret */
+.jp-collapseHeadingButton {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' viewBox='0 0 18 18'%3e%3cpath fill='%23d63384' d='M5.2 7.5 9 11.2l3.8-3.8H5.2z'/%3e%3c/svg%3e") !important;
+}
+.jp-collapseHeadingButton.jp-mod-collapsed {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' viewBox='0 0 18 18'%3e%3cpath fill='%23d63384' d='M7.5 5.2 11.2 9l-3.8 3.8V5.2z'/%3e%3c/svg%3e") !important;
+}

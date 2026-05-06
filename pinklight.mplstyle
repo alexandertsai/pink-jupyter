@@ -1,31 +1,82 @@
-# Pink Jupyter Theme - Matplotlib Style
-# Matches the pink color palette used in the Jupyter theme
+# Pink Jupyter theme — matplotlib defaults
+# Designed to blend into the cell output card (~/.jupyter/custom/custom.css).
+# Color tokens mirror the CSS:
+#   --pp-card       fef1f6   (cell output card bg)
+#   --pp-pill       f9d4e3
+#   --pp-pink       d63384
+#   --pp-pink-deep  b32568
+#   --pp-pink-hot   e84298
+#   --pp-burgundy   7a1f4a
+#   --pp-plum-mid   5e1a3e
+#   --pp-text       4a1735
+#   --pp-text-mute  8a4365
 
-# Color cycle - these colors will be used automatically for plot lines
-axes.prop_cycle : cycler('color', ['FF69B4', 'C71585', 'FF1493', 'FFB6C1', 'DB7093', '8B1538', 'FF6347', 'BC8F8F'])
+# ─── Figure / axes background ────────────────────────────────────────────
+# Match the pink card the figure renders inside, so there's no white box.
+figure.facecolor       : fef1f6
+figure.edgecolor       : fef1f6
+savefig.facecolor      : fef1f6
+savefig.edgecolor      : fef1f6
+savefig.transparent    : False
+axes.facecolor         : ffffff
 
-# Grid styling to match theme
-axes.grid       : True
-grid.color      : FFB6C1
-grid.alpha      : 0.3
-grid.linewidth  : 0.5
+# ─── Color cycle (pink theme palette) ────────────────────────────────────
+axes.prop_cycle : cycler('color', ['b32568', '7a1f4a', 'e84298', 'd63384', '5e1a3e', 'c5275a', 'f1aac8', '4a1735'])
 
-# Background colors
-figure.facecolor : white
-axes.facecolor   : white
+# ─── Text / labels / ticks ───────────────────────────────────────────────
+text.color           : 4a1735
+axes.labelcolor      : 5e1a3e
+axes.titlecolor      : 5e1a3e
+axes.titleweight     : bold
+axes.titlesize       : 13
+axes.labelsize       : 11
+xtick.color          : 8a4365
+ytick.color          : 8a4365
+xtick.labelcolor     : 8a4365
+ytick.labelcolor     : 8a4365
+xtick.labelsize      : 10
+ytick.labelsize      : 10
 
-# Text colors to match theme
-text.color       : 4B0082
-axes.labelcolor  : 4B0082
-xtick.color      : 4B0082
-ytick.color      : 4B0082
+# ─── Spines (axis frame) ─────────────────────────────────────────────────
+# Clean look: hide top/right, keep left/bottom in muted pink.
+axes.spines.top      : False
+axes.spines.right    : False
+axes.spines.left     : True
+axes.spines.bottom   : True
+axes.edgecolor       : c08aa3
+axes.linewidth       : 0.8
 
-# Spine (border) colors
-axes.edgecolor   : FFB6C1
-axes.linewidth   : 1
+# ─── Grid ────────────────────────────────────────────────────────────────
+axes.grid            : True
+axes.axisbelow       : True
+grid.color           : d63384
+grid.alpha           : 0.12
+grid.linewidth       : 0.6
+grid.linestyle       : -
 
-# Legend styling
+# ─── Legend ──────────────────────────────────────────────────────────────
 legend.frameon       : True
-legend.facecolor     : white
-legend.edgecolor     : FFB6C1
-legend.framealpha    : 0.8
+legend.facecolor     : ffffff
+legend.edgecolor     : f1aac8
+legend.framealpha    : 0.92
+legend.fancybox      : True
+legend.borderpad     : 0.6
+legend.labelcolor    : 4a1735
+legend.fontsize      : 10
+
+# ─── Lines / markers ─────────────────────────────────────────────────────
+lines.linewidth      : 2.0
+lines.markersize     : 6
+lines.markeredgewidth: 0
+patch.edgecolor      : 5e1a3e
+patch.linewidth      : 0.8
+scatter.marker       : o
+
+# ─── Fonts ───────────────────────────────────────────────────────────────
+font.family          : sans-serif
+font.sans-serif      : Inter, -apple-system, system-ui, Helvetica Neue, Helvetica, Arial, DejaVu Sans
+font.size            : 10
+
+# ─── Figure layout ───────────────────────────────────────────────────────
+figure.dpi           : 100
+figure.autolayout    : True

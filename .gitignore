@@ -237,3 +237,6 @@ custom.css.backup
 
 # Jupyter YStore database
 .jupyter_ystore.db
+
+# Jupyter virtual documents (editor LSP cache)
+.virtual_documents/

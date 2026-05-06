@@ -1,0 +1,31 @@
+# Sage Blue Jupyter Theme - Matplotlib Style (Dark)
+# Dark theme version with dark backgrounds and peaceful blue palette
+
+# Color cycle - these colors will be used automatically for plot lines
+axes.prop_cycle : cycler('color', ['6B9BD1', '5582A8', '96BFE0', '6B7FA8', '7BA9C8', '3D5773', '5A7C99', '8FB3D0'])
+
+# Grid styling to match dark theme
+axes.grid       : True
+grid.color      : 96BFE0
+grid.alpha      : 0.2
+grid.linewidth  : 0.5
+
+# Dark background colors
+figure.facecolor : 1a1a1a
+axes.facecolor   : 2d2d2d
+
+# Text colors for dark theme
+text.color       : 96BFE0
+axes.labelcolor  : 96BFE0
+xtick.color      : 96BFE0
+ytick.color      : 96BFE0
+
+# Spine (border) colors
+axes.edgecolor   : 6B9BD1
+axes.linewidth   : 1
+
+# Legend styling for dark theme
+legend.frameon       : True
+legend.facecolor     : 2d2d2d
+legend.edgecolor     : 6B9BD1
+legend.framealpha    : 0.8

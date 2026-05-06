@@ -1,275 +1,275 @@
 #!/usr/bin/env python3
-"""
-Pink Jupyter Theme Installer
-Installs the pink theme for Jupyter Notebook
+"""Pink Jupyter Theme installer.
+
+Installs (or removes) a Jupyter custom CSS, a matplotlib rc file, and an
+IPython startup script that sets the inline backend to SVG.
+
+Examples
+--------
+
+Interactive (recommended):
+    python install_theme.py
+
+Non-interactive, install the recommended Lab Light theme:
+    python install_theme.py --theme lab-light --yes
+
+Uninstall everything:
+    python install_theme.py uninstall
 """
 
+from __future__ import annotations
+
+import argparse
+import os
+import platform
 import shutil
 import sys
-import platform
+import textwrap
+from dataclasses import dataclass
 from pathlib import Path
 
+REPO_DIR = Path(__file__).parent.resolve()
 
-def get_jupyter_config_dir():
-    """Get the Jupyter configuration directory."""
+
+# ─── Theme registry ─────────────────────────────────────────────────────────
+
+@dataclass
+class Theme:
+    key: str            # CLI key, e.g. 'lab-light'
+    label: str          # Human label
+    css: str            # CSS file under theme/
+    mplstyle: str       # mplstyle file at repo root
+    description: str    # One-line description
+
+THEMES: dict[str, Theme] = {
+    'lab-light':  Theme('lab-light',  'Pink Light · Jupyter Lab',
+                        'lablight.css',  'pinklight.mplstyle',
+                        'Cream-pink page, card-style cells, polars/pandas table polish'),
+    'lab-dark':   Theme('lab-dark',   'Pink Dark · Jupyter Lab',
+                        'labdark.css',   'pinkdark.mplstyle',
+                        'Dark-mode pink for JupyterLab'),
+    'lab-sage':   Theme('lab-sage',   'Sage Blue Dark · Jupyter Lab',
+                        'labsageblue.css', 'sageblue.mplstyle',
+                        'A blue-green twist on the Lab dark theme'),
+    'nb-light':   Theme('nb-light',   'Pink Light · Classic Notebook',
+                        'notebooklight.css', 'pinklight.mplstyle',
+                        'Classic Jupyter Notebook (legacy nbclassic)'),
+    'nb-dark':    Theme('nb-dark',    'Pink Dark · Classic Notebook',
+                        'notebookdark.css',  'pinkdark.mplstyle',
+                        'Classic Jupyter Notebook dark mode'),
+}
+
+DEFAULT_THEME = 'lab-light'
+
+
+# ─── Path helpers ───────────────────────────────────────────────────────────
+
+def jupyter_config_dir() -> Path:
+    """Resolve the Jupyter config directory (uses jupyter_core if available)."""
     try:
-        from jupyter_core.paths import jupyter_config_dir
-        return Path(jupyter_config_dir())
+        from jupyter_core.paths import jupyter_config_dir as _j
+        return Path(_j())
     except ImportError:
-        return Path.home() / ".jupyter"
+        return Path.home() / '.jupyter'
 
 
-def setup_matplotlib_config(script_dir, theme_mode):
-    """Setup matplotlib to use pink theme by default."""
-    # Follow matplotlib's recommended user config locations
-    if platform.system().lower() in ['linux', 'freebsd']:
-        # Unix/Linux: Check XDG_CONFIG_HOME first, then default to ~/.config
-        import os
-        xdg_config = os.environ.get('XDG_CONFIG_HOME')
-        if xdg_config:
-            config_dir = Path(xdg_config) / "matplotlib"
-        else:
-            config_dir = Path.home() / ".config" / "matplotlib"
+def matplotlib_config_dir() -> Path:
+    """User-level matplotlibrc directory, per platform conventions."""
+    if platform.system().lower() in ('linux', 'freebsd'):
+        xdg = os.environ.get('XDG_CONFIG_HOME')
+        return (Path(xdg) if xdg else Path.home() / '.config') / 'matplotlib'
+    return Path.home() / '.matplotlib'
+
+
+def ipython_startup_dir() -> Path:
+    return Path.home() / '.ipython' / 'profile_default' / 'startup'
+
+
+def _backup(path: Path) -> Path | None:
+    """Copy `path` to `path.backup`, return backup path, or None if no source."""
+    if not path.exists():
+        return None
+    backup = path.with_name(path.name + '.backup')
+    shutil.copy2(path, backup)
+    return backup
+
+
+# ─── Install steps ──────────────────────────────────────────────────────────
+
+def install_jupyter_css(theme: Theme) -> Path:
+    src = REPO_DIR / 'theme' / theme.css
+    if not src.exists():
+        raise FileNotFoundError(f'CSS not found: {src}')
+    dest_dir = jupyter_config_dir() / 'custom'
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    dest = dest_dir / 'custom.css'
+    if backup := _backup(dest):
+        print(f'  • backed up existing CSS → {backup.name}')
+    shutil.copy2(src, dest)
+    print(f'  ✓ Jupyter CSS → {dest}')
+    return dest
+
+
+def install_matplotlibrc(theme: Theme, *, yes: bool) -> Path | None:
+    src = REPO_DIR / theme.mplstyle
+    if not src.exists():
+        print(f'  · skipped matplotlibrc ({src.name} not found)')
+        return None
+    dest_dir = matplotlib_config_dir()
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    dest = dest_dir / 'matplotlibrc'
+    if dest.exists() and not yes:
+        ans = input(f'  matplotlibrc exists at {dest}. Overwrite? [y/N] ').strip().lower()
+        if ans not in ('y', 'yes'):
+            print('  · skipped matplotlibrc')
+            return None
+    if backup := _backup(dest):
+        print(f'  • backed up existing matplotlibrc → {backup.name}')
+    shutil.copy2(src, dest)
+    print(f'  ✓ matplotlibrc → {dest}')
+    return dest
+
+
+IPYTHON_SVG_SNIPPET = (
+    "from IPython import get_ipython\n"
+    "get_ipython().run_line_magic('config', \"InlineBackend.figure_format = 'svg'\")\n"
+)
+
+
+def install_ipython_svg() -> Path:
+    dest_dir = ipython_startup_dir()
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    dest = dest_dir / '00-inline-svg.py'
+    if dest.exists():
+        if "InlineBackend.figure_format = 'svg'" in dest.read_text():
+            print(f'  · IPython SVG already configured ({dest.name})')
+            return dest
+        if backup := _backup(dest):
+            print(f'  • backed up existing startup → {backup.name}')
+    dest.write_text(IPYTHON_SVG_SNIPPET)
+    print(f'  ✓ IPython SVG inline → {dest}')
+    return dest
+
+
+# ─── Uninstall steps ────────────────────────────────────────────────────────
+
+def _restore_or_remove(path: Path, label: str) -> None:
+    if not path.exists():
+        print(f'  · no {label} found')
+        return
+    backup = path.with_name(path.name + '.backup')
+    if backup.exists():
+        shutil.copy2(backup, path)
+        backup.unlink()
+        print(f'  ✓ restored {label} from backup')
     else:
-        # Other platforms: ~/.matplotlib/matplotlibrc  
-        config_dir = Path.home() / ".matplotlib"
-    
-    config_dir.mkdir(parents=True, exist_ok=True)
-    matplotlibrc_file = config_dir / "matplotlibrc"
-    
-    # Read pink.mplstyle contents based on theme mode
-    pink_style_file = script_dir / f"pink{theme_mode}.mplstyle"
-    if not pink_style_file.exists():
-        print(f"Warning: pink{theme_mode}.mplstyle not found at {pink_style_file}")
-        return False
-    
-    # Check if matplotlibrc already exists
-    if matplotlibrc_file.exists():
-        print(f"Matplotlib config already exists at {matplotlibrc_file}")
-        response = input("Do you want to overwrite it with the pink theme? (y/N): ").strip().lower()
-        if response not in ['y', 'yes']:
-            print("Skipping matplotlib configuration")
-            return True
-        
-        # Backup existing config
-        backup_file = config_dir / "matplotlibrc.backup"
-        print(f"Backing up existing config to {backup_file}")
-        shutil.copy2(matplotlibrc_file, backup_file)
-    
-    # Read the pink style content
-    with open(pink_style_file, 'r') as f:
-        pink_content = f.read()
-    
-    # Create new matplotlibrc with pink configuration
-    with open(matplotlibrc_file, 'w') as f:
-        f.write(pink_content)
-    
-    print(f"Pink matplotlib configuration installed to {matplotlibrc_file}")
-    return True
+        path.unlink()
+        print(f'  ✓ removed {label}')
 
 
-def setup_ipython_config():
-    """Setup IPython to use SVG format for inline plots by default."""
-    # Get IPython profile directory
-    ipython_dir = Path.home() / ".ipython" / "profile_default" / "startup"
-    ipython_dir.mkdir(parents=True, exist_ok=True)
-    
-    # Path to startup script
-    startup_script = ipython_dir / "00-inline-svg.py"
-    
-    # SVG configuration script
-    svg_script = """from IPython import get_ipython
-get_ipython().run_line_magic('config', "InlineBackend.figure_format = 'svg'")"""
-    
-    # Check if script already exists
-    if startup_script.exists():
-        with open(startup_script, 'r') as f:
-            existing_content = f.read()
-        
-        if "InlineBackend.figure_format = 'svg'" in existing_content:
-            print("IPython SVG configuration already present")
-            return True
-        
-        # Backup existing script
-        backup_file = startup_script.with_suffix('.py.backup')
-        print(f"Backing up existing startup script to {backup_file}")
-        shutil.copy2(startup_script, backup_file)
-    
-    # Write SVG configuration
-    with open(startup_script, 'w') as f:
-        f.write(svg_script)
-    
-    print(f"IPython SVG configuration installed to {startup_script}")
-    return True
+def uninstall() -> None:
+    print('\n🌸 Uninstalling Pink Jupyter Theme...\n')
+
+    print('Jupyter CSS:')
+    _restore_or_remove(jupyter_config_dir() / 'custom' / 'custom.css', 'custom.css')
+
+    print('\nmatplotlibrc:')
+    _restore_or_remove(matplotlib_config_dir() / 'matplotlibrc', 'matplotlibrc')
+
+    print('\nIPython startup:')
+    _restore_or_remove(ipython_startup_dir() / '00-inline-svg.py', '00-inline-svg.py')
+
+    print('\n✨ Done. Restart Jupyter to see changes.\n')
 
 
-def install_theme():
-    """Install the pink theme to Jupyter's custom CSS directory."""
-    # Get paths
-    script_dir = Path(__file__).parent
-    
-    print("🌸 Pink Jupyter Theme Installation 🌸")
-    
-    # Ask user for theme mode preference
-    print("\nChoose theme mode:")
-    print("1. Light mode (default)")
-    print("2. Dark mode")
-    
+# ─── CLI ────────────────────────────────────────────────────────────────────
+
+def _print_themes() -> None:
+    print('\nAvailable themes:')
+    for i, t in enumerate(THEMES.values(), 1):
+        marker = ' (recommended)' if t.key == DEFAULT_THEME else ''
+        print(f'  {i}. {t.label}{marker}')
+        print(f'     key: {t.key:<10}  · {t.description}')
+
+
+def _prompt_choice() -> Theme:
+    _print_themes()
+    keys = list(THEMES.keys())
     while True:
-        choice = input("\nEnter your choice (1 or 2): ").strip()
-        if choice in ['1', '']:
-            theme_mode = 'light'
-            break
-        elif choice == '2':
-            theme_mode = 'dark'
-            break
-        else:
-            print("Invalid choice. Please enter 1 or 2.")
-    
-    # Use the selected theme file
-    theme_file = script_dir / "theme" / f"notebook{theme_mode}.css" # CHANGE THIS LINE TO LAB
-    
-    if not theme_file.exists():
-        print(f"Error: Theme file not found at {theme_file}")
-        return False
-    
-    # Get Jupyter config directory
-    jupyter_dir = get_jupyter_config_dir()
-    custom_dir = jupyter_dir / "custom"
-    
-    # Create custom directory if it doesn't exist
-    custom_dir.mkdir(parents=True, exist_ok=True)
-    
-    # Backup existing custom.css if it exists
-    target_file = custom_dir / "custom.css"
-    if target_file.exists():
-        backup_file = custom_dir / "custom.css.backup"
-        print(f"Backing up existing custom.css to {backup_file}")
-        shutil.copy2(target_file, backup_file)
-    
-    # Copy the theme file
-    print(f"Installing pink theme to {target_file}")
-    shutil.copy2(theme_file, target_file)
-    
-    print("\n✨ Pink theme CSS installed successfully!")
-    
-    # Setup matplotlib configuration
-    print("\nSetting up matplotlib configuration...")
-    matplotlib_success = setup_matplotlib_config(script_dir, theme_mode)
-    
-    # Setup IPython configuration
-    print("\nSetting up IPython configuration...")
-    ipython_success = setup_ipython_config()
-    
-    print(f"\n🌸 Complete Pink theme installation finished! ({theme_mode} mode)")
-    print("\nFeatures installed:")
-    print(f"✓ Pink Jupyter notebook theme ({theme_mode} mode)")
-    if matplotlib_success:
-        print(f"✓ Pink matplotlib plots by default ({theme_mode} mode)")
-    if ipython_success:
-        print("✓ SVG figure format for crisp plots")
-    
-    print("\nTo use the theme:")
-    print("1. Refresh or start Jupyter Notebook")
-    print("2. The pink theme will be applied automatically")
-    print("3. Matplotlib plots will use pink colors by default")
-    print("4. Plots will render as crisp SVG images")
-    
-    print("\nTo uninstall:")
-    print(f"- Run: python {Path(__file__).name} uninstall")
-    
-    return True
+        ans = input(f'\nChoose [1-{len(keys)}] (default 1): ').strip()
+        if ans == '':
+            return THEMES[DEFAULT_THEME]
+        if ans.isdigit() and 1 <= int(ans) <= len(keys):
+            return THEMES[keys[int(ans) - 1]]
+        if ans in THEMES:
+            return THEMES[ans]
+        print('  invalid choice, try again')
 
 
-def uninstall_theme():
-    """Uninstall the pink theme and related configurations."""
-    print("🌸 Uninstalling Pink Jupyter Theme...")
-    
-    # Uninstall Jupyter CSS theme
-    jupyter_dir = get_jupyter_config_dir()
-    custom_dir = jupyter_dir / "custom"
-    target_file = custom_dir / "custom.css"
-    backup_file = custom_dir / "custom.css.backup"
-    
-    if target_file.exists():
-        if backup_file.exists():
-            print(f"Restoring original Jupyter theme from {backup_file}")
-            shutil.copy2(backup_file, target_file)
-            backup_file.unlink()
-        else:
-            print(f"Removing Jupyter theme file {target_file}")
-            target_file.unlink()
-        print("✓ Jupyter theme uninstalled")
-    else:
-        print("No Jupyter custom theme found to uninstall")
-    
-    # Uninstall matplotlib configuration from user config directories
-    config_locations = []
-    
-    # Add platform-specific user config locations
-    if platform.system().lower() in ['linux', 'freebsd']:
-        import os
-        # Check XDG_CONFIG_HOME first, then default location
-        xdg_config = os.environ.get('XDG_CONFIG_HOME')
-        if xdg_config:
-            config_locations.append(Path(xdg_config) / "matplotlib")
-        else:
-            config_locations.append(Path.home() / ".config" / "matplotlib")
-    else:
-        config_locations.append(Path.home() / ".matplotlib")
-    
-    matplotlib_uninstalled = False
-    for config_dir in config_locations:
-        matplotlibrc_file = config_dir / "matplotlibrc"
-        if matplotlibrc_file.exists():
-            # Check if it contains pink theme content
-            with open(matplotlibrc_file, 'r') as f:
-                content = f.read()
-            
-            if "# Pink Jupyter Theme - Matplotlib Style" in content:
-                # Check if backup exists
-                backup_file = config_dir / "matplotlibrc.backup"
-                if backup_file.exists():
-                    print(f"Restoring original matplotlib config from {backup_file}")
-                    shutil.copy2(backup_file, matplotlibrc_file)
-                    backup_file.unlink()
-                else:
-                    print(f"Removing pink matplotlib config {matplotlibrc_file}")
-                    matplotlibrc_file.unlink()
-                print("✓ Matplotlib configuration uninstalled")
-                matplotlib_uninstalled = True
-                break
-    
-    if not matplotlib_uninstalled:
-        print("No pink matplotlib configuration found to uninstall")
-    
-    # Uninstall IPython startup script
-    ipython_startup_script = Path.home() / ".ipython" / "profile_default" / "startup" / "00-inline-svg.py"
-    ipython_backup = ipython_startup_script.with_suffix('.py.backup')
-    
-    if ipython_startup_script.exists():
-        if ipython_backup.exists():
-            print(f"Restoring original IPython startup script from {ipython_backup}")
-            shutil.copy2(ipython_backup, ipython_startup_script)
-            ipython_backup.unlink()
-        else:
-            print(f"Removing IPython startup script {ipython_startup_script}")
-            ipython_startup_script.unlink()
-        print("✓ IPython SVG configuration uninstalled")
-    else:
-        print("No IPython startup script found to uninstall")
-    
-    print("\n✨ Pink theme completely uninstalled!")
-    print("Restart Jupyter and IPython to see changes take effect.")
+def install(theme: Theme, *, yes: bool, no_mpl: bool, no_svg: bool) -> None:
+    print(f'\n🌸 Installing: {theme.label}\n')
+
+    print('Jupyter CSS:')
+    install_jupyter_css(theme)
+
+    if not no_mpl:
+        print('\nmatplotlib:')
+        install_matplotlibrc(theme, yes=yes)
+
+    if not no_svg:
+        print('\nIPython:')
+        install_ipython_svg()
+
+    is_lab = theme.key.startswith('lab-')
+    launch = 'jupyter lab --custom-css' if is_lab else 'jupyter notebook'
+    print(textwrap.dedent(f'''
+        ✨ Installed!
+
+        Next steps:
+          1. Start Jupyter:  {launch}
+          2. Open demo.ipynb to see the theme in action.
+          3. Tweak ~/.jupyter/custom/custom.css to customize colors.
+
+        To uninstall:  python install_theme.py uninstall
+    '''))
 
 
-def main():
-    """Main function to handle command line arguments."""
-    if len(sys.argv) > 1 and sys.argv[1] == "uninstall":
-        uninstall_theme()
-    else:
-        install_theme()
+def main(argv: list[str] | None = None) -> int:
+    p = argparse.ArgumentParser(
+        prog='install_theme.py',
+        description='Install the Pink Jupyter theme (CSS + matplotlibrc + IPython SVG).',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=textwrap.dedent('''
+            Examples:
+              python install_theme.py                      # interactive
+              python install_theme.py --theme lab-light -y # non-interactive
+              python install_theme.py uninstall            # remove everything
+        '''),
+    )
+    p.add_argument('command', nargs='?', default='install',
+                   choices=['install', 'uninstall', 'list'],
+                   help='Action to perform (default: install)')
+    p.add_argument('--theme', '-t', choices=list(THEMES.keys()),
+                   help='Theme key (skips the interactive prompt)')
+    p.add_argument('--yes', '-y', action='store_true',
+                   help='Overwrite without asking (useful for CI)')
+    p.add_argument('--no-mpl', action='store_true', help='Skip matplotlib config')
+    p.add_argument('--no-svg', action='store_true', help='Skip IPython SVG inline backend')
+
+    args = p.parse_args(argv)
+
+    if args.command == 'uninstall':
+        uninstall()
+        return 0
+
+    if args.command == 'list':
+        _print_themes()
+        return 0
+
+    theme = THEMES[args.theme] if args.theme else _prompt_choice()
+    install(theme, yes=args.yes, no_mpl=args.no_mpl, no_svg=args.no_svg)
+    return 0
 
 
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    sys.exit(main())
