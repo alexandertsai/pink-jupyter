@@ -1,0 +1,26 @@
+/* ============================================
+   Pink Jupyter — jupyterlab-vim cursor add-on
+   --------------------------------------------
+   Tested with @axlair/jupyterlab-vim 4.1.4
+   (CodeMirror 6 + @replit/codemirror-vim).
+
+   In normal mode, jupyterlab-vim renders a "fat"
+   block cursor whose default background is #77EE77
+   (vim green). The selectors below override it.
+
+   `.cm-fat-cursor` is on the cursor element itself
+   (not an ancestor) and lives inside
+   `.cm-vimCursorLayer`. The CSS-variable fallback
+   chain lets a single file work across pink-light,
+   pink-dark, and sage-blue themes.
+   ============================================ */
+
+.cm-vimCursorLayer .cm-fat-cursor,
+.cm-fat-cursor.cm-cursor-primary {
+  background-color: var(--pp-pink-deep, var(--pink-hot, #d63384)) !important;
+  color: #fff !important;
+}
+
+.cm-fat-cursor-mark {
+  background-color: var(--pp-pill-strong, var(--pink-soft, rgba(214, 51, 132, 0.35))) !important;
+}

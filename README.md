@@ -75,6 +75,21 @@ CLI flags:
 
 ---
 
+## Optional: pink cursor for `jupyterlab-vim`
+
+If you use [`jupyterlab-vim`](https://github.com/jupyterlab-contrib/jupyterlab-vim), normal mode draws a fat block cursor that defaults to `#77EE77` (vim green). Run this **after** `install_theme.py` to make it pink instead:
+
+```bash
+pip install jupyterlab-vim==4.1.4   # if you haven't already
+python install_vim_cursor.py        # add the pink-cursor block to ~/.jupyter/custom/custom.css
+```
+
+Hard-reload JupyterLab in your browser (⌘⇧R / Ctrl⇧R) to pick up the change. The script appends a small marker-delimited block — re-running is idempotent, and `python install_vim_cursor.py --remove` takes it back out.
+
+The styling lives in [`theme/vim.css`](theme/vim.css) and uses CSS variable fallbacks so it picks up the right pink for whichever theme you installed (light / dark / sage). It targets the selectors used by `@axlair/jupyterlab-vim` 4.1.4 (CodeMirror 6 + `@replit/codemirror-vim`); older versions used different cursor classes, so the add-on may not work on them.
+
+---
+
 ## Demo
 
 Open [`demo.ipynb`](demo.ipynb) and run all cells. You'll see:
@@ -130,7 +145,11 @@ The font stack is `Inter` (sans) + `JetBrains Mono` (code). Override `--pp-sans`
 python install_theme.py uninstall
 ```
 
-This restores any `*.backup` files the installer made; if there were no backups, it just removes the files it added.
+This restores any `*.backup` files the installer made; if there were no backups, it just removes the files it added. To remove only the optional vim-cursor block while keeping the theme:
+
+```bash
+python install_vim_cursor.py --remove
+```
 
 ---
 

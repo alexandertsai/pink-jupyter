@@ -1,0 +1,314 @@
+- generic:
+  - generic [ref=e1]:
+    - link "Skip to main panel" [ref=e3] [cursor=pointer]:
+      - /url: "#"
+    - banner "Top Bar" [ref=e4]:
+      - img [ref=e6]
+      - navigation "main menu" [ref=e9]:
+        - menubar [ref=e11]:
+          - menuitem "File" [ref=e12]:
+            - generic [ref=e13]: File
+          - menuitem "Edit" [ref=e14]:
+            - generic [ref=e15]: Edit
+          - menuitem "View" [ref=e16]:
+            - generic [ref=e17]: View
+          - menuitem "Run" [ref=e18]:
+            - generic [ref=e19]: Run
+          - menuitem "Kernel" [ref=e20]:
+            - generic [ref=e21]: Kernel
+          - menuitem "Tabs" [ref=e22]:
+            - generic [ref=e23]: Tabs
+          - menuitem "Settings" [ref=e24]:
+            - generic [ref=e25]: Settings
+          - menuitem "Help" [ref=e26]:
+            - generic [ref=e27]: Help
+      - toolbar "Topbar toolbar" [ref=e28]:
+        - generic [ref=e29]:
+          - generic:
+            - generic "Generate a Shared Link" [ref=e32] [cursor=pointer]:
+              - button "Generate a Shared Link" [ref=e33]:
+                - generic [ref=e34]:
+                  - generic:
+                    - img
+            - menubar [ref=e36]:
+              - menuitem "AO" [disabled] [ref=e37]:
+                - generic [ref=e39]: AO
+    - generic [ref=e40]:
+      - complementary "main sidebar" [ref=e41]:
+        - tablist "main sidebar" [ref=e42]:
+          - tab "File Browser (⇧ ⌘ F)" [ref=e43]:
+            - img [ref=e45]
+          - tab "Running Terminals and Kernels" [ref=e47]:
+            - img [ref=e49]
+          - tab "Collaboration" [ref=e51]:
+            - img [ref=e53]
+          - tab "Table of Contents" [ref=e57]:
+            - img [ref=e59]
+          - tab "Extension Manager" [ref=e61]:
+            - img [ref=e63]
+      - generic [ref=e66]:
+        - text: ● WORKSPACE
+        - main "Main Content" [ref=e67]:
+          - tabpanel "demo.ipynb" [ref=e68]:
+            - toolbar "main area toolbar" [ref=e69]:
+              - generic [ref=e70]:
+                - generic:
+                  - generic "Save and create checkpoint (⌘ S)" [ref=e72] [cursor=pointer]:
+                    - button "Save and create checkpoint (⌘ S)" [ref=e73]:
+                      - generic [ref=e74]:
+                        - generic:
+                          - img
+                  - generic "Insert a cell below (B)" [ref=e76] [cursor=pointer]:
+                    - button "Insert a cell below (B)" [ref=e77]:
+                      - generic [ref=e78]:
+                        - generic:
+                          - img
+                  - generic "Cut these 0 cells (X)" [ref=e80] [cursor=pointer]:
+                    - button "Cut these 0 cells (X)" [ref=e81]:
+                      - generic [ref=e82]:
+                        - generic:
+                          - img
+                  - generic "Copy these 0 cells (C)" [ref=e84] [cursor=pointer]:
+                    - button "Copy these 0 cells (C)" [ref=e85]:
+                      - generic [ref=e86]:
+                        - generic:
+                          - img
+                  - generic "Paste these 0 cells from the clipboard (V)" [ref=e88] [cursor=pointer]:
+                    - button "Paste these 0 cells from the clipboard (V)" [ref=e89]:
+                      - generic [ref=e90]:
+                        - generic:
+                          - img
+                  - generic "Run these 0 cells and advance (⇧ ⏎)" [ref=e92] [cursor=pointer]:
+                    - button "Run these 0 cells and advance (⇧ ⏎)" [ref=e93]:
+                      - generic [ref=e94]:
+                        - generic:
+                          - img
+                  - generic "Interrupt the kernel" [ref=e96] [cursor=pointer]:
+                    - button "Interrupt the kernel" [ref=e97]:
+                      - generic [ref=e98]:
+                        - generic:
+                          - img
+                  - generic "Restart the kernel" [ref=e100] [cursor=pointer]:
+                    - button "Restart the kernel" [ref=e101]:
+                      - generic [ref=e102]:
+                        - generic:
+                          - img
+                  - generic "Restart the kernel and run all cells" [ref=e104] [cursor=pointer]:
+                    - button "Restart the kernel and run all cells" [ref=e105]:
+                      - generic [ref=e106]:
+                        - generic:
+                          - img
+                  - generic [ref=e108]:
+                    - combobox "Cell type" [ref=e109]:
+                      - option "-"
+                      - option "Code"
+                      - option "Markdown" [selected]
+                      - option "Raw"
+                    - generic:
+                      - img
+                  - menubar [ref=e112]:
+                    - menuitem "Open in..." [ref=e113]:
+                      - img [ref=e115]
+                      - generic [ref=e117]: Open in...
+                  - generic "Enable Debugger" [ref=e119] [cursor=pointer]:
+                    - button "Enable Debugger" [ref=e120]:
+                      - generic [ref=e121]:
+                        - generic:
+                          - img
+                  - generic "Python 3 (ipykernel)" [ref=e123] [cursor=pointer]:
+                    - button "Python 3 (ipykernel)" [ref=e124]:
+                      - generic [ref=e126]: Python 3 (ipykernel)
+                  - progressbar "Kernel status" [ref=e129]:
+                    - img [ref=e130]
+                  - 'generic "Show Minimap (virtual scrollbar, enabled with windowing mode: full)" [ref=e133] [cursor=pointer]':
+                    - 'button "Show Minimap (virtual scrollbar, enabled with windowing mode: full)" [ref=e134]':
+                      - generic [ref=e135]:
+                        - generic:
+                          - img
+            - region "main area content" [ref=e136]:
+              - generic [ref=e137]:
+                - feed "Cells" [ref=e139]:
+                  - generic "Markdown Cell Content" [active] [ref=e140]:
+                    - generic [ref=e143]:
+                      - heading "Q2 Customer Cohort Analysis" [level=1] [ref=e144]: Q2 Customer Cohort Analysis
+                      - paragraph [ref=e145]:
+                        - text: "Tracking retention and revenue across the four cohorts that signed up between April and June. Source:"
+                        - code [ref=e146]: orders.parquet
+                        - text: · refreshed nightly via
+                        - code [ref=e147]: dbt
+                        - text: .
+                  - generic "Code Cell Content with Output" [ref=e148]:
+                    - generic [ref=e150]:
+                      - generic [ref=e151]: "[1]:"
+                      - generic [ref=e152]:
+                        - text: python
+                        - textbox [ref=e155]:
+                          - generic [ref=e156]: import polars as pl
+                          - generic [ref=e157]: import numpy as np
+                          - generic [ref=e158]: import matplotlib.pyplot as plt
+                          - generic [ref=e159]: from pathlib import Path
+                          - generic [ref=e161]: "# pink everything 🌸"
+                          - generic [ref=e162]: pl.Config.set_tbl_rows(8)
+                        - generic:
+                          - generic: Last executed at 02:40:25 in 2.13s
+                    - generic [ref=e167]: polars.config.Config
+                  - generic "Code Cell Content with Output" [ref=e169]:
+                    - generic [ref=e171]:
+                      - generic [ref=e172]: "[2]:"
+                      - generic [ref=e173]:
+                        - text: python
+                        - textbox [ref=e176]:
+                          - generic [ref=e177]: "df = pl.DataFrame({"
+                          - generic [ref=e178]: "'order_id': ['ord_8a32f1', 'ord_8a32f2', 'ord_8a32f3', 'ord_8a32f4', 'ord_8a32f5', 'ord_8a32f6'],"
+                          - generic [ref=e179]: "'customer': ['Mira Okafor', 'Renji Tanaka', 'Camila Rojas', 'Aiden Park', 'Sofía Lindgren', 'Devon Whittle'],"
+                          - generic [ref=e180]: "'signup_month': ['2026-04', '2026-04', '2026-04', '2026-05', '2026-05', '2026-06'],"
+                          - generic [ref=e181]: "'region': ['EU-West', 'APAC', 'LATAM', 'NA-East', 'EU-North', 'NA-West'],"
+                          - generic [ref=e182]: "'plan': ['Studio', 'Studio', 'Solo', 'Team', 'Solo', 'Team'],"
+                          - generic [ref=e183]: "'revenue': [128.40, 214.00, 59.00, 312.50, None, 248.90],"
+                          - generic [ref=e184]: "})"
+                          - generic [ref=e185]: df
+                        - generic:
+                          - generic: Last executed at 02:40:27 in 12ms
+                    - generic [ref=e190]:
+                      - generic [ref=e191]: "shape: (6, 6)"
+                      - table [ref=e192]:
+                        - rowgroup [ref=e193]:
+                          - row "order_id customer signup_month region plan revenue" [ref=e194]:
+                            - columnheader "order_id" [ref=e195]
+                            - columnheader "customer" [ref=e196]
+                            - columnheader "signup_month" [ref=e197]
+                            - columnheader "region" [ref=e198]
+                            - columnheader "plan" [ref=e199]
+                            - columnheader "revenue" [ref=e200]
+                          - row "str str str str str f64" [ref=e201]:
+                            - cell "str" [ref=e202]
+                            - cell "str" [ref=e203]
+                            - cell "str" [ref=e204]
+                            - cell "str" [ref=e205]
+                            - cell "str" [ref=e206]
+                            - cell "f64" [ref=e207]
+                        - rowgroup [ref=e208]:
+                          - row "\"ord_8a32f1\" \"Mira Okafor\" \"2026-04\" \"EU-West\" \"Studio\" 128.4" [ref=e209]:
+                            - cell "\"ord_8a32f1\"" [ref=e210]
+                            - cell "\"Mira Okafor\"" [ref=e211]
+                            - cell "\"2026-04\"" [ref=e212]
+                            - cell "\"EU-West\"" [ref=e213]
+                            - cell "\"Studio\"" [ref=e214]
+                            - cell "128.4" [ref=e215]
+                          - row "\"ord_8a32f2\" \"Renji Tanaka\" \"2026-04\" \"APAC\" \"Studio\" 214.0" [ref=e216]:
+                            - cell "\"ord_8a32f2\"" [ref=e217]
+                            - cell "\"Renji Tanaka\"" [ref=e218]
+                            - cell "\"2026-04\"" [ref=e219]
+                            - cell "\"APAC\"" [ref=e220]
+                            - cell "\"Studio\"" [ref=e221]
+                            - cell "214.0" [ref=e222]
+                          - row "\"ord_8a32f3\" \"Camila Rojas\" \"2026-04\" \"LATAM\" \"Solo\" 59.0" [ref=e223]:
+                            - cell "\"ord_8a32f3\"" [ref=e224]
+                            - cell "\"Camila Rojas\"" [ref=e225]
+                            - cell "\"2026-04\"" [ref=e226]
+                            - cell "\"LATAM\"" [ref=e227]
+                            - cell "\"Solo\"" [ref=e228]
+                            - cell "59.0" [ref=e229]
+                          - row "\"ord_8a32f4\" \"Aiden Park\" \"2026-05\" \"NA-East\" \"Team\" 312.5" [ref=e230]:
+                            - cell "\"ord_8a32f4\"" [ref=e231]
+                            - cell "\"Aiden Park\"" [ref=e232]
+                            - cell "\"2026-05\"" [ref=e233]
+                            - cell "\"NA-East\"" [ref=e234]
+                            - cell "\"Team\"" [ref=e235]
+                            - cell "312.5" [ref=e236]
+                          - row "\"ord_8a32f5\" \"Sofía Lindgren\" \"2026-05\" \"EU-North\" \"Solo\" null" [ref=e237]:
+                            - cell "\"ord_8a32f5\"" [ref=e238]
+                            - cell "\"Sofía Lindgren\"" [ref=e239]
+                            - cell "\"2026-05\"" [ref=e240]
+                            - cell "\"EU-North\"" [ref=e241]
+                            - cell "\"Solo\"" [ref=e242]
+                            - cell "null" [ref=e243]
+                          - row "\"ord_8a32f6\" \"Devon Whittle\" \"2026-06\" \"NA-West\" \"Team\" 248.9" [ref=e244]:
+                            - cell "\"ord_8a32f6\"" [ref=e245]
+                            - cell "\"Devon Whittle\"" [ref=e246]
+                            - cell "\"2026-06\"" [ref=e247]
+                            - cell "\"NA-West\"" [ref=e248]
+                            - cell "\"Team\"" [ref=e249]
+                            - cell "248.9" [ref=e250]
+                  - generic "Code Cell Content with Output" [ref=e252]:
+                    - generic [ref=e254]:
+                      - generic [ref=e255]: "[3]:"
+                      - generic [ref=e256]:
+                        - text: python
+                        - textbox [ref=e259]:
+                          - generic [ref=e260]: "# cohort retention curves"
+                          - generic [ref=e261]: rng = np.random.default_rng(7)
+                          - generic [ref=e262]: x = np.arange(5)
+                          - generic [ref=e263]: "cohorts = {'2026-04': 1.00, '2026-05': 1.00, '2026-06': 1.00}"
+                          - generic [ref=e264]: fig, ax = plt.subplots(figsize=(7, 3.6))
+                          - generic [ref=e265]: "for label, start in cohorts.items():"
+                          - generic [ref=e266]: decay = np.array([1.0, 0.71, 0.56, 0.45, 0.34]) + rng.normal(0, 0.02, 5)
+                          - generic [ref=e267]: ax.plot(x, decay, marker='o', label=label, linewidth=2.2, markersize=8)
+                          - generic [ref=e268]: ax.set_title('Cohort retention curves')
+                          - generic [ref=e269]: ax.set_xlabel('months since signup')
+                          - generic [ref=e270]: ax.set_ylabel('% of original cohort active')
+                          - generic [ref=e271]: "ax.set_xticks(x); ax.set_xticklabels([f'M+{i}' for i in x])"
+                          - generic [ref=e272]: ax.set_yticks([0, 0.25, 0.5, 0.75, 1.0])
+                          - generic [ref=e273]: ax.set_yticklabels(['0%', '25%', '50%', '75%', '100%'])
+                          - generic [ref=e274]: ax.set_ylim(0, 1.05)
+                          - generic [ref=e275]: ax.legend(loc='upper right')
+                          - generic [ref=e276]: plt.tight_layout()
+                          - generic [ref=e277]: plt.show()
+                        - generic:
+                          - generic: Last executed at 02:40:30 in 126ms
+                    - img [ref=e283]
+                - button "Click to add a cell." [ref=e285] [cursor=pointer]
+          - generic [ref=e286]:
+            - tablist [ref=e287]:
+              - tab "install_theme.py" [ref=e288]:
+                - img [ref=e290]
+                - generic [ref=e292]: install_theme.py
+                - generic "Close install_theme.py" [ref=e293]:
+                  - img [ref=e294]
+              - tab "demo.ipynb" [selected] [ref=e298]:
+                - img [ref=e300]
+                - generic [ref=e304]: demo.ipynb
+                - generic "Close demo.ipynb" [ref=e305]:
+                  - img [ref=e306]
+              - tab "Settings" [ref=e310]:
+                - img [ref=e312]
+                - generic [ref=e314]: Settings
+                - generic "Close Settings" [ref=e315]:
+                  - img [ref=e316]
+            - button "New Launcher" [ref=e320]:
+              - img [ref=e321]
+      - complementary "alternate sidebar" [ref=e323]:
+        - tablist "alternate sidebar" [ref=e324]:
+          - tab "Property Inspector" [ref=e325]:
+            - img [ref=e327]
+          - tab "Debugger" [ref=e329]:
+            - img [ref=e331]
+    - contentinfo "Bottom Panel" [ref=e333]:
+      - generic [ref=e334]:
+        - generic [ref=e335]:
+          - switch "Simple" [ref=e337]:
+            - generic "Simple Interface (⇧ ⌘ D)" [ref=e338]: Simple
+          - generic "0 Terminals, 1 Kernel sessions" [ref=e340]:
+            - text: ·
+            - generic [ref=e343] [cursor=pointer]:
+              - generic [ref=e344]: "1"
+              - img [ref=e347]
+          - text: · ·
+          - generic [ref=e349]: · Python 3 (ipykernel) | Idle
+          - generic [ref=e350]:
+            - text: ·
+            - generic "Document Timeline" [ref=e353]:
+              - img [ref=e355]
+        - generic: ·
+        - generic [ref=e357]:
+          - generic "No notifications" [ref=e359]:
+            - generic [ref=e360]: "0"
+            - img [ref=e363]
+          - generic [ref=e365]: · demo.ipynb
+          - text: ·
+          - generic [ref=e366]: · Ln 1, Col 1
+          - 'generic "Notebook trusted: 5 of 5 code cells trusted." [ref=e367]':
+            - text: ·
+            - img [ref=e369]
+          - generic "Notebook is in Command mode" [ref=e372]: "· Mode: Command"
+  - text: No results

@@ -305,26 +305,6 @@
     border-left-width: 2px !important;
 }
 
-/* VIM MODE CURSOR - Fat cursor in normal mode */
-.cm-fat-cursor .cm-cursor,
-.cm-fat-cursor .CodeMirror-cursor {
-    width: auto !important;
-    border: 0 !important;
-    background: var(--pink-hot) !important;
-}
-
-/* Vim mode - animated fat cursor */
-.cm-animate-fat-cursor {
-    width: auto !important;
-    border: 0 !important;
-    background-color: var(--pink-hot) !important;
-}
-
-/* Vim mode - cursor mark when selecting */
-.cm-fat-cursor-mark {
-    background-color: var(--pink-soft) !important;
-}
-
 /* Selection background - proper selector for CodeMirror 6 */
 .cm-editor.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground {
     background: var(--pink-soft) !important;
